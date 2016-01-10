@@ -44,102 +44,59 @@ conda info
     export CONDA_NPY=110
     export CONDA_PY=27
     set +x
-    conda build --no-test /recipe_root || exit 1
+    conda build /recipe_root --quiet || exit 1
+    
+    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
+    
     
 
     set -x
     export CONDA_NPY=19
     export CONDA_PY=27
     set +x
-    conda build --no-test /recipe_root || exit 1
+    conda build /recipe_root --quiet || exit 1
+    
+    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
+    
     
 
     set -x
     export CONDA_NPY=110
     export CONDA_PY=34
     set +x
-    conda build --no-test /recipe_root || exit 1
+    conda build /recipe_root --quiet || exit 1
+    
+    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
+    
     
 
     set -x
     export CONDA_NPY=19
     export CONDA_PY=34
     set +x
-    conda build --no-test /recipe_root || exit 1
+    conda build /recipe_root --quiet || exit 1
+    
+    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
+    
     
 
     set -x
     export CONDA_NPY=110
     export CONDA_PY=35
     set +x
-    conda build --no-test /recipe_root || exit 1
+    conda build /recipe_root --quiet || exit 1
+    
+    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
+    
     
 
     set -x
     export CONDA_NPY=19
     export CONDA_PY=35
     set +x
-    conda build --no-test /recipe_root || exit 1
-    
-EOF
-
-
-# In a separate docker, run the test...
-cat << EOF | docker run -i \
-                        -v ${RECIPE_ROOT}:/recipe_root \
-                        -v ${FEEDSTOCK_ROOT}:/feedstock_root \
-                        -a stdin -a stdout -a stderr \
-                        pelson/obvious-ci:latest_x64 \
-                        bash || exit $?
-
-export BINSTAR_TOKEN=${BINSTAR_TOKEN}
-export PYTHONUNBUFFERED=1
-echo "$config" > ~/.condarc
-
-conda info
-
-
-    export CONDA_NPY=110
-    export CONDA_PY=27
-    
-    conda build --test /recipe_root || exit 1
+    conda build /recipe_root --quiet || exit 1
     
     /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
     
-    export CONDA_NPY=19
-    export CONDA_PY=27
     
-    conda build --test /recipe_root || exit 1
-    
-    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
-    
-    export CONDA_NPY=110
-    export CONDA_PY=34
-    
-    conda build --test /recipe_root || exit 1
-    
-    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
-    
-    export CONDA_NPY=19
-    export CONDA_PY=34
-    
-    conda build --test /recipe_root || exit 1
-    
-    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
-    
-    export CONDA_NPY=110
-    export CONDA_PY=35
-    
-    conda build --test /recipe_root || exit 1
-    
-    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
-    
-    export CONDA_NPY=19
-    export CONDA_PY=35
-    
-    conda build --test /recipe_root || exit 1
-    
-    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
-    
-
 EOF
