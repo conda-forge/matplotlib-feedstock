@@ -7,7 +7,7 @@ Package license: PSF-based (http://matplotlib.org/users/license.html)
 
 Feedstock license: BSD
 
-Summary: 
+Summary: Publication quality figures in Python
 
 
 

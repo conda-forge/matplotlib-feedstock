@@ -58,3 +58,10 @@ test:
 about:
   home: http://matplotlib.org/
   license: PSF-based (http://matplotlib.org/users/license.html)
+  summary: Publication quality figures in Python
+
+extra:
+  recipe-maintainers:
+    - pelson
+    - tcaswell
+    - JanSchulz
