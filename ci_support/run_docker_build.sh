@@ -31,7 +31,7 @@ cat << EOF | docker run -i \
                         bash || exit $?
 
 # FIXME: We needed to do this to test with QT. This is not ideal - instead, qt should be built properly.
-sudo yum install -y libXext libXrender libSM tk libX11-devel --yes
+yum install -y libXext libXrender libSM tk libX11-devel
 
 export PYTHONUNBUFFERED=1
 echo "$config" > ~/.condarc
