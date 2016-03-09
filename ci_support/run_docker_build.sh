@@ -30,10 +30,9 @@ cat << EOF | docker run -i \
                         pelson/obvious-ci:latest_x64 \
                         bash || exit $?
 
-# FIXME: We needed to do this to test with QT. This is not ideal - instead, qt should be built properly.
-yum install -y libXext libXrender libSM tk libX11-devel
-
+export BINSTAR_TOKEN=${BINSTAR_TOKEN}
 export PYTHONUNBUFFERED=1
+
 echo "$config" > ~/.condarc
 # A lock sometimes occurs with incomplete builds. The lock file is stored in build_artefacts.
 conda clean --lock
