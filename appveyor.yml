@@ -15,10 +15,9 @@ environment:
   # We set a default Python version for the miniconda that is to be installed. This can be
   # overridden in the matrix definition where appropriate.
   CONDA_PY: "27"
-
   BINSTAR_TOKEN:
-    # Generated with "binstar auth --create --name appveyor -o conda-forge" and encrypted on ci.appveyor.com/tools/encrypt.
-    secure: wtylLGtp/ID3G3DFT2uxuLFXuijFqmxI6phj60izpNC3pxd585bR6k2oonf5iGGb
+    # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
+    secure: KDvUkPrcdKmV2MxakkyQlrLA0rE/6WSuXxD42UezzZjCB0TRqnnOeebSW03/SnFP
 
   matrix:
     - TARGET_ARCH: x86
@@ -70,7 +69,9 @@ platform:
     - x64
 
 install:
-    - cmd: python -c "from urllib2 import urlopen; open('bootstrap-obvious-ci-and-miniconda.py', 'w').write(urlopen('https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py').read())"
+    # Cywing's git breaks conda-build. (See https://github.com/conda-forge/conda-smithy-feedstock/pull/2.)
+    - cmd: rmdir C:\cygwin /s /q
+    - appveyor DownloadFile "https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py"
     - cmd: python bootstrap-obvious-ci-and-miniconda.py %CONDA_INSTALL_LOCN% %TARGET_ARCH% %CONDA_PY:~0,1% --without-obvci
     - cmd: set PATH=%CONDA_INSTALL_LOCN%;%CONDA_INSTALL_LOCN%\scripts;%PATH%
     - cmd: set PYTHONUNBUFFERED=1
