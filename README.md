@@ -73,6 +73,11 @@ Linux: [![Circle CI](https://circleci.com/gh/conda-forge/matplotlib-feedstock.sv
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/matplotlib-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/matplotlib-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/matplotlib-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/matplotlib-feedstock/branch/master)
 
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/matplotlib/badges/version.svg)](https://anaconda.org/conda-forge/matplotlib)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/matplotlib/badges/downloads.svg)](https://anaconda.org/conda-forge/matplotlib)
+
 
 Updating matplotlib-feedstock
 =============================
