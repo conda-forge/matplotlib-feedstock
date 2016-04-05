@@ -43,7 +43,7 @@ conda update --yes --all
 conda install --yes conda-build==1.18.2
 conda info
 
-# Embarking on 9 case(s).
+# Embarking on 6 case(s).
     set -x
     export CONDA_NPY=110
     export CONDA_PY=27
@@ -59,13 +59,6 @@ conda info
     /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
 
     set -x
-    export CONDA_NPY=19
-    export CONDA_PY=27
-    set +x
-    conda build /recipe_root --quiet || exit 1
-    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
-
-    set -x
     export CONDA_NPY=110
     export CONDA_PY=34
     set +x
@@ -74,13 +67,6 @@ conda info
 
     set -x
     export CONDA_NPY=111
-    export CONDA_PY=34
-    set +x
-    conda build /recipe_root --quiet || exit 1
-    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
-
-    set -x
-    export CONDA_NPY=19
     export CONDA_PY=34
     set +x
     conda build /recipe_root --quiet || exit 1
@@ -95,13 +81,6 @@ conda info
 
     set -x
     export CONDA_NPY=111
-    export CONDA_PY=35
-    set +x
-    conda build /recipe_root --quiet || exit 1
-    /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
-
-    set -x
-    export CONDA_NPY=19
     export CONDA_PY=35
     set +x
     conda build /recipe_root --quiet || exit 1
