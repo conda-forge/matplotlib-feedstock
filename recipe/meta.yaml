@@ -24,6 +24,7 @@ source:
 
 build:
     number: 0
+    skip: True  # [win64 and py<35]
 
 requirements:
   build:
