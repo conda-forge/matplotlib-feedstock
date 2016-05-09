@@ -34,4 +34,3 @@ sed -i.bak "s|/usr/local|$PREFIX|" setupext.py
 
 
 $PYTHON setup.py install
-
