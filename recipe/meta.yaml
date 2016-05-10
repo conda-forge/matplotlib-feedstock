@@ -23,7 +23,7 @@ source:
     - osx-tk.patch  # [osx]
 
 build:
-    number: 0
+    number: 1
     skip: True  # [win64 and py<35]
 
 requirements:
@@ -33,7 +33,7 @@ requirements:
     - pkg-config  # [not win]
     - numpy x.x
     - python-dateutil
-    - freetype 2.5.*
+    - freetype 2.6*
     - msinttypes  # [win]
     - cycler
     - nose
@@ -50,7 +50,7 @@ requirements:
     - numpy x.x
     - cycler
     - python-dateutil
-    - freetype 2.5.*
+    - freetype 2.6*
     - pytz
     - pyparsing
 #    - py2cairo  # [linux and py2k]
