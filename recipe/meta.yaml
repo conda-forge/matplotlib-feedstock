@@ -23,8 +23,7 @@ source:
     - osx-tk.patch  # [osx]
 
 build:
-    number: 0
-    skip: True  # [win64 and py<35]
+    number: 1
 
 requirements:
   build:
