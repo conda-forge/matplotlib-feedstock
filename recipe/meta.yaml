@@ -13,7 +13,7 @@ source:
   sha256: 64c9f7cce4075d05c2602108ee1795aa6455c2c1d8e4329c95c83465e3806887
 
   patches:
-    # A patch to add Tcl directly to the search path on Windows.
+    # Find Tcl and libpng on Windows.
     - setupext.patch  # [win]
     # A patch to make Qt4Agg the default backend.
     - cfg_qt4agg.patch  # [linux]
