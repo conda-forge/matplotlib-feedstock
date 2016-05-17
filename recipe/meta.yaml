@@ -71,6 +71,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - mdboom
+    - ocefpaf
     - pelson
     - tacaswell
-    - ocefpaf
