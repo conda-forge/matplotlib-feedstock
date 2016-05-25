@@ -10,7 +10,7 @@ package:
 source:
   fn: matplotlib-{{ version }}.tar.gz
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 73b01a78aeb701dc04b5ca5767f7a8aac82b3b4a3575369b0a9e3145c640e345
+  sha256: eeb4ab6c23cd41bee6b5bc4e440883cb2e3f11ff7d95a9d16b658cf7b05abe96
 
   patches:
     # Find Tcl and libpng on Windows.
