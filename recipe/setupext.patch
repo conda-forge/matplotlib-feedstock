@@ -1,6 +1,6 @@
---- setupext.py	2016-01-10 19:20:20.000000000 -0300
-+++ setupext.py	2016-05-14 16:29:26.477374144 -0300
-@@ -990,7 +990,7 @@
+--- setupext.py
++++ setupext.py
+@@ -998,7 +998,7 @@ class Png(SetupPackage):
              ]
          ext = make_extension('matplotlib._png', sources)
          pkg_config.setup_extension(
@@ -9,21 +9,3 @@
              alt_exec='libpng-config --ldflags')
          Numpy().add_flags(ext)
          return ext
-@@ -1489,13 +1489,10 @@
-     def add_flags(self, ext):
-         if sys.platform == 'win32':
-             major, minor1, minor2, s, tmp = sys.version_info
--            if sys.version_info[0:2] < (3, 4):
--                ext.include_dirs.extend(['win32_static/include/tcl85'])
--                ext.libraries.extend(['tk85', 'tcl85'])
--            else:
--                ext.include_dirs.extend(['win32_static/include/tcl86'])
--                ext.libraries.extend(['tk86t', 'tcl86t'])
--            ext.library_dirs.extend([os.path.join(sys.prefix, 'dlls')])
-+            tcl_dir = r'C:\Tcl%d' % (8 * tuple.__itemsize__)
-+            ext.include_dirs.append(os.path.join(tcl_dir, 'include'))
-+            ext.library_dirs.append(os.path.join(tcl_dir, 'lib'))
-+            ext.libraries.extend(['tk85', 'tcl85'])
-
-         elif sys.platform == 'darwin':
-             # this config section lifted directly from Imaging - thanks to
