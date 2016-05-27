@@ -19,8 +19,6 @@ source:
     - cfg_qt4agg.patch  # [linux]
     # Patches the matplotlibrc template to default to Qt4.
     - rctmp_pyside.patch  # [not osx]
-    # Patches setupext to look in PREFIX for the tcl/tk headers.
-    - osx-tk.patch  # [osx]
 
 build:
     number: 3  # [not linux]
