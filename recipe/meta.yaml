@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "1.5.2rc2" %}
+{% set version = "2.0.0b1" %}
 
 package:
   name: matplotlib
@@ -10,10 +10,10 @@ package:
 source:
   fn: matplotlib-{{ version }}.tar.gz
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: c608f7357d5fa6b96a22ee51a8352e5132bb6c29a4615d4132be903bc3ec5240
+  sha256: f026ae2beeb15eed2a69dc559aeb6e7e100a4f2ab3f47645c3f1cc1317477352
 
   patches:
-    # Find Tcl and libpng on Windows.
+    # Find libpng on Windows.
     - setupext.patch  # [win]
     # A patch to make Qt4Agg the default backend.
     - cfg_qt4agg.patch  # [linux]
