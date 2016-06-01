@@ -23,7 +23,7 @@ source:
     - osx-tk.patch  # [osx]
 
 build:
-    number: 1
+    number: 2
 
 requirements:
   build:
@@ -40,10 +40,10 @@ requirements:
     - pytz
 #    - py2cairo  # [linux and py2k]
     - tornado
-    - libpng 1.6*
+    - libpng >=1.6.21,<1.7
     - zlib 1.2*  # [win]
     - pyqt  # [not osx]
-    - tk  # [linux]
+    - tk 8.5*  # [linux]
   run:
     - python
     - numpy x.x
@@ -53,9 +53,9 @@ requirements:
     - pytz
     - pyparsing
 #    - py2cairo  # [linux and py2k]
-    - libpng 1.6*
+    - libpng >=1.6.21,<1.7
     - pyqt  # [not osx]
-    - tk  # [linux]
+    - tk 8.5*  # [linux]
     - functools32  # [py2k]
 
 test:
