@@ -23,7 +23,8 @@ source:
     - osx-tk.patch  # [osx]
 
 build:
-    number: 3
+    number: 3  # [not linux]
+    number: 4  # [linux]
 
 requirements:
   build:
