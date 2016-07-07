@@ -20,11 +20,12 @@ source:
     - rctmp_pyside.patch  # [not osx]
 
 build:
-    number: 3  # [not linux]
-    number: 4  # [linux]
+    number: 4  # [not linux]
+    number: 5  # [linux]
 
 requirements:
   build:
+    - toolchain
     - python
     - setuptools
     - pkg-config  # [not win]
