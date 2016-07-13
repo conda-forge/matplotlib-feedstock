@@ -43,6 +43,7 @@ requirements:
     - pyqt  # [not osx]
     - tk 8.5*  # [linux]
     - functools32  # [py2k]
+    - subprocess32  # [py2k and unix]
   run:
     - python
     - numpy x.x
@@ -56,6 +57,7 @@ requirements:
     - pyqt  # [not osx]
     - tk 8.5*  # [linux]
     - functools32  # [py2k]
+    - subprocess32  # [py2k and unix]
 
 test:
     imports:
