@@ -41,6 +41,7 @@ requirements:
     - libpng >=1.6.21,<1.7
     - zlib 1.2*  # [win]
     - pyqt  # [not osx]
+    - icu  # [linux]
     - tk 8.5*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
@@ -58,6 +59,7 @@ requirements:
     - tk 8.5*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
+    - icu  # [linux]
 
 test:
     imports:
