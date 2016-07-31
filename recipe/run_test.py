@@ -1,5 +1,5 @@
 import os
-import platform 
+import platform
 import sys
 
 import matplotlib

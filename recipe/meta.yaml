@@ -10,7 +10,7 @@ package:
 source:
   fn: matplotlib-{{ version }}.tar.gz
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: a006c7f38db019ed403a4ddc19c45701cd537a879aae1ff0b5d864c6fc63db6b
+  sha256: 88c22c94fd1e3068069483dfcc4052167dcabc751b7e5be0b44163d78e1b107b
 
   patches:
     # Find libpng on Windows.
@@ -21,7 +21,7 @@ source:
     - rctmp_pyside.patch  # [not osx]
 
 build:
-    number: 3
+    number: 4
 
 requirements:
   build:
@@ -30,7 +30,7 @@ requirements:
     - pkg-config  # [not win]
     - numpy x.x
     - python-dateutil
-    - freetype 2.6*
+    - freetype 2.6.*
     - msinttypes  # [win]
     - cycler >=0.10
     - nose
@@ -39,27 +39,27 @@ requirements:
 #    - py2cairo  # [linux and py2k]
     - tornado
     - libpng >=1.6.21,<1.7
-    - zlib 1.2*  # [win]
+    - zlib 1.2.*  # [win]
     - pyqt  # [not osx]
-    - icu  # [linux]
-    - tk 8.5*  # [linux]
+    - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
+    - icu 56.*  # [linux]
   run:
     - python
     - numpy x.x
     - cycler >=0.10
     - python-dateutil
-    - freetype 2.6*
+    - freetype 2.6.*
     - pytz
     - pyparsing
 #    - py2cairo  # [linux and py2k]
     - libpng >=1.6.21,<1.7
     - pyqt  # [not osx]
-    - tk 8.5*  # [linux]
+    - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
-    - icu  # [linux]
+    - icu 56.*  # [linux]
 
 test:
     imports:
