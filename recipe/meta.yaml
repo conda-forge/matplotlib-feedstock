@@ -61,6 +61,7 @@ test:
     imports:
         - matplotlib
         - matplotlib.pyplot
+        - mpl_toolkits
 
 about:
   home: http://matplotlib.org/
