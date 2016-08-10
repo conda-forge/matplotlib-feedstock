@@ -20,8 +20,8 @@ source:
     - rctmp_pyside.patch  # [not osx]
 
 build:
-    number: 4  # [not linux]
-    number: 5  # [linux]
+    number: 5  # [not linux]
+    number: 6  # [linux]
 
 requirements:
   build:
@@ -56,11 +56,13 @@ requirements:
     - pyqt  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
+    - setuptools
 
 test:
     imports:
         - matplotlib
         - matplotlib.pyplot
+        - mpl_toolkits
 
 about:
   home: http://matplotlib.org/
