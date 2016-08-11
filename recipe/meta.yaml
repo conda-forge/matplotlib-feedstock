@@ -21,7 +21,7 @@ source:
     - rctmp_pyside.patch  # [not osx]
 
 build:
-    number: 4
+    number: 5
 
 requirements:
   build:
@@ -60,11 +60,13 @@ requirements:
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 56.*  # [linux]
+    - setuptools
 
 test:
     imports:
         - matplotlib
         - matplotlib.pyplot
+        - mpl_toolkits
 
 about:
   home: http://matplotlib.org/
