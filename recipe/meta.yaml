@@ -63,6 +63,9 @@ test:
         - matplotlib
         - matplotlib.pyplot
         - mpl_toolkits
+    commands:
+        - conda inspect linkages -n _test matplotlib  # [not win]
+        - conda inspect objects -n _test matplotlib  # [osx]
 
 about:
   home: http://matplotlib.org/
