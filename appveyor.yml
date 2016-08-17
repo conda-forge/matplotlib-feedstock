@@ -102,6 +102,14 @@ build: off
 
 test_script:
     - "%CMD_IN_ENV% conda build recipe --quiet"
+    # Test libpng pinnings
+    - conda create -n temp01 --override-channels -c conda-forge -c defaults python=2.7 matplotlib --yes
+    - activate temp01
+    - python -c "import matplotlib.pyplot"
+    - conda install --no-update-deps libpng=1.6.21 --yes
+    - python -c "import matplotlib.pyplot"
+    - conda install --no-update-deps libpng=1.6.23 --yes
+    - python -c "import matplotlib.pyplot"
 deploy_script:
 
     - 'python ci_support\upload_or_check_non_existence.py .\recipe conda-forge --channel=main'

@@ -83,4 +83,13 @@ source run_conda_forge_build_setup
     set +x
     conda build /recipe_root --quiet || exit 1
     /feedstock_root/ci_support/upload_or_check_non_existence.py /recipe_root conda-forge --channel=main || exit 1
+
+  # Test libpng pinnings
+  conda create -n temp01 --override-channels -c conda-forge -c defaults python=2.7 matplotlib --yes
+  source activate temp01
+  python -c 'import matplotlib.pyplot'
+  conda install --no-update-deps libpng=1.6.21 --yes
+  python -c 'import matplotlib.pyplot'
+  conda install --no-update-deps libpng=1.6.23 --yes
+  python -c 'import matplotlib.pyplot'
 EOF
