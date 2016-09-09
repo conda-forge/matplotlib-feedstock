@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "1.5.2" %}
+{% set version = "1.5.3" %}
 
 package:
   name: matplotlib
@@ -10,7 +10,7 @@ package:
 source:
   fn: matplotlib-{{ version }}.tar.gz
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: c334c5dccda790423e1e6ebc5a9a442aa2423894cfea08e62c5fd0116e40d9ae
+  sha256: c72276afc11f0b77cee736a783861039c0284d2e4739de8ca09d2dd1407745aa
   patches:
     # Find Tcl and libpng on Windows.
     - setupext.patch  # [win]
@@ -20,8 +20,7 @@ source:
     - rctmp_pyside.patch  # [not osx]
 
 build:
-    number: 5  # [not linux]
-    number: 6  # [linux]
+    number: 0
 
 requirements:
   build:
@@ -39,7 +38,7 @@ requirements:
     - pytz
 #    - py2cairo  # [linux and py2k]
     - tornado
-    - libpng >=1.6.21,<1.7
+    - libpng >=1.6.23,<1.7
     - zlib 1.2.*  # [win]
     - pyqt  # [not osx]
     - tk 8.5.*  # [linux]
@@ -52,7 +51,7 @@ requirements:
     - pytz
     - pyparsing
 #    - py2cairo  # [linux and py2k]
-    - libpng >=1.6.21,<1.7
+    - libpng >=1.6.23,<1.7
     - pyqt  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
