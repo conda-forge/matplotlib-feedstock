@@ -20,7 +20,7 @@ source:
     - rctmp_pyside.patch  # [not osx]
 
 build:
-    number: 0
+    number: 1
     skip: True  # [not osx]
 
 requirements:

@@ -43,9 +43,9 @@ script:
   - conda create -n temp01 --override-channels -c conda-forge -c defaults --use-local python=2.7 matplotlib --yes
   - source activate temp01
   - python -c 'import matplotlib.pyplot'
-  - conda install --no-update-deps libpng=1.6.23 --yes
+  - conda install --no-update-deps libpng=1.6.23 --no-channel-priority --yes
   - python -c 'import matplotlib.pyplot'
-  - conda install --no-update-deps libpng=1.6.21 --yes
+  - conda install --no-update-deps libpng=1.6.21 --no-channel-priority --yes
   - python -c 'import matplotlib.pyplot'
 
   # - upload_or_check_non_existence ./recipe conda-forge --channel=main
