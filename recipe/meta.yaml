@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "2.0.0b4" %}
+{% set version = "1.5.3" %}
 
 package:
   name: matplotlib
@@ -10,10 +10,9 @@ package:
 source:
   fn: matplotlib-{{ version }}.tar.gz
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 8648dce20b53271720d8c5c439c23c11c220561119242c7fcd14ea10ca2ef3f9
-
+  sha256: c72276afc11f0b77cee736a783861039c0284d2e4739de8ca09d2dd1407745aa
   patches:
-    # Find libpng on Windows.
+    # Find Tcl and libpng on Windows.
     - setupext.patch  # [win]
     # A patch to make Qt4Agg the default backend.
     - cfg_qt4agg.patch  # [linux]
@@ -21,10 +20,11 @@ source:
     - rctmp_pyside.patch  # [not osx]
 
 build:
-    number: 0
+    number: 1
 
 requirements:
   build:
+    - toolchain
     - python
     - setuptools
     - pkg-config  # [not win]
@@ -32,34 +32,29 @@ requirements:
     - python-dateutil
     - freetype 2.6.*
     - msinttypes  # [win]
-    - cycler >=0.10
+    - cycler
     - nose
     - pyparsing
     - pytz
 #    - py2cairo  # [linux and py2k]
     - tornado
-    - libpng >=1.6.21,<1.7
-    - zlib 1.2.*  # [win]
+    - libpng 1.6.21
+    - zlib 1.2.7  # [win]
     - pyqt  # [not osx]
     - tk 8.5.*  # [linux]
-    - functools32  # [py2k]
-    - subprocess32  # [py2k and unix]
-    - icu 56.*  # [linux]
   run:
     - python
     - numpy x.x
-    - cycler >=0.10
+    - cycler
     - python-dateutil
     - freetype 2.6.*
     - pytz
     - pyparsing
 #    - py2cairo  # [linux and py2k]
-    - libpng >=1.6.21,<1.7
+    - libpng 1.6.21
     - pyqt  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
-    - subprocess32  # [py2k and unix]
-    - icu 56.*  # [linux]
     - setuptools
 
 test:
