@@ -20,7 +20,7 @@ source:
     - rctmp_pyside.patch  # [not osx]
 
 build:
-    number: 0
+    number: 1
 
 requirements:
   build:
@@ -40,7 +40,7 @@ requirements:
     - tornado
     - libpng >=1.6.23,<1.7
     - zlib 1.2.*  # [win]
-    - pyqt  # [not osx]
+    - pyqt 4.11.*  # [not osx]
     - tk 8.5.*  # [linux]
   run:
     - python
@@ -52,7 +52,7 @@ requirements:
     - pyparsing
 #    - py2cairo  # [linux and py2k]
     - libpng >=1.6.23,<1.7
-    - pyqt  # [not osx]
+    - pyqt  4.11.*  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - setuptools
