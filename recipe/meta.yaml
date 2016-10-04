@@ -56,7 +56,7 @@ requirements:
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - setuptools
-    - libgcc # [linux]
+    - libgcc  # [linux]
 
 test:
     imports:
