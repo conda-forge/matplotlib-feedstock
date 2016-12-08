@@ -20,7 +20,7 @@ source:
     - rctmp_pyside.patch  # [not osx]
 
 build:
-    number: 0
+    number: 1
 
 requirements:
   build:
@@ -37,7 +37,7 @@ requirements:
     - pytz
 #    - py2cairo  # [linux and py2k]
     - tornado
-    - libpng >=1.6.21,<1.7
+    - libpng >=1.6.23,<1.7
     - zlib 1.2.*  # [win]
     - pyqt 4.11.*  # [not osx]
     - tk 8.5.*  # [linux]
@@ -53,7 +53,7 @@ requirements:
     - pytz
     - pyparsing
 #    - py2cairo  # [linux and py2k]
-    - libpng >=1.6.21,<1.7
+    - libpng >=1.6.23,<1.7
     - pyqt 4.11.*  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
