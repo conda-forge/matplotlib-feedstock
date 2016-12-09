@@ -18,16 +18,6 @@ sample_data = False
 
 EOF
 
-# The macosx backend isn't building with conda at this stage.
-if [ `uname` == Darwin ]; then
-cat << EOF >> setup.cfg
-
-[gui_support]
-tkagg = true
-macosx = false
-
-EOF
-fi
 
 cat setup.cfg
 sed -i.bak "s|/usr/local|$PREFIX|" setupext.py
