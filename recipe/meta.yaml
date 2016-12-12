@@ -60,8 +60,22 @@ requirements:
 test:
     imports:
         - matplotlib
-        - matplotlib.pyplot
+        - matplotlib.pyplot  # [not osx]
+        - matplotlib._cntr
+        - matplotlib._delaunay
+        - matplotlib._image
+        - matplotlib._path
+        - matplotlib._png
+        - matplotlib._tri
+        - matplotlib.backends._backend_agg
+        - matplotlib.ft2font
+        - matplotlib.ttconv
+        - matplotlib.backends._tkagg  # [not win]
         - mpl_toolkits
+        - pylab  # [not osx]
+    commands:
+        - pythonw -c "import matplotlib.pyplot"  # [osx]
+        - pythonw -c "import pylab"  # [osx]
 
 about:
   home: http://matplotlib.org/
