@@ -70,7 +70,10 @@ test:
 about:
   home: http://matplotlib.org/
   license: PSF-based (http://matplotlib.org/users/license.html)
+  license_family: PSF
   summary: Publication quality figures in Python
+  dev_url: https://github.com/matplotlib/matplotlib/
+  doc_url: http://matplotlib.org/contents.html
 
 extra:
   recipe-maintainers:
