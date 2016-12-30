@@ -18,9 +18,11 @@ source:
     - cfg_qt4agg.patch  # [linux]
     # Patches the matplotlibrc template to default to Qt4.
     - rctmp_pyside.patch  # [not osx]
+    # Removes framework check from osx backend (seems unneeded)
+    - osx-frame.patch  # [osx]
 
 build:
-    number: 4
+    number: 5
 
 requirements:
   build:
@@ -60,7 +62,7 @@ requirements:
 test:
     imports:
         - matplotlib
-        - matplotlib.pyplot  # [not osx]
+        - matplotlib.pyplot
         - matplotlib._cntr
         - matplotlib._delaunay
         - matplotlib._image
@@ -72,10 +74,7 @@ test:
         - matplotlib.ttconv
         - matplotlib.backends._tkagg  # [not win]
         - mpl_toolkits
-        - pylab  # [not osx]
-    commands:
-        - pythonw -c "import matplotlib.pyplot"  # [osx]
-        - pythonw -c "import pylab"  # [osx]
+        - pylab
 
 about:
   home: http://matplotlib.org/
