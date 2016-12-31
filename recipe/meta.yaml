@@ -60,21 +60,21 @@ requirements:
     - setuptools
 
 test:
-    imports:
-        - matplotlib
-        - matplotlib.pyplot
-        - matplotlib._cntr
-        - matplotlib._delaunay
-        - matplotlib._image
-        - matplotlib._path
-        - matplotlib._png
-        - matplotlib._tri
-        - matplotlib.backends._backend_agg
-        - matplotlib.ft2font
-        - matplotlib.ttconv
-        - matplotlib.backends._tkagg  # [not win]
-        - mpl_toolkits
-        - pylab
+  imports:
+    - matplotlib
+    - matplotlib.pyplot
+    - matplotlib._cntr
+    - matplotlib._delaunay
+    - matplotlib._image
+    - matplotlib._path
+    - matplotlib._png
+    - matplotlib._tri
+    - matplotlib.backends._backend_agg
+    - matplotlib.ft2font
+    - matplotlib.ttconv
+    - matplotlib.backends._tkagg  # [not win]
+    - mpl_toolkits
+    - pylab
 
 about:
   home: http://matplotlib.org/
