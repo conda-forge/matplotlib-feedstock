@@ -79,6 +79,7 @@ test:
 about:
   home: http://matplotlib.org/
   license: PSF-based (http://matplotlib.org/users/license.html)
+  license_file: LICENSE/LICENSE
   license_family: PSF
   summary: Publication quality figures in Python
   dev_url: https://github.com/matplotlib/matplotlib/
