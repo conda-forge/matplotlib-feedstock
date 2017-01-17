@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "1.5.3" %}
+{% set version = "2.0.0" %}
 
 package:
   name: matplotlib
@@ -10,9 +10,9 @@ package:
 source:
   fn: matplotlib-{{ version }}.tar.gz
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: c72276afc11f0b77cee736a783861039c0284d2e4739de8ca09d2dd1407745aa
+  sha256: 966a0807bc961726a68e5b60b6e97c91eed6ba20e0d50dfd699a8f854b2d7370
   patches:
-    # Find Tcl and libpng on Windows.
+    # Find libpng on Windows.
     - setupext.patch  # [win]
     # A patch to make Qt4Agg the default backend.
     - cfg_qt4agg.patch  # [linux]
@@ -22,11 +22,10 @@ source:
     - osx-frame.patch  # [osx]
 
 build:
-    number: 5
+    number: 0
 
 requirements:
   build:
-    - toolchain
     - python
     - setuptools
     - pkg-config  # [not win]
@@ -34,7 +33,7 @@ requirements:
     - python-dateutil
     - freetype 2.6.*
     - msinttypes  # [win]
-    - cycler
+    - cycler >=0.10
     - nose
     - pyparsing
     - pytz
@@ -44,10 +43,13 @@ requirements:
     - zlib 1.2.*  # [win]
     - pyqt 4.11.*  # [not osx]
     - tk 8.5.*  # [linux]
+    - functools32  # [py2k]
+    - subprocess32  # [py2k and unix]
+    - icu 56.*  # [linux]
   run:
     - python
     - numpy x.x
-    - cycler
+    - cycler >=0.10
     - python-dateutil
     - freetype 2.6.*
     - pytz
@@ -57,24 +59,26 @@ requirements:
     - pyqt 4.11.*  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
+    - subprocess32  # [py2k and unix]
+    - icu 56.*  # [linux]
     - setuptools
 
 test:
-  imports:
-    - matplotlib
-    - matplotlib.pyplot
-    - matplotlib._cntr
-    - matplotlib._delaunay
-    - matplotlib._image
-    - matplotlib._path
-    - matplotlib._png
-    - matplotlib._tri
-    - matplotlib.backends._backend_agg
-    - matplotlib.ft2font
-    - matplotlib.ttconv
-    - matplotlib.backends._tkagg  # [not win]
-    - mpl_toolkits
-    - pylab
+    imports:
+        - matplotlib
+        - matplotlib.pyplot
+        - matplotlib._cntr
+        - matplotlib._delaunay
+        - matplotlib._image
+        - matplotlib._path
+        - matplotlib._png
+        - matplotlib._tri
+        - matplotlib.backends._backend_agg
+        - matplotlib.ft2font
+        - matplotlib.ttconv
+        - matplotlib.backends._tkagg  # [not win]
+        - mpl_toolkits
+        - pylab
 
 about:
   home: http://matplotlib.org/
