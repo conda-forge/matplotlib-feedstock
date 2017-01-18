@@ -55,7 +55,7 @@ requirements:
     - pytz
     - pyparsing
 #    - py2cairo  # [linux and py2k]
-    - libpng >=1.6.23,<1.7
+    - libpng >=1.6.28,<1.7
     - pyqt 4.11.*  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
