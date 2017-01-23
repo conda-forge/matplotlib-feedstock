@@ -62,6 +62,7 @@ requirements:
     - subprocess32  # [py2k and unix]
     - icu 56.*  # [linux]
     - setuptools
+    - libgcc  # [linux]
 
 test:
     imports:
