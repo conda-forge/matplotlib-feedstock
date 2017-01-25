@@ -37,8 +37,7 @@ requirements:
     - nose
     - pyparsing
     - pytz
-#    - py2cairo  # [linux and py2k]
-    - tornado
+    #- py2cairo  # [linux and py2k]
     - libpng >=1.6.28,<1.7
     - zlib 1.2.*  # [win]
     - pyqt 4.11.*  # [not osx]
@@ -48,37 +47,38 @@ requirements:
     - icu 56.*  # [linux]
   run:
     - python
+    - setuptools
     - numpy x.x
     - cycler >=0.10
     - python-dateutil
     - freetype 2.6.*
     - pytz
     - pyparsing
-#    - py2cairo  # [linux and py2k]
+    #- py2cairo  # [linux and py2k]
     - libpng >=1.6.28,<1.7
     - pyqt 4.11.*  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 56.*  # [linux]
-    - setuptools
+    - tornado
 
 test:
-    imports:
-        - matplotlib
-        - matplotlib.pyplot
-        - matplotlib._cntr
-        - matplotlib._delaunay
-        - matplotlib._image
-        - matplotlib._path
-        - matplotlib._png
-        - matplotlib._tri
-        - matplotlib.backends._backend_agg
-        - matplotlib.ft2font
-        - matplotlib.ttconv
-        - matplotlib.backends._tkagg  # [not win]
-        - mpl_toolkits
-        - pylab
+  imports:
+    - matplotlib
+    - matplotlib.pyplot
+    - matplotlib._cntr
+    - matplotlib._delaunay
+    - matplotlib._image
+    - matplotlib._path
+    - matplotlib._png
+    - matplotlib._tri
+    - matplotlib.backends._backend_agg
+    - matplotlib.ft2font
+    - matplotlib.ttconv
+    - matplotlib.backends._tkagg  # [not win]
+    - mpl_toolkits
+    - pylab
 
 about:
   home: http://matplotlib.org/
