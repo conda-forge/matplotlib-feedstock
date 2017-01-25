@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ `uname` == Linux ]; then
+if [ $(uname) == Linux ]; then
     pushd $PREFIX/lib
     ln -s libtcl8.5.so libtcl.so
     ln -s libtk8.5.so libtk.so
@@ -23,4 +23,4 @@ cat setup.cfg
 sed -i.bak "s|/usr/local|$PREFIX|" setupext.py
 
 
-$PYTHON setup.py install
+$PYTHON setup.py install --single-version-externally-managed --record record.txt
