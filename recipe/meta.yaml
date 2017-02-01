@@ -22,7 +22,7 @@ source:
     - osx-frame.patch  # [osx]
 
 build:
-    number: 1
+  number: 2
 
 requirements:
   build:
@@ -31,7 +31,7 @@ requirements:
     - pkg-config  # [not win]
     - numpy x.x
     - python-dateutil
-    - freetype 2.6.*
+    - freetype 2.7|2.7.*
     - msinttypes  # [win]
     - cycler >=0.10
     - nose
@@ -44,14 +44,14 @@ requirements:
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
-    - icu 56.*  # [linux]
+    - icu 58.*  # [linux]
   run:
     - python
     - setuptools
     - numpy x.x
     - cycler >=0.10
     - python-dateutil
-    - freetype 2.6.*
+    - freetype 2.7|2.7.*
     - pytz
     - pyparsing
     #- py2cairo  # [linux and py2k]
@@ -60,7 +60,7 @@ requirements:
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
-    - icu 56.*  # [linux]
+    - icu 58.*  # [linux]
     - tornado
 
 test:
@@ -79,6 +79,9 @@ test:
     - matplotlib.backends._tkagg  # [not win]
     - mpl_toolkits
     - pylab
+  commands:
+    - conda inspect linkages -p $PREFIX matplotlib  # [not win]
+    - conda inspect objects -p $PREFIX matplotlib  # [osx]
 
 about:
   home: http://matplotlib.org/
