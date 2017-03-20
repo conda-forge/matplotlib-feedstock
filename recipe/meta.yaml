@@ -15,14 +15,14 @@ source:
     # Find libpng on Windows.
     - setupext.patch  # [win]
     # A patch to make Qt4Agg the default backend.
-    - cfg_qt4agg.patch  # [linux]
+    - cfg_qt5agg.patch  # [linux]
     # Patches the matplotlibrc template to default to Qt4.
     - rctmp_pyside.patch  # [not osx]
     # Removes framework check from osx backend (seems unneeded)
     - osx-frame.patch  # [osx]
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
@@ -40,7 +40,7 @@ requirements:
     #- py2cairo  # [linux and py2k]
     - libpng >=1.6.28,<1.7
     - zlib 1.2.*  # [win]
-    - pyqt 4.11.*  # [not osx]
+    - pyqt 5.6.*
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
@@ -56,7 +56,7 @@ requirements:
     - pyparsing
     #- py2cairo  # [linux and py2k]
     - libpng >=1.6.28,<1.7
-    - pyqt 4.11.*  # [not osx]
+    - pyqt 5.6.*
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
