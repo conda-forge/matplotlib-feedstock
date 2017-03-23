@@ -15,14 +15,12 @@ source:
     # Find libpng on Windows.
     - setupext.patch  # [win]
     # A patch to make Qt4Agg the default backend.
-    - cfg_qt4agg.patch  # [linux]
-    # Patches the matplotlibrc template to default to Qt4.
-    - rctmp_pyside.patch  # [not osx]
+    - cfg_qt5agg.patch  # [not osx]
     # Removes framework check from osx backend (seems unneeded)
     - osx-frame.patch  # [osx]
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
@@ -40,7 +38,7 @@ requirements:
     #- py2cairo  # [linux and py2k]
     - libpng >=1.6.28,<1.7
     - zlib 1.2.*  # [win]
-    - pyqt 4.11.*  # [not osx]
+    - pyqt 5.6.*  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
@@ -56,7 +54,7 @@ requirements:
     - pyparsing
     #- py2cairo  # [linux and py2k]
     - libpng >=1.6.28,<1.7
-    - pyqt 4.11.*  # [not osx]
+    - pyqt 5.6.*  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
@@ -85,9 +83,17 @@ test:
 
 about:
   home: http://matplotlib.org/
-  license: PSF-based (http://matplotlib.org/users/license.html)
+  license: PSF-based
+  license_url: http://matplotlib.sourceforge.net/users/license.html
   license_family: PSF
+  license_file: LICENSE/LICENSE
   summary: Publication quality figures in Python
+  description: |
+    matplotlib is a python 2D plotting library which produces publication
+    quality figures in a variety of hardcopy formats and interactive
+    environments across platforms. matplotlib can be used in Python scripts,
+    the Python and IPython shell (ala MATLAB or Mathematica), web
+    application servers, and six graphical user interface toolkits.
   dev_url: https://github.com/matplotlib/matplotlib/
   doc_url: http://matplotlib.org/contents.html
 
