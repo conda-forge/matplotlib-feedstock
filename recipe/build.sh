@@ -16,6 +16,9 @@ tests = False
 toolkit_tests = False
 sample_data = False
 
+[test]
+local_freetype = True
+
 EOF
 
 

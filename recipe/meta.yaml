@@ -29,7 +29,6 @@ requirements:
     - pkg-config  # [not win]
     - numpy x.x
     - python-dateutil
-    - freetype 2.7|2.7.*
     - msinttypes  # [win]
     - cycler >=0.10
     - nose
@@ -49,7 +48,6 @@ requirements:
     - numpy x.x
     - cycler >=0.10
     - python-dateutil
-    - freetype 2.7|2.7.*
     - pytz
     - pyparsing
     #- py2cairo  # [linux and py2k]
