@@ -31,7 +31,6 @@ requirements:
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
     - python-dateutil
-    - freetype 2.8.*
     - msinttypes  # [win]
     - cycler >=0.10
     - nose
@@ -55,7 +54,6 @@ requirements:
     - backports.functools_lru_cache
     - cycler >=0.10
     - python-dateutil
-    - freetype 2.8.*
     - pytz
     - pyparsing
     #- py2cairo  # [linux and py2k]
