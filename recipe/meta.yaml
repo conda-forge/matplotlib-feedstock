@@ -20,7 +20,7 @@ source:
     - osx-frame.patch  # [osx]
 
 build:
-  number: 3
+  number: 0
 
 requirements:
   build:
