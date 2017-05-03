@@ -21,6 +21,8 @@ source:
 
 build:
   number: 0
+  # Won't work until Matplotlib 2.1 where setupext.py can use local freetype on win
+  skip: True  # [win]
 
 requirements:
   build:
