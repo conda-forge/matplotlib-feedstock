@@ -8,7 +8,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: matplotlib-{{ version }}.tar.gz
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
   sha256: aebed23921562792b68b8ca355de5abc176af4424f1987e2fa95f65e5c5e7e89
   patches:
@@ -20,16 +19,18 @@ source:
     - osx-frame.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - python
     - setuptools
     - pkg-config  # [not win]
-    - numpy x.x
+    - numpy 1.7.*  # [py27]
+    - numpy 1.9.*  # [py35]
+    - numpy 1.11.*  # [py36]
     - python-dateutil
-    - freetype 2.7|2.7.*
+    - freetype 2.7
     - msinttypes  # [win]
     - cycler >=0.10
     - nose
@@ -37,7 +38,7 @@ requirements:
     - pytz
     #- py2cairo  # [linux and py2k]
     - libpng >=1.6.28,<1.7
-    - zlib 1.2.*  # [win]
+    - zlib 1.2.8  # [win]
     - pyqt 5.6.*  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
@@ -46,10 +47,12 @@ requirements:
   run:
     - python
     - setuptools
-    - numpy x.x
+    - numpy >=1.7  # [py27]
+    - numpy >=1.9  # [py35]
+    - numpy >=1.11  # [py36]
     - cycler >=0.10
     - python-dateutil
-    - freetype 2.7|2.7.*
+    - freetype 2.7
     - pytz
     - pyparsing
     #- py2cairo  # [linux and py2k]
