@@ -57,9 +57,15 @@ conda clean --lock
 conda install --yes --quiet conda-forge-build-setup
 source run_conda_forge_build_setup
 
-# Embarking on 3 case(s).
+# Embarking on 4 case(s).
     set -x
     export CONDA_PY=27
+    set +x
+    conda build /recipe_root --quiet || exit 1
+    upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+
+    set -x
+    export CONDA_PY=34
     set +x
     conda build /recipe_root --quiet || exit 1
     upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
