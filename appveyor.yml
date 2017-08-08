@@ -19,11 +19,11 @@ environment:
 
     - TARGET_ARCH: x86
       CONDA_PY: 34
-      CONDA_INSTALL_LOCN: C:\\Miniconda34
+      CONDA_INSTALL_LOCN: C:\\Miniconda35
 
     - TARGET_ARCH: x64
       CONDA_PY: 34
-      CONDA_INSTALL_LOCN: C:\\Miniconda34-x64
+      CONDA_INSTALL_LOCN: C:\\Miniconda35-x64
 
     - TARGET_ARCH: x86
       CONDA_PY: 35
