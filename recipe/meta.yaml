@@ -28,6 +28,7 @@ requirements:
     - python
     - setuptools
     - pkg-config  # [not win]
+    - backports.functools_lru_cache
     - numpy 1.8.*  # [not (win and (py35 or py36))]
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
@@ -52,6 +53,7 @@ requirements:
     - numpy >=1.9  # [win and py35]
     - numpy >=1.11  # [win and py36]
     - setuptools
+    - backports.functools_lru_cache
     - cycler >=0.10
     - python-dateutil
     - freetype 2.7
