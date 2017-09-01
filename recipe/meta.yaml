@@ -1,34 +1,32 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "2.0.0rc2" %}
+{% set version = "2.1.0rc1" %}
 
 package:
   name: matplotlib
   version: {{ version }}
 
 source:
-  fn: matplotlib-{{ version }}.tar.gz
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: ba3bba07746152f34199aba83363923ca26767a2817914d86efcc7a06caf7536
+  sha256: d312d31010b78a266c097f2dd3a7752d9bc38e11f7a3837d46b362164361e327
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
-    # A patch to make Qt4Agg the default backend.
-    - cfg_qt4agg.patch  # [linux]
-    # Patches the matplotlibrc template to default to Qt4.
-    - rctmp_pyside.patch  # [not osx]
+    # A patch to make Qt5Agg the default backend.
+    - cfg_qt5agg.patch  # [linux]
     # Removes framework check from osx backend (seems unneeded)
     - osx-frame.patch  # [osx]
 
 build:
-    number: 2
+    number: 0
 
 requirements:
   build:
     - python
     - setuptools
     - pkg-config  # [not win]
+    - backports.functools_lru_cache
     - numpy 1.8.*  # [not (win and (py35 or py36))]
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
@@ -53,6 +51,7 @@ requirements:
     - numpy >=1.9  # [win and py35]
     - numpy >=1.11  # [win and py36]
     - setuptools
+    - backports.functools_lru_cache
     - cycler >=0.10
     - python-dateutil
     - freetype 2.7
@@ -72,7 +71,6 @@ test:
     - matplotlib
     - matplotlib.pyplot
     - matplotlib._cntr
-    - matplotlib._delaunay
     - matplotlib._image
     - matplotlib._path
     - matplotlib._png
