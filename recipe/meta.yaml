@@ -13,10 +13,8 @@ source:
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
-    # A patch to make Qt4Agg the default backend.
-    - cfg_qt4agg.patch  # [linux]
-    # Patches the matplotlibrc template to default to Qt4.
-    - rctmp_pyside.patch  # [not osx]
+    # A patch to make Qt5Agg the default backend.
+    - cfg_qt5agg.patch  # [linux]
     # Removes framework check from osx backend (seems unneeded)
     - osx-frame.patch  # [osx]
 
