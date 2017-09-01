@@ -29,38 +29,42 @@ requirements:
     - python
     - setuptools
     - pkg-config  # [not win]
-    - numpy x.x
+    - numpy 1.8.*  # [not (win and (py35 or py36))]
+    - numpy 1.9.*  # [win and py35]
+    - numpy 1.11.*  # [win and py36]
     - python-dateutil
-    - freetype 2.6.*
-    - msinttypes  # [win]
+    - freetype 2.7
+    - msinttypes  # [win and py<35]
     - cycler >=0.10
     - nose
     - pyparsing
     - pytz
     #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.23,<1.7
-    - zlib 1.2.*  # [win]
-    - pyqt 4.11.*  # [not osx]
+    - libpng >=1.6.28,<1.7
+    - zlib 1.2.8  # [win]
+    - pyqt 5.6.*  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
-    - icu 56.*  # [linux]
+    - icu 58.*  # [linux]
   run:
     - python
-    - numpy x.x
+    - numpy >=1.8  # [not (win and (py35 or py36))]
+    - numpy >=1.9  # [win and py35]
+    - numpy >=1.11  # [win and py36]
     - setuptools
     - cycler >=0.10
     - python-dateutil
-    - freetype 2.6.*
+    - freetype 2.7
     - pytz
     - pyparsing
     #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.23,<1.7
-    - pyqt 4.11.*  # [not osx]
+    - libpng >=1.6.28,<1.7
+    - pyqt 5.6.*  # [not osx]
     - tk 8.5.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
-    - icu 56.*  # [linux]
+    - icu 58.*  # [linux]
     - tornado
 
 test:
