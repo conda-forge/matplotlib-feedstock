@@ -13,7 +13,7 @@ source:
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
-    # A patch to make Qt4Agg the default backend.
+    # A patch to make Qt the default backend.
     - cfg_qt5agg.patch  # [not osx]
     # Removes framework check from osx backend (seems unneeded)
     - osx-frame.patch  # [osx]
