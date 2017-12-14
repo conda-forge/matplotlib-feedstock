@@ -19,7 +19,7 @@ source:
     - osx-frame.patch  # [osx]
 
 build:
-    number: 0
+  number: 1
 
 requirements:
   build:
@@ -31,17 +31,17 @@ requirements:
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
     - python-dateutil
-    - freetype 2.7
+    - freetype 2.8.*
     - msinttypes  # [win]
     - cycler >=0.10
     - nose
     - pyparsing
     - pytz
     #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.22,<1.6.31
+    - libpng >=1.6.32,<1.6.35
     - zlib 1.2.11  # [win]
     - pyqt 5.6.*  # [not osx]
-    - tk 8.5.*  # [linux]
+    - tk 8.6.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 58.*  # [linux]
@@ -55,13 +55,13 @@ requirements:
     - backports.functools_lru_cache
     - cycler >=0.10
     - python-dateutil
-    - freetype 2.7
+    - freetype 2.8.*
     - pytz
     - pyparsing
     #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.22,<1.6.31
+    - libpng >=1.6.32,<1.6.35
     - pyqt 5.6.*  # [not osx]
-    - tk 8.5.*  # [linux]
+    - tk 8.6.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 58.*  # [linux]
