@@ -20,6 +20,7 @@ source:
 
 build:
   number: 0
+  skip: True  # [win and (py35 or py36)]
 
 requirements:
   build:
