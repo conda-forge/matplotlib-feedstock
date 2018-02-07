@@ -1,9 +1,11 @@
 #!/bin/bash
 
+mkdir -p build
+curl -L https://download.savannah.gnu.org/releases/freetype/freetype-2.6.1.tar.gz -o build/freetype-2.6.1.tar.gz
 if [ $(uname) == Linux ]; then
     pushd $PREFIX/lib
-    ln -s libtcl8.5.so libtcl.so
-    ln -s libtk8.5.so libtk.so
+    ln -s libtcl8.6.so libtcl.so
+    ln -s libtk8.6.so libtk.so
     popd
 fi
 

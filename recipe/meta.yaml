@@ -1,35 +1,36 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "2.0.1" %}
+{% set version = "2.1.2" %}
 
 package:
   name: matplotlib
   version: {{ version }}
 
 source:
-  fn: matplotlib-{{ version }}.tar.gz
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 817c873084830a9169115e94a54ae6e7ef4f7b54d334a4ed0a63fac29393faa4
+  sha256: 613d79282a0a8ba88cfc52dbcf1b08ab070dae395c3d313d141ccc3f87e3c9fa
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
-    # A patch to make Qt4Agg the default backend.
+    # A patch to make Qt the default backend.
     - cfg_qt5agg.patch  # [not osx]
     # Removes framework check from osx backend (seems unneeded)
     - osx-frame.patch  # [osx]
 
 build:
   number: 0
-  # Won't work until Matplotlib 2.1 where setupext.py can use local freetype on win
-  skip: True  # [win]
+  skip: True  # [win and (py35 or py36)]
 
 requirements:
   build:
     - python
     - setuptools
     - pkg-config  # [not win]
-    - numpy x.x
+    - backports.functools_lru_cache
+    - numpy 1.8.*  # [not (win and (py35 or py36))]
+    - numpy 1.9.*  # [win and py35]
+    - numpy 1.11.*  # [win and py36]
     - python-dateutil
     - msinttypes  # [win]
     - cycler >=0.10
@@ -37,25 +38,29 @@ requirements:
     - pyparsing
     - pytz
     #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.28,<1.7
-    - zlib 1.2.*  # [win]
+    - libpng >=1.6.32,<1.6.35
+    - zlib 1.2.11  # [win]
     - pyqt 5.6.*  # [not osx]
-    - tk 8.5.*  # [linux]
+    - tk 8.6.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 58.*  # [linux]
   run:
     - python
     - setuptools
-    - numpy x.x
+    - numpy >=1.8  # [not (win and (py35 or py36))]
+    - numpy >=1.9  # [win and py35]
+    - numpy >=1.11  # [win and py36]
+    - setuptools
+    - backports.functools_lru_cache
     - cycler >=0.10
     - python-dateutil
     - pytz
     - pyparsing
     #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.28,<1.7
+    - libpng >=1.6.32,<1.6.35
     - pyqt 5.6.*  # [not osx]
-    - tk 8.5.*  # [linux]
+    - tk 8.6.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 58.*  # [linux]
@@ -66,7 +71,6 @@ test:
     - matplotlib
     - matplotlib.pyplot
     - matplotlib._cntr
-    - matplotlib._delaunay
     - matplotlib._image
     - matplotlib._path
     - matplotlib._png
@@ -78,8 +82,8 @@ test:
     - mpl_toolkits
     - pylab
   commands:
-    - conda inspect linkages -p $PREFIX matplotlib  # [not win]
-    - conda inspect objects -p $PREFIX matplotlib  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://matplotlib.org/
