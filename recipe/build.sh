@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p build
 curl https://download.savannah.gnu.org/releases/freetype/freetype-2.6.1.tar.gz -o build/freetype-2.6.1.tar.gz
 if [ $(uname) == Linux ]; then
     pushd $PREFIX/lib
