@@ -31,23 +31,24 @@ requirements:
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
     - python-dateutil
-    - freetype 2.7
-    - msinttypes  # [win and py<35]
+    - freetype 2.8.*
+    - msinttypes  # [win]
     - cycler >=0.10
     - nose
     - pyparsing
     - pytz
     #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.28,<1.7
-    - zlib 1.2.8  # [win]
+    - libpng >=1.6.32,<1.6.35
+    - zlib 1.2.11  # [win]
     - pyqt 5.6.*  # [not osx]
-    - tk 8.5.*  # [linux]
+    - tk 8.6.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 58.*  # [linux]
     - kiwisolver
   run:
     - python
+    - setuptools
     - numpy >=1.8  # [not (win and (py35 or py36))]
     - numpy >=1.9  # [win and py35]
     - numpy >=1.11  # [win and py36]
@@ -55,13 +56,13 @@ requirements:
     - backports.functools_lru_cache
     - cycler >=0.10
     - python-dateutil
-    - freetype 2.7
+    - freetype 2.8.*
     - pytz
     - pyparsing
     #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.28,<1.7
+    - libpng >=1.6.32,<1.6.35
     - pyqt 5.6.*  # [not osx]
-    - tk 8.5.*  # [linux]
+    - tk 8.6.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 58.*  # [linux]
@@ -83,12 +84,23 @@ test:
     - matplotlib.backends._tkagg  # [not win]
     - mpl_toolkits
     - pylab
+  commands:
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://matplotlib.org/
-  license: PSF-based (http://matplotlib.org/users/license.html)
+  license: PSF-based
+  license_url: http://matplotlib.sourceforge.net/users/license.html
   license_family: PSF
+  license_file: LICENSE/LICENSE
   summary: Publication quality figures in Python
+  description: |
+    matplotlib is a python 2D plotting library which produces publication
+    quality figures in a variety of hardcopy formats and interactive
+    environments across platforms. matplotlib can be used in Python scripts,
+    the Python and IPython shell (ala MATLAB or Mathematica), web
+    application servers, and six graphical user interface toolkits.
   dev_url: https://github.com/matplotlib/matplotlib/
   doc_url: http://matplotlib.org/contents.html
 
@@ -98,3 +110,4 @@ extra:
     - ocefpaf
     - pelson
     - tacaswell
+    - dopplershift

@@ -3,12 +3,17 @@ About matplotlib
 
 Home: http://matplotlib.org/
 
-Package license: PSF-based (http://matplotlib.org/users/license.html)
+Package license: PSF-based
 
 Feedstock license: BSD 3-Clause
 
 Summary: Publication quality figures in Python
 
+matplotlib is a python 2D plotting library which produces publication
+quality figures in a variety of hardcopy formats and interactive
+environments across platforms. matplotlib can be used in Python scripts,
+the Python and IPython shell (ala MATLAB or Mathematica), web
+application servers, and six graphical user interface toolkits.
 
 
 Current build status
