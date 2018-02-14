@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "2.1.0rc1" %}
+{% set version = "2.2.0rc1" %}
 
 package:
   name: matplotlib
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: d312d31010b78a266c097f2dd3a7752d9bc38e11f7a3837d46b362164361e327
+  sha256: 0c55b57517f961ff54c6513b40ceca8523447f42eb5e125ecb171ce6347c39f8
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
@@ -45,6 +45,7 @@ requirements:
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 58.*  # [linux]
+    - kiwisolver
   run:
     - python
     - numpy >=1.8  # [not (win and (py35 or py36))]
@@ -65,6 +66,7 @@ requirements:
     - subprocess32  # [py2k and unix]
     - icu 58.*  # [linux]
     - tornado
+    - kiwisolver
 
 test:
   imports:
