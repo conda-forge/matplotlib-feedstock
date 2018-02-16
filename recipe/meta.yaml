@@ -19,7 +19,7 @@ source:
     - osx-frame.patch  # [osx]
 
 build:
-  number: 0
+  number: 200
   skip: True  # [win and (py35 or py36)]
 
 requirements:
