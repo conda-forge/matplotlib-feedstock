@@ -72,7 +72,6 @@ test:
   imports:
     - matplotlib
     - matplotlib.pyplot
-    # - matplotlib._cntr
     - matplotlib._image
     - matplotlib._path
     - matplotlib._png
