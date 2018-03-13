@@ -24,6 +24,7 @@ build:
 requirements:
   build:
     - python
+    - pip  # [win]
     - setuptools
     - pkg-config  # [not win]
     - backports.functools_lru_cache
