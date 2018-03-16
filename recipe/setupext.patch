@@ -1,6 +1,17 @@
 --- setupext.py
 +++ setupext.py
-@@ -998,7 +998,7 @@ class Png(SetupPackage):
+@@ -1229,9 +1229,9 @@ echo Build completed, moving result"
+ :: move to the "normal" path for the unix builds...
+ mkdir %FREETYPE%\\objs\\.libs
+ :: REMINDER: fix when changing the version
+-copy %FREETYPE%\\objs\\{vc20xx}\\{xXX}\\freetype261.lib %FREETYPE%\\objs\\.libs\\libfreetype.lib
++copy %FREETYPE%\\objs\\{vc20xx}\\{WinXX}\\freetype261.lib %FREETYPE%\\objs\\.libs\\libfreetype.lib
+ if errorlevel 1 (
+   rem This is a py27 version, which has a different location for the lib file :-/
+   copy %FREETYPE%\\objs\\win32\\{vc20xx}\\freetype261.lib %FREETYPE%\\objs\\.libs\\libfreetype.lib
+ )
+ """
+@@ -1307,7 +1307,7 @@ class Png(SetupPackage):
              ]
          ext = make_extension('matplotlib._png', sources)
          pkg_config.setup_extension(
