@@ -19,7 +19,7 @@ source:
     - osx-frame.patch  # [osx]
 
 build:
-  number: 2
+  number: 1
 
 requirements:
   build:
