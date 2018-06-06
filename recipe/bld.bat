@@ -9,5 +9,5 @@ ECHO tests = False >> setup.cfg
 ECHO sample_data = False >> setup.cfg
 ECHO toolkits_tests = False >> setup.cfg
 
-%PYTHON% -m pip install --no-deps --ignore-installed .
+%PYTHON% setup.py install --single-version-externally-managed --record record.txt
 if errorlevel 1 exit 1
