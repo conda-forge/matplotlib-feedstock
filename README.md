@@ -3,25 +3,32 @@ About matplotlib
 
 Home: http://matplotlib.org/
 
-Package license: PSF-based (http://matplotlib.org/users/license.html)
+Package license: PSF-based
 
 Feedstock license: BSD 3-Clause
 
 Summary: Publication quality figures in Python
 
+matplotlib is a python 2D plotting library which produces publication
+quality figures in a variety of hardcopy formats and interactive
+environments across platforms. matplotlib can be used in Python scripts,
+the Python and IPython shell (ala MATLAB or Mathematica), web
+application servers, and six graphical user interface toolkits.
 
 
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/matplotlib-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/matplotlib-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/matplotlib-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/matplotlib-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/matplotlib-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/matplotlib-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/matplotlib-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/matplotlib-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/matplotlib-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/matplotlib-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/matplotlib-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/matplotlib-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/matplotlib/badges/version.svg)](https://anaconda.org/conda-forge/matplotlib)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/matplotlib/badges/downloads.svg)](https://anaconda.org/conda-forge/matplotlib)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-matplotlib-green.svg)](https://anaconda.org/conda-forge/matplotlib) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/matplotlib.svg)](https://anaconda.org/conda-forge/matplotlib) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/matplotlib.svg)](https://anaconda.org/conda-forge/matplotlib) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/matplotlib.svg)](https://anaconda.org/conda-forge/matplotlib) |
 
 Installing matplotlib
 =====================
@@ -66,6 +73,7 @@ To manage the continuous integration and simplify feedstock maintenance
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
+For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
