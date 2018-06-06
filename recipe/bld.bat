@@ -9,5 +9,5 @@ ECHO tests = False >> setup.cfg
 ECHO sample_data = False >> setup.cfg
 ECHO toolkits_tests = False >> setup.cfg
 
-%PYTHON% setup.py install
+%PYTHON% -m pip install --no-deps --ignore-installed .
 if errorlevel 1 exit 1
