@@ -1,18 +1,9 @@
 #!/bin/bash
 
-# FIXME: This is a hack to make sure the environment is activated.
-# The reason this is required is due to the conda-build issue
-# mentioned below.
-#
-# https://github.com/conda/conda-build/issues/910
-#
-source activate "${CONDA_DEFAULT_ENV}"
-
-
-if [ `uname` == Linux ]; then
+if [ $(uname) == Linux ]; then
     pushd $PREFIX/lib
-    ln -s libtcl8.5.so libtcl.so
-    ln -s libtk8.5.so libtk.so
+    ln -s libtcl8.6.so libtcl.so
+    ln -s libtk8.6.so libtk.so
     popd
 fi
 
@@ -31,5 +22,4 @@ EOF
 cat setup.cfg
 sed -i.bak "s|/usr/local|$PREFIX|" setupext.py
 
-
-$PYTHON setup.py install
+$PYTHON -m pip install --no-deps --ignore-installed .

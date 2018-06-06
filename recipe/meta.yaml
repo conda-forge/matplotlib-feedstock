@@ -15,24 +15,24 @@ source:
     # Find Tcl and libpng on Windows.
     - setupext.patch  # [win]
     # A patch to make Qt4Agg the default backend.
-    - cfg_qt4agg.patch  # [linux]
+    - cfg_qt5agg.patch  # [linux]
     # Patches the matplotlibrc template to default to Qt4.
     - rctmp_pyside.patch  # [not osx]
     # Removes framework check from osx backend (seems unneeded)
     - osx-frame.patch  # [osx]
 
 build:
-    number: 8
+    number: 9
 
 requirements:
   build:
-    - toolchain
     - python
-    - setuptools
+    - pip
+    - toolchain
     - pkg-config  # [not win]
-    - numpy x.x
+    - numpy 1.11.*
     - python-dateutil
-    - freetype 2.7|2.7.*
+    - freetype 2.8.*
     - msinttypes  # [win]
     - cycler
     - nose
@@ -40,26 +40,26 @@ requirements:
     - pytz
 #    - py2cairo  # [linux and py2k]
     - tornado
-    - libpng >=1.6.28,<1.7
-    - zlib 1.2.*  # [win]
-    - pyqt 4.11.*  # [not osx]
-    - tk 8.5.*  # [linux]
+    - libpng >=1.6.32,<1.6.35
+    - zlib 1.2.11  # [win]
+    - pyqt 5.6.*  # [not osx]
+    - tk 8.6.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 58.*  # [linux]
   run:
     - python
     - setuptools
-    - numpy x.x
+    - numpy >=1.11
     - cycler
     - python-dateutil
-    - freetype 2.7|2.7.*
+    - freetype 2.8.*
     - pytz
     - pyparsing
 #    - py2cairo  # [linux and py2k]
-    - libpng >=1.6.28,<1.7
-    - pyqt 4.11.*  # [not osx]
-    - tk 8.5.*  # [linux]
+    - libpng >=1.6.32,<1.6.35
+    - pyqt 5.6.*  # [not osx]
+    - tk 8.6.*  # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
     - icu 58.*  # [linux]
