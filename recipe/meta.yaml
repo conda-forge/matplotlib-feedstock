@@ -30,9 +30,7 @@ requirements:
     - python
     - setuptools
     - backports.functools_lru_cache  # [py2k]
-    - numpy        # [not (win and (py35 or py36))]
-    - numpy        # [win and py35]
-    - numpy         # [win and py36]
+    - numpy
     - python-dateutil
     - freetype
     - msinttypes  # [win]
@@ -51,9 +49,7 @@ requirements:
   run:
     - python
     - setuptools
-    - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]
-    - {{ pin_compatible('numpy') }}   # [win and py35]
-    - {{ pin_compatible('numpy') }}   # [win and py36]
+    - {{ pin_compatible('numpy') }}
     - backports.functools_lru_cache  # [py2k]
     - cycler >=0.10
     - python-dateutil
@@ -84,9 +80,6 @@ test:
     - matplotlib.backends._tkagg  # [not win]
     - mpl_toolkits
     - pylab
-  commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://matplotlib.org/
