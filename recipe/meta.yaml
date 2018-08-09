@@ -19,51 +19,50 @@ source:
     - osx-frame.patch  # [osx]
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
+    - pkg-config  # [not win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - python
     - setuptools
-    - pkg-config  # [not win]
     - backports.functools_lru_cache  # [py2k]
-    - numpy 1.8.*  # [not (win and (py35 or py36))]
-    - numpy 1.9.*  # [win and py35]
-    - numpy 1.11.*  # [win and py36]
+    - numpy
     - python-dateutil
-    - freetype 2.8.*
+    - freetype
     - msinttypes  # [win]
     - cycler >=0.10
     - nose
     - pyparsing
     - pytz
     #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.32,<1.6.35
-    - zlib 1.2.11  # [win]
-    - pyqt 5.6.*  # [not osx]
-    - tk 8.6.*  # [linux]
+    - libpng
+    - zlib         # [win]
+    - pyqt        # [not osx]
+    - tk        # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
-    - icu 58.*  # [linux]
+    - icu       # [linux]
   run:
     - python
     - setuptools
-    - numpy >=1.8  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and py35]
-    - numpy >=1.11  # [win and py36]
+    - {{ pin_compatible('numpy') }}
     - backports.functools_lru_cache  # [py2k]
     - cycler >=0.10
     - python-dateutil
-    - freetype 2.8.*
+    - freetype
     - pytz
     - pyparsing
     #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.32,<1.6.35
-    - pyqt 5.6.*  # [not osx]
-    - tk 8.6.*  # [linux]
+    - libpng
+    - pyqt        # [not osx]
+    - tk        # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
-    - icu 58.*  # [linux]
+    - icu       # [linux]
     - tornado
     - kiwisolver
 
@@ -81,9 +80,6 @@ test:
     - matplotlib.backends._tkagg  # [not win]
     - mpl_toolkits
     - pylab
-  commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://matplotlib.org/
