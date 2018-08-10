@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 8ad8e3521172922c2a3ac897ac2bee0349ef75286909a60150cfa4e774596827
+  sha256: da5b804222864a8e854ed68f16dcbc8b2fa096537d84f879cc8289db368735c8
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
