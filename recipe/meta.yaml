@@ -13,8 +13,6 @@ source:
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
-    # A patch to make Qt5Agg the default backend.
-    - cfg_qt5agg.patch  # [linux]
 
 build:
     number: 0
