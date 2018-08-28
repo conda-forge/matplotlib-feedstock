@@ -15,8 +15,6 @@ source:
     - setupext.patch  # [win]
     # A patch to make Qt5Agg the default backend.
     - cfg_qt5agg.patch  # [linux]
-    # Removes framework check from osx backend (seems unneeded)
-    - osx-frame.patch  # [osx]
 
 build:
     number: 0
