@@ -15,7 +15,7 @@ source:
     - setupext.patch  # [win]
 
 build:
-    number: 0
+    number: 1
     skip: true  # [py2k]
 
 requirements:
@@ -26,8 +26,7 @@ requirements:
   host:
     - python
     - setuptools
-    - numpy 1.10.*  # [not (win and py36)]
-    - numpy 1.11.*  # [win and py36]
+    - numpy 1.11.*
     - python-dateutil
     - freetype
     - msinttypes  # [win]
