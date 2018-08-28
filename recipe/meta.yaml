@@ -24,7 +24,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - python >=3.5
+    - python
     - setuptools
     - numpy >=1.10
     - python-dateutil
@@ -40,7 +40,7 @@ requirements:
     - tk        # [linux]
     - icu       # [linux]
   run:
-    - python >=3.5
+    - python
     - setuptools
     - {{ pin_compatible('numpy') }}
     - cycler >=0.10
