@@ -20,6 +20,7 @@ source:
 
 build:
     number: 0
+    skip: true # [py2k]
 
 requirements:
   build:
@@ -29,7 +30,6 @@ requirements:
   host:
     - python >=3.5
     - setuptools
-    - backports.functools_lru_cache  # [py2k]
     - numpy
     - python-dateutil
     - freetype
@@ -38,30 +38,23 @@ requirements:
     - nose
     - pyparsing
     - pytz
-    #- py2cairo  # [linux and py2k]
     - libpng
     - zlib         # [win]
     - pyqt        # [not osx]
     - tk        # [linux]
-    - functools32  # [py2k]
-    - subprocess32  # [py2k and unix]
     - icu       # [linux]
   run:
     - python >=3.5
     - setuptools
     - {{ pin_compatible('numpy') }}
-    - backports.functools_lru_cache  # [py2k]
     - cycler >=0.10
     - python-dateutil
     - freetype
     - pytz
     - pyparsing
-    #- py2cairo  # [linux and py2k]
     - libpng
     - pyqt        # [not osx]
     - tk        # [linux]
-    - functools32  # [py2k]
-    - subprocess32  # [py2k and unix]
     - icu       # [linux]
     - tornado
     - kiwisolver
