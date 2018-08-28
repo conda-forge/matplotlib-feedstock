@@ -1,0 +1,33 @@
+c_compiler:
+- toolchain_c
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- toolchain_cxx
+docker_image:
+- condaforge/linux-anvil
+freetype:
+- 2.9.1
+icu:
+- '58'
+libpng:
+- 1.6.34
+numpy:
+- '1.9'
+pin_run_as_build:
+  freetype:
+    max_pin: x
+  icu:
+    max_pin: x
+  libpng:
+    max_pin: x.x
+  pyqt:
+    max_pin: x.x
+  tk:
+    max_pin: x.x
+pyqt:
+- '5.6'
+tk:
+- '8.6'

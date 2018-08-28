@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "2.2.0rc1" %}
+{% set version = "3.0.0rc2" %}
 
 package:
   name: matplotlib
@@ -9,63 +9,50 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 0c55b57517f961ff54c6513b40ceca8523447f42eb5e125ecb171ce6347c39f8
+  sha256: 2135fe3c0c466b3fa383462cb34711ce59d47e92ac01b3bb7b9746db20d996c3
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
-    # A patch to make Qt5Agg the default backend.
-    - cfg_qt5agg.patch  # [linux]
-    # Removes framework check from osx backend (seems unneeded)
-    - osx-frame.patch  # [osx]
 
 build:
     number: 0
+    skip: true  # [py2k]
 
 requirements:
   build:
+    - pkg-config  # [not win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - python
     - setuptools
-    - pkg-config  # [not win]
-    - backports.functools_lru_cache
-    - numpy 1.8.*  # [not (win and (py35 or py36))]
-    - numpy 1.9.*  # [win and py35]
+    - numpy 1.10.*  # [not (win and py36)]
     - numpy 1.11.*  # [win and py36]
     - python-dateutil
-    - freetype 2.8.*
+    - freetype
     - msinttypes  # [win]
     - cycler >=0.10
     - nose
     - pyparsing
     - pytz
-    #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.32,<1.6.35
-    - zlib 1.2.11  # [win]
-    - pyqt 5.6.*  # [not osx]
-    - tk 8.6.*  # [linux]
-    - functools32  # [py2k]
-    - subprocess32  # [py2k and unix]
-    - icu 58.*  # [linux]
-    - kiwisolver
+    - libpng
+    - zlib  # [win]
+    - pyqt  # [not osx]
+    - tk  # [linux]
+    - icu  # [linux]
   run:
     - python
     - setuptools
-    - numpy >=1.8  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and py35]
-    - numpy >=1.11  # [win and py36]
-    - setuptools
-    - backports.functools_lru_cache
+    - {{ pin_compatible('numpy') }}
     - cycler >=0.10
     - python-dateutil
-    - freetype 2.8.*
+    - freetype
     - pytz
     - pyparsing
-    #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.32,<1.6.35
-    - pyqt 5.6.*  # [not osx]
-    - tk 8.6.*  # [linux]
-    - functools32  # [py2k]
-    - subprocess32  # [py2k and unix]
-    - icu 58.*  # [linux]
+    - libpng
+    - pyqt  # [not osx]
+    - tk  # [linux]
+    - icu  # [linux]
     - tornado
     - kiwisolver
 
@@ -83,9 +70,6 @@ test:
     - matplotlib.backends._tkagg  # [not win]
     - mpl_toolkits
     - pylab
-  commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://matplotlib.org/
