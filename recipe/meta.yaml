@@ -30,7 +30,7 @@ requirements:
   host:
     - python >=3.5
     - setuptools
-    - numpy
+    - numpy >=1.10
     - python-dateutil
     - freetype
     - msinttypes  # [win]
