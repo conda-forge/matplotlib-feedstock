@@ -26,7 +26,8 @@ requirements:
   host:
     - python
     - setuptools
-    - numpy 1.10.*
+    - numpy 1.10.*  # [not (win and py36)]
+    - numpy 1.11.*  # [win and py36]
     - python-dateutil
     - freetype
     - msinttypes  # [win]
