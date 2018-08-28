@@ -35,10 +35,10 @@ requirements:
     - pyparsing
     - pytz
     - libpng
-    - zlib         # [win]
-    - pyqt        # [not osx]
-    - tk        # [linux]
-    - icu       # [linux]
+    - zlib  # [win]
+    - pyqt  # [not osx]
+    - tk  # [linux]
+    - icu  # [linux]
   run:
     - python
     - setuptools
@@ -49,9 +49,9 @@ requirements:
     - pytz
     - pyparsing
     - libpng
-    - pyqt        # [not osx]
-    - tk        # [linux]
-    - icu       # [linux]
+    - pyqt  # [not osx]
+    - tk  # [linux]
+    - icu  # [linux]
     - tornado
     - kiwisolver
 
