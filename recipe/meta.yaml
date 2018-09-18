@@ -9,14 +9,14 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 7999b8c495960ac6dbfccba04bee5f56e5c60911a30598a1d531fea7f36f299b
+  sha256: 4ab565581e3012fec06f93fc181d719a6f214f34c5b2a9f808741f0097507ea4
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
 
 build:
-    number: 0
-    skip: true  # [py2k]
+  number: 0
+  skip: true  # [py<35]
 
 requirements:
   build:
@@ -24,7 +24,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - python >=3.5
+    - python
     - setuptools
     - numpy >=1.10
     - python-dateutil
@@ -35,12 +35,12 @@ requirements:
     - pyparsing
     - pytz
     - libpng
-    - zlib         # [win]
-    - pyqt        # [not osx]
-    - tk        # [linux]
-    - icu       # [linux]
+    - zlib  # [win]
+    - pyqt  # [not osx]
+    - tk  # [linux]
+    - icu  # [linux]
   run:
-    - python >=3.5
+    - python
     - setuptools
     - {{ pin_compatible('numpy') }}
     - cycler >=0.10
@@ -49,9 +49,9 @@ requirements:
     - pytz
     - pyparsing
     - libpng
-    - pyqt        # [not osx]
-    - tk        # [linux]
-    - icu       # [linux]
+    - pyqt  # [not osx]
+    - tk  # [linux]
+    - icu  # [linux]
     - tornado
     - kiwisolver
 
