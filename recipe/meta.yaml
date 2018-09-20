@@ -15,7 +15,7 @@ source:
     - setupext.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<35]
 
 requirements:
@@ -33,7 +33,6 @@ requirements:
     - cycler >=0.10
     - nose
     - pyparsing
-    - pytz
     - libpng
     - zlib  # [win]
     - pyqt  # [not osx]
@@ -46,7 +45,6 @@ requirements:
     - cycler >=0.10
     - python-dateutil
     - freetype
-    - pytz
     - pyparsing
     - libpng
     - pyqt  # [not osx]
