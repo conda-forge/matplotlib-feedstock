@@ -20,11 +20,11 @@ build:
 
 requirements:
   run:
-    - {{ pin_subpackage('matplotlib-core', exact=True) }}
+    - {{ pin_subpackage('matplotlib-base', exact=True) }}
     - pyqt  # [not osx]
 
 outputs:
-  - name: matplotlib-core
+  - name: matplotlib-base
     script: install.sh
     requirements:
       build:
