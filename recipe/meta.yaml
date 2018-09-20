@@ -25,7 +25,8 @@ requirements:
 
 outputs:
   - name: matplotlib-base
-    script: install.sh
+    script: install.sh  # [not win]
+    script: install.bat  # [win]
     requirements:
       build:
         - pkg-config  # [not win]
