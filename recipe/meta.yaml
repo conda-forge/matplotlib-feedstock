@@ -1,88 +1,116 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "2.2.2" %}
+{% set version = "3.0.1" %}
 
 package:
-  name: matplotlib
+  name: matplotlib-split
   version: {{ version }}
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 3a8236e6747dbb48c342ee194a8ced2805205cbd718899b284e4d617189cd397
+  sha256: 147306a20b2ec29ba5dcc8a8fdada57d5d7eb0aa7e42af984e762d956c97b0d5
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
-    # A patch to make Qt the default backend.
-    - cfg_qt5agg.patch  # [not osx]
-    # Removes framework check from osx backend (seems unneeded)
-    - osx-frame.patch  # [osx]
 
 build:
   number: 200
+  skip: true  # [py<35]
 
 requirements:
   build:
+    - pkg-config  # [not win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - python
     - setuptools
-    - pkg-config  # [not win]
-    - backports.functools_lru_cache
-    - numpy 1.8.*  # [not (win and (py35 or py36))]
-    - numpy 1.9.*  # [win and py35]
-    - numpy 1.11.*  # [win and py36]
+    - numpy >=1.10
     - python-dateutil
+    - freetype
     - msinttypes  # [win]
     - cycler >=0.10
     - nose
     - pyparsing
-    - pytz
-    #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.32,<1.6.35
-    - zlib 1.2.11  # [win]
-    - pyqt 5.6.*  # [not osx]
-    - tk 8.6.*  # [linux]
-    - functools32  # [py2k]
-    - subprocess32  # [py2k and unix]
-    - icu 58.*  # [linux]
+    - libpng
+    - zlib  # [win]
+    - tk  # [linux]
+    - icu  # [linux]
   run:
     - python
     - setuptools
-    - numpy >=1.8  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and py35]
-    - numpy >=1.11  # [win and py36]
-    - setuptools
-    - backports.functools_lru_cache
+    - {{ pin_compatible('numpy') }}
     - cycler >=0.10
     - python-dateutil
-    - pytz
+    - freetype
     - pyparsing
-    #- py2cairo  # [linux and py2k]
-    - libpng >=1.6.32,<1.6.35
-    - pyqt 5.6.*  # [not osx]
-    - tk 8.6.*  # [linux]
-    - functools32  # [py2k]
-    - subprocess32  # [py2k and unix]
-    - icu 58.*  # [linux]
+    - libpng
+    - tk  # [linux]
+    - icu  # [linux]
     - tornado
     - kiwisolver
 
-test:
-  imports:
-    - matplotlib
-    - matplotlib.pyplot
-    - matplotlib._image
-    - matplotlib._path
-    - matplotlib._png
-    - matplotlib._tri
-    - matplotlib.backends._backend_agg
-    - matplotlib.ft2font
-    - matplotlib.ttconv
-    - matplotlib.backends._tkagg  # [not win]
-    - mpl_toolkits
-    - pylab
-  commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+outputs:
+  - name: matplotlib-base
+    script: install.sh  # [not win]
+    script: install.bat  # [win]
+    requirements:
+      build:
+        - pkg-config  # [not win]
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+      host:
+        - python
+        - setuptools
+        - numpy >=1.10
+        - python-dateutil
+        - freetype
+        - msinttypes  # [win]
+        - cycler >=0.10
+        - nose
+        - pyparsing
+        - libpng
+        - zlib  # [win]
+        - tk  # [linux]
+        - icu  # [linux]
+      run:
+        - python
+        - setuptools
+        - {{ pin_compatible('numpy') }}
+        - cycler >=0.10
+        - python-dateutil
+        - freetype
+        - pyparsing
+        - libpng
+        - tk  # [linux]
+        - icu  # [linux]
+        - tornado
+        - kiwisolver
+
+    test:
+      imports:
+        - matplotlib
+        - matplotlib.pyplot
+        - matplotlib._image
+        - matplotlib._path
+        - matplotlib._png
+        - matplotlib._tri
+        - matplotlib.backends._backend_agg
+        - matplotlib.ft2font
+        - matplotlib.ttconv
+        - matplotlib.backends._tkagg  # [not win]
+        - mpl_toolkits
+        - pylab
+
+  - name: matplotlib
+    requirements:
+      host:
+        - python
+        - pyqt  # [not osx]
+      run:
+        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+        - pyqt  # [not osx]
 
 about:
   home: http://matplotlib.org/
