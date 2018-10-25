@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.0.0" %}
+{% set version = "3.0.1" %}
 
 package:
   name: matplotlib
@@ -9,13 +9,13 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 4ab565581e3012fec06f93fc181d719a6f214f34c5b2a9f808741f0097507ea4
+  sha256: 147306a20b2ec29ba5dcc8a8fdada57d5d7eb0aa7e42af984e762d956c97b0d5
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
 
 build:
-  number: 2
+  number: 0
   skip: true  # [py<35]
 
 requirements:
