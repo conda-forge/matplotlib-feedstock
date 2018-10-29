@@ -107,6 +107,7 @@ outputs:
     requirements:
       host:
         - python
+        - pyqt  # [not osx]
       run:
         - {{ pin_subpackage('matplotlib-base', exact=True) }}
         - pyqt  # [not osx]
