@@ -21,7 +21,7 @@ Current build status
 
 [![Linux](https://img.shields.io/circleci/project/github/conda-forge/matplotlib-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/matplotlib-feedstock)
 [![OSX](https://img.shields.io/travis/conda-forge/matplotlib-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/matplotlib-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/matplotlib-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/matplotlib-feedstock/branch/master)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
@@ -29,6 +29,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-matplotlib-green.svg)](https://anaconda.org/conda-forge/matplotlib) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/matplotlib.svg)](https://anaconda.org/conda-forge/matplotlib) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/matplotlib.svg)](https://anaconda.org/conda-forge/matplotlib) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/matplotlib.svg)](https://anaconda.org/conda-forge/matplotlib) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-matplotlib--base-green.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) |
 
 Installing matplotlib
 =====================
@@ -39,10 +40,10 @@ Installing `matplotlib` from the `conda-forge` channel can be achieved by adding
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `matplotlib` can be installed with:
+Once the `conda-forge` channel has been enabled, `matplotlib, matplotlib-base` can be installed with:
 
 ```
-conda install matplotlib
+conda install matplotlib matplotlib-base
 ```
 
 It is possible to list all of the versions of `matplotlib` available on your platform with:
