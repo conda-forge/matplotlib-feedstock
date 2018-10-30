@@ -1,13 +1,15 @@
+build_number_decrement:
+- '0'
 c_compiler:
-- toolchain_c
+- gcc
 channel_sources:
-- conda-forge,defaults
+- conda-forge/label/gcc7,defaults
 channel_targets:
-- conda-forge main
+- conda-forge gcc7
 cxx_compiler:
-- toolchain_cxx
+- gxx
 docker_image:
-- condaforge/linux-anvil
+- condaforge/linux-anvil-comp7
 freetype:
 - 2.9.1
 icu:
@@ -34,3 +36,10 @@ python:
 - '3.7'
 tk:
 - '8.6'
+zip_keys:
+- - c_compiler
+  - cxx_compiler
+  - channel_sources
+  - channel_targets
+  - docker_image
+  - build_number_decrement
