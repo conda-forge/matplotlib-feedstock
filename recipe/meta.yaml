@@ -15,7 +15,7 @@ source:
     - setupext.patch  # [win]
 
 build:
-  number: 200
+  number: 1200
   skip: true  # [py<35]
 
 requirements:
