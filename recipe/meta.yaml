@@ -129,7 +129,7 @@ outputs:
       imports:
         - matplotlib.cbook
       commands:
-        - python -c 'import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)'
+        - python -c "import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)"
 
 about:
   home: http://matplotlib.org/
