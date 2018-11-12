@@ -15,7 +15,7 @@ source:
     - setupext.patch  # [win]
 
 build:
-  number: 1000
+  number: 1001
   skip: true  # [py<35]
 
 requirements:
@@ -109,8 +109,27 @@ outputs:
         - python
         - pyqt  # [not osx]
       run:
-        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+        - python
         - pyqt  # [not osx]
+        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+    test:
+      imports:
+        - matplotlib
+
+  - name: mpl_sample_data
+    script: install-data.sh  # [not win]
+    script: install-data.bat  # [win]
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+    test:
+      imports:
+        - matplotlib.cbook
+      commands:
+        - python -c "import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)"
 
 about:
   home: http://matplotlib.org/
