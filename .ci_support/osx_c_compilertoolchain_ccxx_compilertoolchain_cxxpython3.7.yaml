@@ -7,7 +7,7 @@ c_compiler:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
+- conda-forge testing
 cxx_compiler:
 - toolchain_cxx
 freetype:
