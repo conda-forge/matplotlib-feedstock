@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.0.1" %}
+{% set version = "3.0.2" %}
 
 package:
   name: matplotlib-split
@@ -9,13 +9,13 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 147306a20b2ec29ba5dcc8a8fdada57d5d7eb0aa7e42af984e762d956c97b0d5
+  sha256: 4682a2a4e66eed054d78a1eae5936d2174e8c145486db59f12a585aef991fad5
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
 
 build:
-  number: 1200
+  number: 1201
   skip: true  # [py<35]
 
 requirements:
@@ -109,8 +109,27 @@ outputs:
         - python
         - pyqt  # [not osx]
       run:
-        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+        - python
         - pyqt  # [not osx]
+        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+    test:
+      imports:
+        - matplotlib
+
+  - name: mpl_sample_data
+    script: install-data.sh  # [not win]
+    script: install-data.bat  # [win]
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+    test:
+      imports:
+        - matplotlib.cbook
+      commands:
+        - python -c "import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)"
 
 about:
   home: http://matplotlib.org/

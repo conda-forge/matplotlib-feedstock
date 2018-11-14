@@ -5,7 +5,7 @@ c_compiler:
 channel_sources:
 - conda-forge/label/gcc7,defaults
 channel_targets:
-- conda-forge gcc7
+- conda-forge testing/gcc7
 cxx_compiler:
 - gxx
 docker_image:

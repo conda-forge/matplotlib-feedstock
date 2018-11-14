@@ -30,6 +30,7 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-matplotlib-green.svg)](https://anaconda.org/conda-forge/matplotlib) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/matplotlib.svg)](https://anaconda.org/conda-forge/matplotlib) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/matplotlib.svg)](https://anaconda.org/conda-forge/matplotlib) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/matplotlib.svg)](https://anaconda.org/conda-forge/matplotlib) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-matplotlib--base-green.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-mpl_sample_data-green.svg)](https://anaconda.org/conda-forge/mpl_sample_data) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpl_sample_data.svg)](https://anaconda.org/conda-forge/mpl_sample_data) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpl_sample_data.svg)](https://anaconda.org/conda-forge/mpl_sample_data) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpl_sample_data.svg)](https://anaconda.org/conda-forge/mpl_sample_data) |
 
 Installing matplotlib-split
 ===========================
@@ -40,10 +41,10 @@ Installing `matplotlib-split` from the `conda-forge` channel can be achieved by 
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `matplotlib, matplotlib-base` can be installed with:
+Once the `conda-forge` channel has been enabled, `matplotlib, matplotlib-base, mpl_sample_data` can be installed with:
 
 ```
-conda install matplotlib matplotlib-base
+conda install matplotlib matplotlib-base mpl_sample_data
 ```
 
 It is possible to list all of the versions of `matplotlib` available on your platform with:
