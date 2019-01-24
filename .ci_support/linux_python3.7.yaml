@@ -1,11 +1,9 @@
-build_number_decrement:
-- '0'
 c_compiler:
 - gcc
 channel_sources:
-- conda-forge/label/gcc7,defaults
+- conda-forge,defaults
 channel_targets:
-- conda-forge gcc7
+- conda-forge main
 cxx_compiler:
 - gxx
 docker_image:
@@ -36,10 +34,3 @@ python:
 - '3.7'
 tk:
 - '8.6'
-zip_keys:
-- - c_compiler
-  - cxx_compiler
-  - channel_sources
-  - channel_targets
-  - docker_image
-  - build_number_decrement
