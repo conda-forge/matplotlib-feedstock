@@ -15,7 +15,7 @@ source:
     - setupext.patch  # [win]
 
 build:
-  number: 1001
+  number: 1002
   skip: true  # [py<35]
 
 requirements:
@@ -26,11 +26,10 @@ requirements:
   host:
     - python
     - setuptools
-    - numpy >=1.10
+    - numpy 1.10
     - python-dateutil
     - freetype
     - msinttypes  # [win]
-    - cycler >=0.10
     - nose
     - pyparsing
     - libpng
@@ -63,11 +62,10 @@ outputs:
       host:
         - python
         - setuptools
-        - numpy >=1.10
+        - numpy 1.10
         - python-dateutil
         - freetype
         - msinttypes  # [win]
-        - cycler >=0.10
         - nose
         - pyparsing
         - libpng
