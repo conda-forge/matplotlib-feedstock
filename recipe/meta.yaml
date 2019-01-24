@@ -73,7 +73,7 @@ outputs:
     requirements:
       host:
         - python
-I feel like this describes something akin to region adjacency graphs, which are now in skimage.future.graph.rag. Shall we close this issue?      run:
+      run:
         - python
         - pyqt  # [not osx]
         - {{ pin_subpackage('matplotlib-base', exact=True) }}
