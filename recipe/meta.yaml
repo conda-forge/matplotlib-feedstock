@@ -18,38 +18,6 @@ build:
   number: 1002
   skip: true  # [py<35]
 
-requirements:
-  build:
-    - pkg-config  # [not win]
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - python
-    - setuptools
-    - numpy 1.10
-    - python-dateutil
-    - freetype
-    - msinttypes  # [win]
-    - nose
-    - pyparsing
-    - libpng
-    - zlib  # [win]
-    - tk  # [linux]
-    - icu  # [linux]
-  run:
-    - python
-    - setuptools
-    - {{ pin_compatible('numpy') }}
-    - cycler >=0.10
-    - python-dateutil
-    - freetype
-    - pyparsing
-    - libpng
-    - tk  # [linux]
-    - icu  # [linux]
-    - tornado
-    - kiwisolver
-
 outputs:
   - name: matplotlib-base
     script: install.sh  # [not win]
