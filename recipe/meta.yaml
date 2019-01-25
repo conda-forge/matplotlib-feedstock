@@ -4,7 +4,7 @@
 {% set version = "2.2.3" %}
 
 package:
-  name: matplotlib
+  name: matplotlib-base
   version: {{ version }}
 
 source:
@@ -19,7 +19,7 @@ source:
     - osx-frame.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -41,7 +41,6 @@ requirements:
     #- py2cairo  # [linux and py2k]
     - libpng
     - zlib         # [win]
-    - pyqt        # [not osx]
     - tk        # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
@@ -58,7 +57,6 @@ requirements:
     - pyparsing
     #- py2cairo  # [linux and py2k]
     - libpng
-    - pyqt        # [not osx]
     - tk        # [linux]
     - functools32  # [py2k]
     - subprocess32  # [py2k and unix]
@@ -80,6 +78,37 @@ test:
     - matplotlib.backends._tkagg  # [not win]
     - mpl_toolkits
     - pylab
+
+outputs:
+  - name: matplotlib-base
+
+  - name: matplotlib
+    requirements:
+      host:
+        - python
+        - pyqt  # [not osx]
+      run:
+        - python
+        - pyqt  # [not osx]
+        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+    test:
+      imports:
+        - matplotlib
+
+  - name: mpl_sample_data
+    script: install-data.sh  # [not win]
+    script: install-data.bat  # [win]
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+    test:
+      imports:
+        - matplotlib.cbook
+      commands:
+        - python -c "import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)"
 
 about:
   home: http://matplotlib.org/
