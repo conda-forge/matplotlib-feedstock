@@ -52,8 +52,6 @@ requirements:
     - kiwisolver
 
 test:
-  requires:
-    - {{ cdt('libx11') }}  # [unix]
   imports:
     - matplotlib
     - matplotlib.pyplot
