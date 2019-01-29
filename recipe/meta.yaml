@@ -26,8 +26,8 @@ requirements:
   host:
     - python
     - setuptools
-    - numpy 1.11
-    - cycler 0.10
+    - numpy 1.11.*
+    - cycler >=0.10
     - python-dateutil
     - freetype
     - msinttypes  # [win]
