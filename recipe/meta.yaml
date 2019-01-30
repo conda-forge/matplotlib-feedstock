@@ -4,7 +4,7 @@
 {% set version = "3.0.2" %}
 
 package:
-  name: matplotlib-split
+  name: matplotlib-base
   version: {{ version }}
 
 source:
@@ -15,7 +15,7 @@ source:
     - setupext.patch  # [win]
 
 build:
-  number: 1001
+  number: 1002
   skip: true  # [py<35]
 
 requirements:
@@ -26,11 +26,11 @@ requirements:
   host:
     - python
     - setuptools
-    - numpy >=1.10
+    - numpy 1.11.*
+    - cycler >=0.10
     - python-dateutil
     - freetype
     - msinttypes  # [win]
-    - cycler >=0.10
     - nose
     - pyparsing
     - libpng
@@ -51,63 +51,28 @@ requirements:
     - tornado
     - kiwisolver
 
+test:
+  imports:
+    - matplotlib
+    - matplotlib.pyplot
+    - matplotlib._image
+    - matplotlib._path
+    - matplotlib._png
+    - matplotlib._tri
+    - matplotlib.backends._backend_agg
+    - matplotlib.ft2font
+    - matplotlib.ttconv
+    - matplotlib.backends._tkagg  # [not win]
+    - mpl_toolkits
+    - pylab
+
 outputs:
   - name: matplotlib-base
-    script: install.sh  # [not win]
-    script: install.bat  # [win]
-    requirements:
-      build:
-        - pkg-config  # [not win]
-        - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
-      host:
-        - python
-        - setuptools
-        - numpy >=1.10
-        - python-dateutil
-        - freetype
-        - msinttypes  # [win]
-        - cycler >=0.10
-        - nose
-        - pyparsing
-        - libpng
-        - zlib  # [win]
-        - tk  # [linux]
-        - icu  # [linux]
-      run:
-        - python
-        - setuptools
-        - {{ pin_compatible('numpy') }}
-        - cycler >=0.10
-        - python-dateutil
-        - freetype
-        - pyparsing
-        - libpng
-        - tk  # [linux]
-        - icu  # [linux]
-        - tornado
-        - kiwisolver
-
-    test:
-      imports:
-        - matplotlib
-        - matplotlib.pyplot
-        - matplotlib._image
-        - matplotlib._path
-        - matplotlib._png
-        - matplotlib._tri
-        - matplotlib.backends._backend_agg
-        - matplotlib.ft2font
-        - matplotlib.ttconv
-        - matplotlib.backends._tkagg  # [not win]
-        - mpl_toolkits
-        - pylab
 
   - name: matplotlib
     requirements:
       host:
         - python
-        - pyqt  # [not osx]
       run:
         - python
         - pyqt  # [not osx]

@@ -1,15 +1,13 @@
-build_number_decrement:
-- '1000'
 c_compiler:
-- toolchain_c
+- gcc
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- toolchain_cxx
+- gxx
 docker_image:
-- condaforge/linux-anvil
+- condaforge/linux-anvil-comp7
 freetype:
 - 2.9.1
 icu:
@@ -23,23 +21,12 @@ pin_run_as_build:
     max_pin: x
   libpng:
     max_pin: x.x
-  pyqt:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
   tk:
     max_pin: x.x
-pyqt:
-- '5.6'
 python:
 - '3.6'
 tk:
 - '8.6'
-zip_keys:
-- - c_compiler
-  - cxx_compiler
-  - channel_sources
-  - channel_targets
-  - docker_image
-  - build_number_decrement
