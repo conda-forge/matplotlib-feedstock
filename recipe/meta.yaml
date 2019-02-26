@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.0.2" %}
+{% set version = "3.0.3" %}
 
 package:
   name: matplotlib-base
@@ -9,13 +9,13 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 4682a2a4e66eed054d78a1eae5936d2174e8c145486db59f12a585aef991fad5
+  sha256: d384a58409c1c23b8760b6f3d84ebed2c936df7dcb82797e983faaf30ae4d69d
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
 
 build:
-  number: 1002
+  number: 0
   skip: true  # [py<35]
 
 requirements:
