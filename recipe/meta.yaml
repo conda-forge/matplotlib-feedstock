@@ -4,7 +4,7 @@
 {% set version = "3.1.0rc1" %}
 
 package:
-  name: matplotlib
+  name: matplotlib-base
   version: {{ version }}
 
 source:
@@ -15,8 +15,8 @@ source:
     - setupext.patch  # [win]
 
 build:
-    number: 0
-    skip: true  # [py2k]
+  number: 1
+  skip: true  # [py<35]
 
 requirements:
   build:
@@ -27,16 +27,14 @@ requirements:
     - python
     - setuptools
     - numpy 1.11.*
+    - cycler >=0.10
     - python-dateutil
     - freetype
     - msinttypes  # [win]
-    - cycler >=0.10
     - nose
     - pyparsing
-    - pytz
     - libpng
     - zlib  # [win]
-    - pyqt  # [not osx]
     - tk  # [linux]
     - icu  # [linux]
   run:
@@ -46,10 +44,8 @@ requirements:
     - cycler >=0.10
     - python-dateutil
     - freetype
-    - pytz
     - pyparsing
     - libpng
-    - pyqt  # [not osx]
     - tk  # [linux]
     - icu  # [linux]
     - tornado
@@ -68,6 +64,36 @@ test:
     - matplotlib.ttconv
     - mpl_toolkits
     - pylab
+
+outputs:
+  - name: matplotlib-base
+
+  - name: matplotlib
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - pyqt  # [not osx]
+        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+    test:
+      imports:
+        - matplotlib
+
+  - name: mpl_sample_data
+    script: install-data.sh  # [not win]
+    script: install-data.bat  # [win]
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+    test:
+      imports:
+        - matplotlib.cbook
+      commands:
+        - python -c "import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)"
 
 about:
   home: http://matplotlib.org/
