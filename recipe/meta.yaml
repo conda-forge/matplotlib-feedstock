@@ -25,7 +25,7 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - python
-    - setuptools
+    - pip
     - numpy 1.11.*
     - cycler >=0.10
     - python-dateutil
