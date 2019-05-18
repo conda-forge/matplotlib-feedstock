@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $(uname) == Linux ]; then
-    pushd $PREFIX/lib
+    pushd ${PREFIX}/lib
     ln -s libtcl8.6.so libtcl.so
     ln -s libtk8.6.so libtk.so
     popd
@@ -18,9 +18,7 @@ sample_data = False
 
 EOF
 
-
 cat setup.cfg
-sed -i.bak "s|/usr/local|$PREFIX|" setupext.py
+sed -i.bak "s|/usr/local|${PREFIX}|" setupext.py
 
-
-$PYTHON setup.py install --single-version-externally-managed --record record.txt
+$PYTHON -m pip install . --no-deps -vv
