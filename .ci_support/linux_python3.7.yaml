@@ -18,6 +18,8 @@ icu:
 - '58'
 libpng:
 - 1.6.35
+numpy:
+- '1.14'
 pin_run_as_build:
   freetype:
     max_pin: x
