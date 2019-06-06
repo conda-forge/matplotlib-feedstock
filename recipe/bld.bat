@@ -13,5 +13,5 @@ ECHO toolkits_tests = False >> setup.cfg
 ECHO [test] >> setup.cfg
 ECHO local_freetype = True >> setup.cfg
 
-%PYTHON% setup.py install --single-version-externally-managed --record record.txt
+%PYTHON% -m pip install . --no-deps -vv
 if errorlevel 1 exit 1
