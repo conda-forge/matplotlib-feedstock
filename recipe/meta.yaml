@@ -29,7 +29,6 @@ requirements:
     - numpy
     - cycler >=0.10
     - python-dateutil
-    - freetype
     - msinttypes  # [win]
     - nose
     - pyparsing
@@ -43,7 +42,6 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - cycler >=0.10
     - python-dateutil
-    - freetype
     - pyparsing
     - libpng
     - tk  # [linux]
