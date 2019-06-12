@@ -1,45 +1,34 @@
-build_number_decrement:
-- '0'
 c_compiler:
 - gcc
+c_compiler_version:
+- '7'
 channel_sources:
-- conda-forge/label/gcc7,defaults
+- conda-forge,defaults
 channel_targets:
-- conda-forge testing/gcc7
+- conda-forge testing
 cxx_compiler:
 - gxx
+cxx_compiler_version:
+- '7'
 docker_image:
 - condaforge/linux-anvil-comp7
-freetype:
-- 2.9.1
 icu:
 - '58'
 libpng:
 - 1.6.35
+numpy:
+- '1.14'
 pin_run_as_build:
-  freetype:
-    max_pin: x
   icu:
     max_pin: x
   libpng:
-    max_pin: x.x
-  pyqt:
     max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
   tk:
     max_pin: x.x
-pyqt:
-- '5.6'
 python:
 - '3.6'
 tk:
 - '8.6'
-zip_keys:
-- - c_compiler
-  - cxx_compiler
-  - channel_sources
-  - channel_targets
-  - docker_image
-  - build_number_decrement

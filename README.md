@@ -1,5 +1,5 @@
-About matplotlib-split
-======================
+About matplotlib-base
+=====================
 
 Home: http://matplotlib.org/
 
@@ -19,9 +19,77 @@ application servers, and six graphical user interface toolkits.
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/matplotlib-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/matplotlib-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/matplotlib-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/matplotlib-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/matplotlib-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/matplotlib-feedstock/branch/master)
+
+<table><tr>
+    <td>Appveyor</td>
+    <td>
+      <a href="https://ci.appveyor.com/project/conda-forge/matplotlib-feedstock/branch/master">
+        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/matplotlib-feedstock/master.svg?label=Windows">
+      </a>
+    </td>
+  </tr>
+    
+  <tr>
+    <td>Azure</td>
+    <td>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=617&branchName=master">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>linux_python3.6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=617&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=linux&configuration=linux_python3.6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_python3.7</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=617&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=linux&configuration=linux_python3.7" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_python3.6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=617&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=osx&configuration=osx_python3.6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_python3.7</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=617&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=osx&configuration=osx_python3.7" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_c_compilervs2015cxx_compilervs2015python3.6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=617&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015cxx_compilervs2015python3.6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_c_compilervs2015cxx_compilervs2015python3.7</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=617&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015cxx_compilervs2015python3.7" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+    </td>
+  </tr>
+![ppc64le disabled](https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg)
+</table>
 
 Current release info
 ====================
@@ -32,10 +100,10 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-matplotlib--base-green.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-mpl_sample_data-green.svg)](https://anaconda.org/conda-forge/mpl_sample_data) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpl_sample_data.svg)](https://anaconda.org/conda-forge/mpl_sample_data) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpl_sample_data.svg)](https://anaconda.org/conda-forge/mpl_sample_data) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpl_sample_data.svg)](https://anaconda.org/conda-forge/mpl_sample_data) |
 
-Installing matplotlib-split
-===========================
+Installing matplotlib-base
+==========================
 
-Installing `matplotlib-split` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `matplotlib-base` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
@@ -56,6 +124,8 @@ conda search matplotlib --channel conda-forge
 
 About conda-forge
 =================
+
+[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
@@ -90,17 +160,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating matplotlib-split-feedstock
-===================================
+Updating matplotlib-base-feedstock
+==================================
 
-If you would like to improve the matplotlib-split recipe or build a new
+If you would like to improve the matplotlib-base recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/matplotlib-split-feedstock are
+Note that all branches in the conda-forge/matplotlib-base-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
@@ -111,3 +181,13 @@ In order to produce a uniquely identifiable distribution:
  * If the version of a package **is** being increased, please remember to return
    the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
    back to 0.
+
+Feedstock Maintainers
+=====================
+
+* [@dopplershift](https://github.com/dopplershift/)
+* [@mdboom](https://github.com/mdboom/)
+* [@ocefpaf](https://github.com/ocefpaf/)
+* [@pelson](https://github.com/pelson/)
+* [@tacaswell](https://github.com/tacaswell/)
+
