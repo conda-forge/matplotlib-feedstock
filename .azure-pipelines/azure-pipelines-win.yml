@@ -6,7 +6,7 @@ jobs:
 - job: win
   pool:
     vmImage: vs2017-win2016
-  timeoutInMinutes: 240
+  timeoutInMinutes: 360
   strategy:
     maxParallel: 4
     matrix:
@@ -73,13 +73,18 @@ jobs:
 
     # Configure the VM
     - script: setup_conda_rc .\ .\recipe .\.ci_support\%CONFIG%.yaml
-    
+
     # Configure the VM.
     - script: |
+        set "CI=azure"
         run_conda_forge_build_setup
-
       displayName: conda-forge build setup
     
+
+    - script: |
+        rmdir C:\strawberry /s /q
+      continueOnError: true
+      displayName: remove strawberryperl
 
     # Special cased version setting some more things!
     - script: |
