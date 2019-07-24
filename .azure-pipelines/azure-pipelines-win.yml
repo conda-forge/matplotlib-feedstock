@@ -13,11 +13,11 @@ jobs:
       win_c_compilervs2015cxx_compilervs2015python3.6:
         CONFIG: win_c_compilervs2015cxx_compilervs2015python3.6
         CONDA_BLD_PATH: D:\\bld\\
-        UPLOAD_PACKAGES: False
+        UPLOAD_PACKAGES: True
       win_c_compilervs2015cxx_compilervs2015python3.7:
         CONFIG: win_c_compilervs2015cxx_compilervs2015python3.7
         CONDA_BLD_PATH: D:\\bld\\
-        UPLOAD_PACKAGES: False
+        UPLOAD_PACKAGES: True
   steps:
     # TODO: Fast finish on azure pipelines?
     - script: |
@@ -81,6 +81,13 @@ jobs:
         rmdir C:\strawberry /s /q
       continueOnError: true
       displayName: remove strawberryperl
+
+    # workaround until the pinning issued is fixed in conda-build
+    - script: |
+        conda install conda-build=3.17.8 --yes
+        conda clean --all --yes
+      continueOnError: true
+      displayName: workaround
 
     # Special cased version setting some more things!
     - script: |
