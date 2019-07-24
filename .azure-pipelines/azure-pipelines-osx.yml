@@ -49,6 +49,9 @@ jobs:
       export CI=azure
       source run_conda_forge_build_setup
       conda update --yes --quiet --override-channels -c conda-forge -c defaults --all
+      # workaround until the pinning issued is fixed in conda-build
+      conda install conda-build=3.17.8 --yes
+      conda clean --all --yes
     env: {
       OSX_FORCE_SDK_DOWNLOAD: "1"
     }
