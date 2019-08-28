@@ -1,6 +1,5 @@
 appveyor:
   secure: {BINSTAR_TOKEN: tumuXLL8PU75WMnRDemRy02ruEq2RpNxeK3dz0MjFssnosPm2v4EFjfNB4PTotA1}
-provider: {linux_aarch64: default, linux_ppc64le: default}
 compiler_stack: comp7
 max_py_ver: '37'
 max_r_ver: '35'
@@ -10,3 +9,5 @@ provider:
   osx: azure
   linux: azure
   win: azure
+  linux_aarch64: default
+  linux_ppc64le: default
