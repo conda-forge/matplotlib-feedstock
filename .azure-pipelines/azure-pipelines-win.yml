@@ -18,6 +18,10 @@ jobs:
         CONFIG: win_c_compilervs2015cxx_compilervs2015python3.7
         CONDA_BLD_PATH: D:\\bld\\
         UPLOAD_PACKAGES: True
+      win_c_compilervs2015cxx_compilervs2015python3.8:
+        CONFIG: win_c_compilervs2015cxx_compilervs2015python3.8
+        CONDA_BLD_PATH: D:\\bld\\
+        UPLOAD_PACKAGES: True
   steps:
     # TODO: Fast finish on azure pipelines?
     - script: |
@@ -82,13 +86,6 @@ jobs:
       continueOnError: true
       displayName: remove strawberryperl
 
-    # workaround until the pinning issued is fixed in conda-build
-    - script: |
-        conda install conda-build=3.17.8 --yes
-        conda clean --all --yes
-      continueOnError: true
-      displayName: workaround
-
     # Special cased version setting some more things!
     - script: |
         conda.exe build recipe -m .ci_support\%CONFIG%.yaml
@@ -106,7 +103,9 @@ jobs:
       condition: not(contains(variables['CONFIG'], 'vs2008'))
 
     - script: |
+        set "GIT_BRANCH=%BUILD_SOURCEBRANCHNAME%"
         upload_package .\ .\recipe .ci_support\%CONFIG%.yaml
+      displayName: Upload package
       env:
         BINSTAR_TOKEN: $(BINSTAR_TOKEN)
       condition: not(eq(variables['UPLOAD_PACKAGES'], 'False'))
