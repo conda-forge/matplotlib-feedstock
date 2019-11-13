@@ -17,7 +17,7 @@ source:
     - PR14891.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<35]
 
 requirements:
@@ -77,7 +77,7 @@ outputs:
         - python
       run:
         - python
-        - pyqt  # [not osx]
+        - pyqt  # [not osx and not aarch64 and not ppc64le]
         - {{ pin_subpackage('matplotlib-base', exact=True) }}
     test:
       imports:
