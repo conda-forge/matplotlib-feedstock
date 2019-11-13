@@ -12,14 +12,17 @@ source:
   sha256: 601a3bf5c1b08710edbe00347d97619f43f2d1edcd7aa94119ff837e6327c7f7
   patches:
     # Find libpng on Windows.
-    - setupext.patch  # [win]
+    - patches/setupext.patch  # [win]
     # A patch to make Qt the default backend.
-    - cfg_qt5agg.patch  # [not osx]
+    - patches/cfg_qt5agg.patch  # [not osx]
     # Removes framework check from osx backend (seems unneeded)
-    - osx-frame.patch  # [osx]
+    - patches/osx-frame.patch  # [osx]
+    # two backports for py38 from the upcoming 2.2.5 release
+    - patches/14582.patch
+    - patches/15448.patch
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -86,10 +89,10 @@ outputs:
     requirements:
       host:
         - python
-        - pyqt  # [not osx]
+        - pyqt  # [not osx and not aarch64 and not ppc64le]
       run:
         - python
-        - pyqt  # [not osx]
+        - pyqt  # [not osx and not aarch64 and not ppc64le]
         - {{ pin_subpackage('matplotlib-base', exact=True) }}
     test:
       imports:

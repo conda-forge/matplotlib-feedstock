@@ -1,0 +1,41 @@
+From 4b957fde34c869e40d010d2ec871d3d219e59ee2 Mon Sep 17 00:00:00 2001
+From: Antony Lee <anntzer.lee@gmail.com>
+Date: Fri, 20 Jul 2018 19:04:25 +0200
+Subject: [PATCH 2/2] Backport PR #11722: Remove unnecessary hacks from
+ setup.py.
+
+- There are no symlinks in the mpl source tree anymore.
+- MANIFEST was removed from the root directory in 365a0a2f (11 years
+  ago).
+---
+ setup.py | 17 -----------------
+ 1 file changed, 17 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 41037e95dbd..b045f8953bb 100644
+--- a/setup.py
++++ b/setup.py
+@@ -11,23 +11,6 @@
+ 
+ import sys
+ 
+-# distutils is breaking our sdists for files in symlinked dirs.
+-# distutils will copy if os.link is not available, so this is a hack
+-# to force copying
+-import os
+-try:
+-    del os.link
+-except AttributeError:
+-    pass
+-
+-# This 'if' statement is needed to prevent spawning infinite processes
+-# on Windows
+-if __name__ == '__main__':
+-    # BEFORE importing distutils, remove MANIFEST. distutils doesn't properly
+-    # update it when the contents of directories change.
+-    if os.path.exists('MANIFEST'):
+-        os.remove('MANIFEST')
+-
+ from io import BytesIO
+ import os
+ from string import Template
