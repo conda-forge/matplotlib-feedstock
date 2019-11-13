@@ -1,0 +1,34 @@
+c_compiler:
+- gcc
+c_compiler_version:
+- '8'
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- gxx
+cxx_compiler_version:
+- '8'
+docker_image:
+- condaforge/linux-anvil-ppc64le
+freetype:
+- 2.9.1
+icu:
+- '64.2'
+libpng:
+- '1.6'
+numpy:
+- '1.16'
+pin_run_as_build:
+  freetype:
+    max_pin: x
+  icu:
+    max_pin: x
+  libpng:
+    max_pin: x.x
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- '3.8'
