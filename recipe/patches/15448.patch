@@ -1,0 +1,576 @@
+From f33ca391a623c60e15d3b558223adc9786bdc3a5 Mon Sep 17 00:00:00 2001
+From: Eric Firing <efiring@hawaii.edu>
+Date: Sun, 25 Feb 2018 11:43:18 -1000
+Subject: [PATCH 1/4] Merge pull request #7853 from QuLogic/Py_BuildValue-types
+
+[MRG] Use exact types for Py_BuildValue.
+---
+ src/ft2font.h           |   4 +-
+ src/ft2font_wrapper.cpp | 113 +++++++++++++++++++++-------------------
+ 2 files changed, 60 insertions(+), 57 deletions(-)
+
+diff --git a/src/ft2font.h b/src/ft2font.h
+index c60d5432cff..072428ceedb 100644
+--- a/src/ft2font.h
++++ b/src/ft2font.h
+@@ -18,8 +18,8 @@ extern "C" {
+ /*
+  By definition, FT_FIXED as 2 16bit values stored in a single long.
+  */
+-#define FIXED_MAJOR(val) (long)((val & 0xffff000) >> 16)
+-#define FIXED_MINOR(val) (long)(val & 0xffff)
++#define FIXED_MAJOR(val) (signed short)((val & 0xffff0000) >> 16)
++#define FIXED_MINOR(val) (unsigned short)(val & 0xffff)
+ 
+ // the FreeType string rendered into a width, height buffer
+ class FT2Image
+diff --git a/src/ft2font_wrapper.cpp b/src/ft2font_wrapper.cpp
+index 49c33b79435..0aa6548307c 100644
+--- a/src/ft2font_wrapper.cpp
++++ b/src/ft2font_wrapper.cpp
+@@ -276,7 +276,7 @@ static void PyGlyph_dealloc(PyGlyph *self)
+ static PyObject *PyGlyph_get_bbox(PyGlyph *self, void *closure)
+ {
+     return Py_BuildValue(
+-        "iiii", self->bbox.xMin, self->bbox.yMin, self->bbox.xMax, self->bbox.yMax);
++        "llll", self->bbox.xMin, self->bbox.yMin, self->bbox.xMax, self->bbox.yMax);
+ }
+ 
+ static PyTypeObject *PyGlyph_init_type(PyObject *m, PyTypeObject *type)
+@@ -1026,7 +1026,7 @@ static PyObject *PyFT2Font_get_sfnt(PyFT2Font *self, PyObject *args, PyObject *k
+         }
+ 
+         PyObject *key = Py_BuildValue(
+-            "iiii", sfnt.platform_id, sfnt.encoding_id, sfnt.language_id, sfnt.name_id);
++            "HHHH", sfnt.platform_id, sfnt.encoding_id, sfnt.language_id, sfnt.name_id);
+         if (key == NULL) {
+             Py_DECREF(names);
+             return NULL;
+@@ -1090,7 +1090,7 @@ static PyObject *PyFT2Font_get_ps_font_info(PyFT2Font *self, PyObject *args, PyO
+         return NULL;
+     }
+ 
+-    return Py_BuildValue("sssssliii",
++    return Py_BuildValue("ssssslbhH",
+                          fontinfo.version ? fontinfo.version : "",
+                          fontinfo.notice ? fontinfo.notice : "",
+                          fontinfo.full_name ? fontinfo.full_name : "",
+@@ -1135,8 +1135,8 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+     switch (tag) {
+     case 0: {
+         char head_dict[] =
+-            "{s:(h,h), s:(h,h), s:l, s:l, s:i, s:i,"
+-            "s:(l,l), s:(l,l), s:h, s:h, s:h, s:h, s:i, s:i, s:h, s:h, s:h}";
++            "{s:(h,H), s:(h,H), s:l, s:l, s:H, s:H,"
++            "s:(l,l), s:(l,l), s:h, s:h, s:h, s:h, s:H, s:H, s:h, s:h, s:h}";
+         TT_Header *t = (TT_Header *)table;
+         return Py_BuildValue(head_dict,
+                              "version",
+@@ -1150,9 +1150,9 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              "magicNumber",
+                              t->Magic_Number,
+                              "flags",
+-                             (unsigned)t->Flags,
++                             t->Flags,
+                              "unitsPerEm",
+-                             (unsigned)t->Units_Per_EM,
++                             t->Units_Per_EM,
+                              "created",
+                              t->Created[0],
+                              t->Created[1],
+@@ -1168,9 +1168,9 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              "yMax",
+                              t->yMax,
+                              "macStyle",
+-                             (unsigned)t->Mac_Style,
++                             t->Mac_Style,
+                              "lowestRecPPEM",
+-                             (unsigned)t->Lowest_Rec_PPEM,
++                             t->Lowest_Rec_PPEM,
+                              "fontDirectionHint",
+                              t->Font_Direction,
+                              "indexToLocFormat",
+@@ -1180,64 +1180,64 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+     }
+     case 1: {
+         char maxp_dict[] =
+-            "{s:(h,h), s:i, s:i, s:i, s:i, s:i, s:i,"
+-            "s:i, s:i, s:i, s:i, s:i, s:i, s:i, s:i}";
++            "{s:(h,H), s:H, s:H, s:H, s:H, s:H, s:H,"
++            "s:H, s:H, s:H, s:H, s:H, s:H, s:H, s:H}";
+         TT_MaxProfile *t = (TT_MaxProfile *)table;
+         return Py_BuildValue(maxp_dict,
+                              "version",
+                              FIXED_MAJOR(t->version),
+                              FIXED_MINOR(t->version),
+                              "numGlyphs",
+-                             (unsigned)t->numGlyphs,
++                             t->numGlyphs,
+                              "maxPoints",
+-                             (unsigned)t->maxPoints,
++                             t->maxPoints,
+                              "maxContours",
+-                             (unsigned)t->maxContours,
++                             t->maxContours,
+                              "maxComponentPoints",
+-                             (unsigned)t->maxCompositePoints,
++                             t->maxCompositePoints,
+                              "maxComponentContours",
+-                             (unsigned)t->maxCompositeContours,
++                             t->maxCompositeContours,
+                              "maxZones",
+-                             (unsigned)t->maxZones,
++                             t->maxZones,
+                              "maxTwilightPoints",
+-                             (unsigned)t->maxTwilightPoints,
++                             t->maxTwilightPoints,
+                              "maxStorage",
+-                             (unsigned)t->maxStorage,
++                             t->maxStorage,
+                              "maxFunctionDefs",
+-                             (unsigned)t->maxFunctionDefs,
++                             t->maxFunctionDefs,
+                              "maxInstructionDefs",
+-                             (unsigned)t->maxInstructionDefs,
++                             t->maxInstructionDefs,
+                              "maxStackElements",
+-                             (unsigned)t->maxStackElements,
++                             t->maxStackElements,
+                              "maxSizeOfInstructions",
+-                             (unsigned)t->maxSizeOfInstructions,
++                             t->maxSizeOfInstructions,
+                              "maxComponentElements",
+-                             (unsigned)t->maxComponentElements,
++                             t->maxComponentElements,
+                              "maxComponentDepth",
+-                             (unsigned)t->maxComponentDepth);
++                             t->maxComponentDepth);
+     }
+     case 2: {
+ #if PY3K
+         char os_2_dict[] =
+-            "{s:h, s:h, s:h, s:h, s:h, s:h, s:h, s:h,"
+-            "s:h, s:h, s:h, s:h, s:h, s:h, s:h, s:h, s:y#, s:(llll),"
+-            "s:y#, s:h, s:h, s:h}";
++            "{s:H, s:h, s:H, s:H, s:H, s:h, s:h, s:h,"
++            "s:h, s:h, s:h, s:h, s:h, s:h, s:h, s:h, s:y#, s:(kkkk),"
++            "s:y#, s:H, s:H, s:H}";
+ #else
+         char os_2_dict[] =
+-            "{s:h, s:h, s:h, s:h, s:h, s:h, s:h, s:h,"
+-            "s:h, s:h, s:h, s:h, s:h, s:h, s:h, s:h, s:s#, s:(llll),"
+-            "s:s#, s:h, s:h, s:h}";
++            "{s:H, s:h, s:H, s:H, s:H, s:h, s:h, s:h,"
++            "s:h, s:h, s:h, s:h, s:h, s:h, s:h, s:h, s:s#, s:(kkkk),"
++            "s:s#, s:H, s:H, s:H}";
+ #endif
+         TT_OS2 *t = (TT_OS2 *)table;
+         return Py_BuildValue(os_2_dict,
+                              "version",
+-                             (unsigned)t->version,
++                             t->version,
+                              "xAvgCharWidth",
+                              t->xAvgCharWidth,
+                              "usWeightClass",
+-                             (unsigned)t->usWeightClass,
++                             t->usWeightClass,
+                              "usWidthClass",
+-                             (unsigned)t->usWidthClass,
++                             t->usWidthClass,
+                              "fsType",
+                              t->fsType,
+                              "ySubscriptXSize",
+@@ -1266,24 +1266,24 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              t->panose,
+                              10,
+                              "ulCharRange",
+-                             (unsigned long)t->ulUnicodeRange1,
+-                             (unsigned long)t->ulUnicodeRange2,
+-                             (unsigned long)t->ulUnicodeRange3,
+-                             (unsigned long)t->ulUnicodeRange4,
++                             t->ulUnicodeRange1,
++                             t->ulUnicodeRange2,
++                             t->ulUnicodeRange3,
++                             t->ulUnicodeRange4,
+                              "achVendID",
+                              t->achVendID,
+                              4,
+                              "fsSelection",
+-                             (unsigned)t->fsSelection,
++                             t->fsSelection,
+                              "fsFirstCharIndex",
+-                             (unsigned)t->usFirstCharIndex,
++                             t->usFirstCharIndex,
+                              "fsLastCharIndex",
+-                             (unsigned)t->usLastCharIndex);
++                             t->usLastCharIndex);
+     }
+     case 3: {
+         char hhea_dict[] =
+-            "{s:(h,h), s:h, s:h, s:h, s:i, s:h, s:h, s:h,"
+-            "s:h, s:h, s:h, s:h, s:i}";
++            "{s:(h,H), s:h, s:h, s:h, s:H, s:h, s:h, s:h,"
++            "s:h, s:h, s:h, s:h, s:H}";
+         TT_HoriHeader *t = (TT_HoriHeader *)table;
+         return Py_BuildValue(hhea_dict,
+                              "version",
+@@ -1296,7 +1296,7 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              "lineGap",
+                              t->Line_Gap,
+                              "advanceWidthMax",
+-                             (unsigned)t->advance_Width_Max,
++                             t->advance_Width_Max,
+                              "minLeftBearing",
+                              t->min_Left_Side_Bearing,
+                              "minRightBearing",
+@@ -1312,12 +1312,12 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              "metricDataFormat",
+                              t->metric_Data_Format,
+                              "numOfLongHorMetrics",
+-                             (unsigned)t->number_Of_HMetrics);
++                             t->number_Of_HMetrics);
+     }
+     case 4: {
+         char vhea_dict[] =
+-            "{s:(h,h), s:h, s:h, s:h, s:i, s:h, s:h, s:h,"
+-            "s:h, s:h, s:h, s:h, s:i}";
++            "{s:(h,H), s:h, s:h, s:h, s:H, s:h, s:h, s:h,"
++            "s:h, s:h, s:h, s:h, s:H}";
+         TT_VertHeader *t = (TT_VertHeader *)table;
+         return Py_BuildValue(vhea_dict,
+                              "version",
+@@ -1330,7 +1330,7 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              "vertTypoLineGap",
+                              t->Line_Gap,
+                              "advanceHeightMax",
+-                             (unsigned)t->advance_Height_Max,
++                             t->advance_Height_Max,
+                              "minTopSideBearing",
+                              t->min_Top_Side_Bearing,
+                              "minBottomSizeBearing",
+@@ -1346,10 +1346,10 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              "metricDataFormat",
+                              t->metric_Data_Format,
+                              "numOfLongVerMetrics",
+-                             (unsigned)t->number_Of_VMetrics);
++                             t->number_Of_VMetrics);
+     }
+     case 5: {
+-        char post_dict[] = "{s:(h,h), s:(h,h), s:h, s:h, s:k, s:k, s:k, s:k, s:k}";
++        char post_dict[] = "{s:(h,H), s:(h,H), s:h, s:h, s:k, s:k, s:k, s:k, s:k}";
+         TT_Postscript *t = (TT_Postscript *)table;
+         return Py_BuildValue(post_dict,
+                              "format",
+@@ -1376,12 +1376,12 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+     case 6: {
+         #if PY3K
+         char pclt_dict[] =
+-            "{s:(h,h), s:k, s:H, s:H, s:H, s:H, s:H, s:H, s:y, s:y, s:b, s:b, "
+-            "s:b}";
++            "{s:(h,H), s:k, s:H, s:H, s:H, s:H, s:H, s:H, s:y#, s:y#, s:b, "
++            "s:b, s:b}";
+         #else
+         char pclt_dict[] =
+-            "{s:(h,h), s:k, s:H, s:H, s:H, s:H, s:H, s:H, s:s, s:s, s:b, s:b, "
+-            "s:b}";
++            "{s:(h,H), s:k, s:H, s:H, s:H, s:H, s:H, s:H, s:s#, s:s#, s:b, "
++            "s:b, s:b}";
+         #endif
+         TT_PCLT *t = (TT_PCLT *)table;
+         return Py_BuildValue(pclt_dict,
+@@ -1404,8 +1404,10 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              t->SymbolSet,
+                              "typeFace",
+                              t->TypeFace,
++                             16,
+                              "characterComplement",
+                              t->CharacterComplement,
++                             8,
+                              "strokeWeight",
+                              t->StrokeWeight,
+                              "widthType",
+@@ -1528,7 +1530,8 @@ static PyObject *PyFT2Font_get_bbox(PyFT2Font *self, void *closure)
+ {
+     FT_BBox *bbox = &(self->x->get_face()->bbox);
+ 
+-    return Py_BuildValue("iiii", bbox->xMin, bbox->yMin, bbox->xMax, bbox->yMax);
++    return Py_BuildValue("llll",
++                         bbox->xMin, bbox->yMin, bbox->xMax, bbox->yMax);
+ }
+ 
+ static PyObject *PyFT2Font_ascender(PyFT2Font *self, void *closure)
+
+From 99903baf19caba0d5d81481f785547a514e7a517 Mon Sep 17 00:00:00 2001
+From: Thomas A Caswell <tcaswell@gmail.com>
+Date: Wed, 3 Apr 2019 14:30:16 -0400
+Subject: [PATCH 2/4] Merge pull request #13868 from anntzer/ssize_t
+
+FIX: Correctly handle fallout of defining PY_SSIZE_T_CLEAN on Windows.
+---
+ src/ft2font_wrapper.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/ft2font_wrapper.cpp b/src/ft2font_wrapper.cpp
+index 0aa6548307c..d0e516ad025 100644
+--- a/src/ft2font_wrapper.cpp
++++ b/src/ft2font_wrapper.cpp
+@@ -1264,7 +1264,7 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              t->sFamilyClass,
+                              "panose",
+                              t->panose,
+-                             10,
++                             Py_ssize_t(10),
+                              "ulCharRange",
+                              t->ulUnicodeRange1,
+                              t->ulUnicodeRange2,
+@@ -1272,7 +1272,7 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              t->ulUnicodeRange4,
+                              "achVendID",
+                              t->achVendID,
+-                             4,
++                             Py_ssize_t(4),
+                              "fsSelection",
+                              t->fsSelection,
+                              "fsFirstCharIndex",
+@@ -1404,10 +1404,10 @@ static PyObject *PyFT2Font_get_sfnt_table(PyFT2Font *self, PyObject *args, PyObj
+                              t->SymbolSet,
+                              "typeFace",
+                              t->TypeFace,
+-                             16,
++                             Py_ssize_t(16),
+                              "characterComplement",
+                              t->CharacterComplement,
+-                             8,
++                             Py_ssize_t(8),
+                              "strokeWeight",
+                              t->StrokeWeight,
+                              "widthType",
+
+From bf2c5f6037c9cad97016712679150f6ba622b444 Mon Sep 17 00:00:00 2001
+From: Jody Klymak <jklymak@gmail.com>
+Date: Tue, 2 Apr 2019 09:57:06 -0700
+Subject: [PATCH 3/4] Merge pull request #13836 from tacaswell/fix_ssize_t
+
+MNT: account for cpython deprecations
+
+The conflicts were due to other changes in the #includes in the
+affected files.
+---
+ src/_macosx.m         | 1 +
+ src/_png.cpp          | 2 +-
+ src/_tkagg.cpp        | 2 +-
+ src/_ttconv.cpp       | 2 +-
+ src/file_compat.h     | 2 +-
+ src/mplutils.h        | 1 +
+ src/numpy_cpp.h       | 2 +-
+ src/py_adaptors.h     | 2 +-
+ src/py_converters.cpp | 2 +-
+ src/qhull_wrap.c      | 1 +
+ 10 files changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/src/_macosx.m b/src/_macosx.m
+index 8f44f1eb0c5..0d337e7e0d1 100644
+--- a/src/_macosx.m
++++ b/src/_macosx.m
+@@ -1,3 +1,4 @@
++#define PY_SSIZE_T_CLEAN
+ #include <Cocoa/Cocoa.h>
+ #include <ApplicationServices/ApplicationServices.h>
+ #include <sys/socket.h>
+diff --git a/src/_png.cpp b/src/_png.cpp
+index 547e6b02669..ea7bf32efee 100644
+--- a/src/_png.cpp
++++ b/src/_png.cpp
+@@ -5,7 +5,7 @@
+    Undefining _POSIX_C_SOURCE and _XOPEN_SOURCE stops a couple
+    of harmless warnings.
+ */
+-
++#define PY_SSIZE_T_CLEAN
+ 
+ extern "C" {
+ #   include <png.h>
+diff --git a/src/_tkagg.cpp b/src/_tkagg.cpp
+index ad5289b3d6e..106f1398b30 100644
+--- a/src/_tkagg.cpp
++++ b/src/_tkagg.cpp
+@@ -7,7 +7,7 @@
+  * See LICENSE/LICENSE.PIL for details.
+  *
+  */
+-
++#define PY_SSIZE_T_CLEAN
+ #include <Python.h>
+ #include <cstdlib>
+ #include <cstdio>
+diff --git a/src/_ttconv.cpp b/src/_ttconv.cpp
+index e0aa4611d28..e18c8a53cab 100644
+--- a/src/_ttconv.cpp
++++ b/src/_ttconv.cpp
+@@ -5,7 +5,7 @@
+ 
+   Python wrapper for TrueType conversion library in ../ttconv.
+  */
+-
++#define PY_SSIZE_T_CLEAN
+ #include "mplutils.h"
+ 
+ #include <Python.h>
+diff --git a/src/file_compat.h b/src/file_compat.h
+index 691133dcbb7..114279fb1a1 100644
+--- a/src/file_compat.h
++++ b/src/file_compat.h
+@@ -1,6 +1,6 @@
+ #ifndef __FILE_COMPAT_H__
+ #define __FILE_COMPAT_H__
+-
++#define PY_SSIZE_T_CLEAN
+ #include <Python.h>
+ #include <stdio.h>
+ #include "numpy/npy_common.h"
+diff --git a/src/mplutils.h b/src/mplutils.h
+index 140a8156347..4b59e08bbd4 100644
+--- a/src/mplutils.h
++++ b/src/mplutils.h
+@@ -4,6 +4,7 @@
+ 
+ #ifndef _MPLUTILS_H
+ #define _MPLUTILS_H
++#define PY_SSIZE_T_CLEAN
+ 
+ #if defined(_MSC_VER) && _MSC_VER <= 1600
+ typedef unsigned __int8   uint8_t;
+diff --git a/src/numpy_cpp.h b/src/numpy_cpp.h
+index 03b4a695d18..75f773ee58e 100644
+--- a/src/numpy_cpp.h
++++ b/src/numpy_cpp.h
+@@ -2,7 +2,7 @@
+ 
+ #ifndef _NUMPY_CPP_H_
+ #define _NUMPY_CPP_H_
+-
++#define PY_SSIZE_T_CLEAN
+ /***************************************************************************
+  * This file is based on original work by Mark Wiebe, available at:
+  *
+diff --git a/src/py_adaptors.h b/src/py_adaptors.h
+index 8eaa7ad6c71..3d0dbdab45b 100644
+--- a/src/py_adaptors.h
++++ b/src/py_adaptors.h
+@@ -2,7 +2,7 @@
+ 
+ #ifndef __PY_ADAPTORS_H__
+ #define __PY_ADAPTORS_H__
+-
++#define PY_SSIZE_T_CLEAN
+ /***************************************************************************
+  * This module contains a number of C++ classes that adapt Python data
+  * structures to C++ and Agg-friendly interfaces.
+diff --git a/src/py_converters.cpp b/src/py_converters.cpp
+index c36fc59f59d..2d5d415a2c9 100644
+--- a/src/py_converters.cpp
++++ b/src/py_converters.cpp
+@@ -1,5 +1,5 @@
+ #define NO_IMPORT_ARRAY
+-
++#define PY_SSIZE_T_CLEAN
+ #include "py_converters.h"
+ #include "numpy_cpp.h"
+ 
+diff --git a/src/qhull_wrap.c b/src/qhull_wrap.c
+index e71afc7e370..177e19fab0d 100644
+--- a/src/qhull_wrap.c
++++ b/src/qhull_wrap.c
+@@ -5,6 +5,7 @@
+  * triangulation, construct an instance of the matplotlib.tri.Triangulation
+  * class without specifying a triangles array.
+  */
++#define PY_SSIZE_T_CLEAN
+ #include "Python.h"
+ #include "numpy/noprefix.h"
+ #include "libqhull/qhull_a.h"
+
+From c864b7b7d95e680fc5814d0e9735926a920a48d2 Mon Sep 17 00:00:00 2001
+From: Thomas A Caswell <tcaswell@gmail.com>
+Date: Sat, 19 Oct 2019 13:00:56 -0400
+Subject: [PATCH 4/4] MNT: fix warnings on py38
+
+These were fixed the on the master branch as part of bigger PRs or in
+different ways that are not worth backporting
+---
+ lib/matplotlib/backends/backend_qt5agg.py          | 2 +-
+ lib/matplotlib/backends/qt_editor/figureoptions.py | 2 +-
+ lib/matplotlib/contour.py                          | 2 +-
+ lib/matplotlib/font_manager.py                     | 6 ++++--
+ lib/matplotlib/pyplot.py                           | 2 +-
+ 5 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/lib/matplotlib/backends/backend_qt5agg.py b/lib/matplotlib/backends/backend_qt5agg.py
+index 826156e6784..d2166d58c88 100644
+--- a/lib/matplotlib/backends/backend_qt5agg.py
++++ b/lib/matplotlib/backends/backend_qt5agg.py
+@@ -68,7 +68,7 @@ def paintEvent(self, e):
+             if hasattr(qimage, 'setDevicePixelRatio'):
+                 # Not available on Qt4 or some older Qt5.
+                 qimage.setDevicePixelRatio(self._dpi_ratio)
+-            origin = QtCore.QPoint(l, self.renderer.height - t)
++            origin = QtCore.QPoint(int(l), int(self.renderer.height - t))
+             painter.drawImage(origin / self._dpi_ratio, qimage)
+ 
+         self._draw_rect_callback(painter)
+diff --git a/lib/matplotlib/backends/qt_editor/figureoptions.py b/lib/matplotlib/backends/qt_editor/figureoptions.py
+index 40572c8bd82..f0050d36750 100644
+--- a/lib/matplotlib/backends/qt_editor/figureoptions.py
++++ b/lib/matplotlib/backends/qt_editor/figureoptions.py
+@@ -222,7 +222,7 @@ def apply_callback(data):
+             rgba = mcolors.to_rgba(color)
+             line.set_alpha(None)
+             line.set_color(rgba)
+-            if marker is not 'none':
++            if marker != 'none':
+                 line.set_marker(marker)
+                 line.set_markersize(markersize)
+                 line.set_markerfacecolor(markerfacecolor)
+diff --git a/lib/matplotlib/contour.py b/lib/matplotlib/contour.py
+index b2ebfc11eb5..e03bdaeae65 100644
+--- a/lib/matplotlib/contour.py
++++ b/lib/matplotlib/contour.py
+@@ -870,7 +870,7 @@ def __init__(self, ax, *args, **kwargs):
+             self.logscale = True
+             if norm is None:
+                 norm = colors.LogNorm()
+-            if self.extend is not 'neither':
++            if self.extend != 'neither':
+                 raise ValueError('extend kwarg does not work yet with log '
+                                  ' scale')
+         else:
+diff --git a/lib/matplotlib/font_manager.py b/lib/matplotlib/font_manager.py
+index 5900fc9b184..2ba1a50638e 100644
+--- a/lib/matplotlib/font_manager.py
++++ b/lib/matplotlib/font_manager.py
+@@ -43,8 +43,10 @@
+             The font directory code is from ttfquery,
+             see license/LICENSE_TTFQUERY.
+ """
+-
+-from collections import Iterable
++try:
++    from collections.abc import Iterable
++except ImportError:
++    from collections import Iterable
+ import json
+ import os
+ import sys
+diff --git a/lib/matplotlib/pyplot.py b/lib/matplotlib/pyplot.py
+index fb5928dc65f..22411701c98 100644
+--- a/lib/matplotlib/pyplot.py
++++ b/lib/matplotlib/pyplot.py
+@@ -2419,7 +2419,7 @@ def matshow(A, fignum=None, **kwargs):
+ 
+     """
+     A = np.asanyarray(A)
+-    if fignum is False or fignum is 0:
++    if fignum is False or fignum == 0:
+         ax = gca()
+     else:
+         # Extract actual aspect ratio of array and make appropriately sized figure
