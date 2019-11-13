@@ -89,10 +89,10 @@ outputs:
     requirements:
       host:
         - python
-        - pyqt  # [not osx]
+        - pyqt  # [not osx and not aarch64 and not ppc64le]
       run:
         - python
-        - pyqt  # [not osx]
+        - pyqt  # [not osx and not aarch64 and not ppc64le]
         - {{ pin_subpackage('matplotlib-base', exact=True) }}
     test:
       imports:
