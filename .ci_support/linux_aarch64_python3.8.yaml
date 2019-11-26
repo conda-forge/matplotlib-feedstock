@@ -11,15 +11,13 @@ cdt_name:
 channel_sources:
 - conda-forge,c4aarch64,defaults
 channel_targets:
-- conda-forge main
+- conda-forge testing
 cxx_compiler:
 - gxx
 cxx_compiler_version:
 - '7'
 docker_image:
 - condaforge/linux-anvil-aarch64
-freetype:
-- 2.9.1
 icu:
 - '64.2'
 libpng:
@@ -27,8 +25,6 @@ libpng:
 numpy:
 - '1.16'
 pin_run_as_build:
-  freetype:
-    max_pin: x
   icu:
     max_pin: x
   libpng:
