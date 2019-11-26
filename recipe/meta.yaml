@@ -17,7 +17,7 @@ source:
     - PR14891.patch
 
 build:
-  number: 1200
+  number: 0
   skip: true  # [py<35]
 
 requirements:
