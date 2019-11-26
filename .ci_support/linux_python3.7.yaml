@@ -13,9 +13,9 @@ cxx_compiler_version:
 docker_image:
 - condaforge/linux-anvil-comp7
 icu:
-- '58'
+- '64.2'
 libpng:
-- 1.6.35
+- '1.6'
 numpy:
 - '1.14'
 pin_run_as_build:

@@ -7,7 +7,7 @@ c_compiler_version:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge testing
+- conda-forge main
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
@@ -23,10 +23,12 @@ macos_min_version:
 numpy:
 - '1.14'
 pin_run_as_build:
+  freetype:
+    max_pin: x
   libpng:
     max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- '3.6'
+- '3.8'
