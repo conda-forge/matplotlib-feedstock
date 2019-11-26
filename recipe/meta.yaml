@@ -25,8 +25,8 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - python
-    - setuptools
-    - numpy 1.11.*
+    - pip
+    - numpy
     - cycler >=0.10
     - python-dateutil
     - freetype
@@ -74,7 +74,7 @@ outputs:
         - python
       run:
         - python
-        - pyqt  # [not osx]
+        - pyqt  # [not osx and not aarch64 and not ppc64le]
         - {{ pin_subpackage('matplotlib-base', exact=True) }}
     test:
       imports:
