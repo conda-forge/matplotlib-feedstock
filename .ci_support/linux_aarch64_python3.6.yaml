@@ -11,7 +11,7 @@ cdt_name:
 channel_sources:
 - conda-forge,c4aarch64,defaults
 channel_targets:
-- conda-forge main
+- conda-forge rc
 cxx_compiler:
 - gxx
 cxx_compiler_version:
