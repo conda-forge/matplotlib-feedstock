@@ -1,0 +1,47 @@
+From 5e5f7bc971aa74a50548d3a738f13cb48fcbce6a Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Thu, 25 Jul 2019 19:12:51 -0400
+Subject: [PATCH 1/2] Pass the correct type to QSpinBox.setRange.
+
+---
+ lib/matplotlib/backends/qt_editor/_formlayout.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/matplotlib/backends/qt_editor/_formlayout.py b/lib/matplotlib/backends/qt_editor/_formlayout.py
+index 4efbcfbba01..b58f5eb6ee5 100644
+--- a/lib/matplotlib/backends/qt_editor/_formlayout.py
++++ b/lib/matplotlib/backends/qt_editor/_formlayout.py
+@@ -298,7 +298,7 @@ def setup(self):
+                     field.setCheckState(QtCore.Qt.Unchecked)
+             elif isinstance(value, Integral):
+                 field = QtWidgets.QSpinBox(self)
+-                field.setRange(-1e9, 1e9)
++                field.setRange(-10**9, 10**9)
+                 field.setValue(value)
+             elif isinstance(value, Real):
+                 field = QtWidgets.QLineEdit(repr(value), self)
+
+From df618987e646f11303cb462fe311ef950604db84 Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Thu, 25 Jul 2019 21:26:30 -0400
+Subject: [PATCH 2/2] Use consistent array shape when setting square axis.
+
+NumPy 1.18.x will not like setting an array slice with a ragged array
+like this.
+---
+ lib/matplotlib/axes/_base.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/matplotlib/axes/_base.py b/lib/matplotlib/axes/_base.py
+index c8b2c355b56..fb0000b9a90 100644
+--- a/lib/matplotlib/axes/_base.py
++++ b/lib/matplotlib/axes/_base.py
+@@ -1645,7 +1645,7 @@ def axis(self, *args, emit=True, **kwargs):
+                     self.set_autoscale_on(False)
+                     xlim = self.get_xlim()
+                     ylim = self.get_ylim()
+-                    edge_size = max(np.diff(xlim), np.diff(ylim))
++                    edge_size = max(np.diff(xlim), np.diff(ylim))[0]
+                     self.set_xlim([xlim[0], xlim[0] + edge_size],
+                                   emit=emit, auto=False)
+                     self.set_ylim([ylim[0], ylim[0] + edge_size],
