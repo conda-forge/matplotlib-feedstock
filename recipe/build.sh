@@ -16,9 +16,11 @@ tests = False
 toolkit_tests = False
 sample_data = False
 
+[libs]
+system_freetype = True
+
 EOF
 
 cat setup.cfg
-sed -i.bak "s|/usr/local|${PREFIX}|" setupext.py
 
 $PYTHON -m pip install . --no-deps -vv
