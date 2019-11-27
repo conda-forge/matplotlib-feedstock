@@ -7,7 +7,7 @@ c_compiler_version:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge rc
+- conda-forge matplotlib_rc
 cxx_compiler:
 - clangxx
 cxx_compiler_version:

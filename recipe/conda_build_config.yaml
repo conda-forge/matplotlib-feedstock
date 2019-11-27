@@ -1,2 +1,2 @@
 channel_targets:
-  - conda-forge rc
+  - conda-forge matplotlib_rc
