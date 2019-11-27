@@ -9,7 +9,9 @@ cxx_compiler:
 freetype:
 - 2.9.1
 libpng:
-- 1.6.35
+- '1.6'
+numpy:
+- '1.14'
 pin_run_as_build:
   freetype:
     max_pin: x

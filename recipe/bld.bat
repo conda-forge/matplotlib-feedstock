@@ -8,6 +8,8 @@ ECHO [packages] >> setup.cfg
 ECHO tests = False >> setup.cfg
 ECHO sample_data = False >> setup.cfg
 ECHO toolkits_tests = False >> setup.cfg
+ECHO [libs] >> setup.cfg
+ECHO system_freetype = True >> setup.cfg
 
-%PYTHON% setup.py install --single-version-externally-managed --record record.txt
+%PYTHON% -m pip install . --no-deps -vv
 if errorlevel 1 exit 1
