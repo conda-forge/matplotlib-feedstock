@@ -19,7 +19,7 @@ source:
     - fix-freetype-compiler.patch
 
 build:
-  number: 0
+  number: 200
   skip: true  # [py<35]
 
 requirements:
