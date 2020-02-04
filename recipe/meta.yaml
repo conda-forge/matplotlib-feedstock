@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "2.2.4" %}
+{% set version = "2.2.5" %}
 
 package:
   name: matplotlib-base
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 601a3bf5c1b08710edbe00347d97619f43f2d1edcd7aa94119ff837e6327c7f7
+  sha256: 75e9de4e4e47ae4cb23393e9df9431424d5034da77771d598ff14363d6a51dd1
   patches:
     # Find libpng on Windows.
     - patches/setupext.patch  # [win]
@@ -17,83 +17,76 @@ source:
     - patches/cfg_qt5agg.patch  # [not osx]
     # Removes framework check from osx backend (seems unneeded)
     - patches/osx-frame.patch  # [osx]
-    # two backports for py38 from the upcoming 2.2.5 release
-    - patches/14582.patch
-    - patches/15448.patch
 
 build:
-  number: 2
-
-requirements:
-  build:
-    - pkg-config  # [not win]
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - python
-    - setuptools
-    - backports.functools_lru_cache  # [py2k]
-    - numpy
-    - python-dateutil
-    - freetype
-    - msinttypes  # [win]
-    - cycler >=0.10
-    - nose
-    - pyparsing
-    - pytz
-    #- py2cairo  # [linux and py2k]
-    - libpng
-    - zlib         # [win]
-    - tk        # [linux]
-    - functools32  # [py2k]
-    - subprocess32  # [py2k and unix]
-    - icu       # [linux]
-  run:
-    - python
-    - setuptools
-    - {{ pin_compatible('numpy') }}
-    - backports.functools_lru_cache  # [py2k]
-    - cycler >=0.10
-    - python-dateutil
-    - freetype
-    - pytz
-    - pyparsing
-    #- py2cairo  # [linux and py2k]
-    - libpng
-    - tk        # [linux]
-    - functools32  # [py2k]
-    - subprocess32  # [py2k and unix]
-    - icu       # [linux]
-    - tornado
-    - kiwisolver
-
-test:
-  imports:
-    - matplotlib
-    - matplotlib.pyplot
-    - matplotlib._image
-    - matplotlib._path
-    - matplotlib._png
-    - matplotlib._tri
-    - matplotlib.backends._backend_agg
-    - matplotlib.ft2font
-    - matplotlib.ttconv
-    - matplotlib.backends._tkagg  # [not win]
-    - mpl_toolkits
-    - pylab
+  number: 0
 
 outputs:
   - name: matplotlib-base
-
-  - name: matplotlib
+    script: build_base.bat  # [win]
+    script: build_base.sh  # [not win]
     requirements:
+      build:
+        - pkg-config  # [not win]
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
       host:
         - python
-        - pyqt  # [not osx and not aarch64 and not ppc64le]
+        - setuptools
+        - backports.functools_lru_cache  # [py2k]
+        - numpy
+        - python-dateutil
+        - freetype
+        - msinttypes  # [win]
+        - cycler >=0.10
+        - nose
+        - pyparsing
+        - pytz
+        - libpng
+        - zlib  # [win]
+        - tk  # [linux]
+        - functools32  # [py2k]
+        - subprocess32  # [py2k and unix]
+        - icu  # [linux]
       run:
         - python
+        - setuptools
+        - {{ pin_compatible('numpy') }}
+        - backports.functools_lru_cache  # [py2k]
+        - cycler >=0.10
+        - python-dateutil
+        - freetype
+        - pytz
+        - pyparsing
+        - libpng
+        - tk  # [linux]
+        - functools32  # [py2k]
+        - subprocess32  # [py2k and unix]
+        - icu  # [linux]
+        - tornado
+        - kiwisolver
+    test:
+      imports:
+        - matplotlib
+        - matplotlib.pyplot
+        - matplotlib._image
+        - matplotlib._path
+        - matplotlib._png
+        - matplotlib._tri
+        - matplotlib.backends._backend_agg
+        - matplotlib.ft2font
+        - matplotlib.ttconv
+        - matplotlib.backends._tkagg  # [not win]
+        - mpl_toolkits
+        - pylab
+
+  - name: matplotlib
+    build:
+      noarch: generic
+    requirements:
+      run:
         - pyqt  # [not osx and not aarch64 and not ppc64le]
-        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+        - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x.x") }}
     test:
       imports:
         - matplotlib
@@ -101,12 +94,15 @@ outputs:
   - name: mpl_sample_data
     script: install-data.sh  # [not win]
     script: install-data.bat  # [win]
+    build:
+      noarch: python
     requirements:
       host:
         - python
       run:
         - python
-        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+        # match major/minor version, but allow noarch
+        - {{ pin_subpackage('matplotlib-base', max_pin="x.x") }}
     test:
       imports:
         - matplotlib.cbook
