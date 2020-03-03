@@ -13,8 +13,7 @@ source:
   patches:
     # Find libpng on Windows.
     - setupext.patch  # [win]
-    # https://github.com/matplotlib/matplotlib/pull/14891
-    - PR14891.patch
+
 
 build:
   number: 0
