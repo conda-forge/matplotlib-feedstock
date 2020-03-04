@@ -70,7 +70,6 @@ outputs:
 
   - name: matplotlib
     build:
-      noarch: generic
     requirements:
       run:
         - pyqt  # [not osx and not aarch64 and not ppc64le]
@@ -78,6 +77,8 @@ outputs:
     test:
       imports:
         - matplotlib
+      commands:
+        - conda list pyqt
 
   - name: mpl_sample_data
     script: install-data.sh  # [not win]
