@@ -32,7 +32,7 @@ outputs:
         - {{ compiler('cxx') }}
       host:
         - python
-        - setuptools
+        - pip
         - backports.functools_lru_cache  # [py2k]
         - numpy
         - python-dateutil
