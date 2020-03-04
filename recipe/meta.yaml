@@ -13,7 +13,7 @@ source:
 
 
 build:
-  number: 2
+  number: 1
   skip: true  # [py<35]
 
 outputs:
@@ -77,8 +77,6 @@ outputs:
     test:
       imports:
         - matplotlib
-      commands:
-        - conda list pyqt
 
   - name: mpl_sample_data
     script: install-data.sh  # [not win]
