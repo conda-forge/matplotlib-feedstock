@@ -23,6 +23,7 @@ outputs:
     requirements:
       build:
         - pkg-config  # [not win]
+        - make  # [not win]
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
       host:
