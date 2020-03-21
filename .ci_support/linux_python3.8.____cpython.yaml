@@ -5,15 +5,13 @@ c_compiler_version:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
+- conda-forge testing
 cxx_compiler:
 - gxx
 cxx_compiler_version:
 - '7'
 docker_image:
 - condaforge/linux-anvil-comp7
-freetype:
-- 2.9.1
 icu:
 - '64.2'
 libpng:
@@ -21,8 +19,6 @@ libpng:
 numpy:
 - '1.14'
 pin_run_as_build:
-  freetype:
-    max_pin: x
   icu:
     max_pin: x
   libpng:
