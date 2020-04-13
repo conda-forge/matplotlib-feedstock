@@ -1,5 +1,5 @@
-About matplotlib-base
-=====================
+About matplotlib-suite
+======================
 
 Home: http://matplotlib.org/
 
@@ -132,24 +132,24 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015cxx_compilervs2015python3.6.____cpython</td>
+              <td>win_python3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=617&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015cxx_compilervs2015python3.6.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=win&configuration=win_python3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015cxx_compilervs2015python3.7.____cpython</td>
+              <td>win_python3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=617&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015cxx_compilervs2015python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=win&configuration=win_python3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015cxx_compilervs2015python3.8.____cpython</td>
+              <td>win_python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=617&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015cxx_compilervs2015python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/matplotlib-feedstock?branchName=master&jobName=win&configuration=win_python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr>
@@ -169,10 +169,10 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-matplotlib--base-green.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/matplotlib-base.svg)](https://anaconda.org/conda-forge/matplotlib-base) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-mpl_sample_data-green.svg)](https://anaconda.org/conda-forge/mpl_sample_data) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpl_sample_data.svg)](https://anaconda.org/conda-forge/mpl_sample_data) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpl_sample_data.svg)](https://anaconda.org/conda-forge/mpl_sample_data) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpl_sample_data.svg)](https://anaconda.org/conda-forge/mpl_sample_data) |
 
-Installing matplotlib-base
-==========================
+Installing matplotlib-suite
+===========================
 
-Installing `matplotlib-base` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `matplotlib-suite` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
@@ -229,17 +229,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating matplotlib-base-feedstock
-==================================
+Updating matplotlib-suite-feedstock
+===================================
 
-If you would like to improve the matplotlib-base recipe or build a new
+If you would like to improve the matplotlib-suite recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/matplotlib-base-feedstock are
+Note that all branches in the conda-forge/matplotlib-suite-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
