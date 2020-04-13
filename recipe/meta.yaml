@@ -4,7 +4,7 @@
 {% set version = "3.2.1" %}
 
 package:
-  name: matplotlib-base
+  name: matplotlib-suite
   version: {{ version }}
 
 source:
@@ -13,7 +13,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<35]
 
 outputs:
