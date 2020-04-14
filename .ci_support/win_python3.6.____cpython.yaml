@@ -1,11 +1,11 @@
 c_compiler:
-- vs2015
+- vs2017
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge testing
 cxx_compiler:
-- vs2015
+- vs2017
 libpng:
 - '1.6'
 numpy:
@@ -19,10 +19,6 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 python:
-- '3.8'
-zip_keys:
-- - python
-  - c_compiler
-  - cxx_compiler
+- 3.6.* *_cpython
 zlib:
 - '1.2'

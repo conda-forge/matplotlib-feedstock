@@ -29,6 +29,6 @@ pin_run_as_build:
   tk:
     max_pin: x.x
 python:
-- '3.7'
+- 3.7.* *_cpython
 tk:
 - '8.6'

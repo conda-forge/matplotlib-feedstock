@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: linux_aarch64_python3.6
+name: linux_aarch64_python3.6.____cpython
 
 platform:
   os: linux
@@ -10,7 +10,7 @@ steps:
 - name: Install and build
   image: condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_python3.6
+    CONFIG: linux_aarch64_python3.6.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN: 
@@ -26,7 +26,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_python3.7
+name: linux_aarch64_python3.7.____cpython
 
 platform:
   os: linux
@@ -36,7 +36,7 @@ steps:
 - name: Install and build
   image: condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_python3.7
+    CONFIG: linux_aarch64_python3.7.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN: 
@@ -52,7 +52,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_python3.8
+name: linux_aarch64_python3.8.____cpython
 
 platform:
   os: linux
@@ -62,7 +62,7 @@ steps:
 - name: Install and build
   image: condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_python3.8
+    CONFIG: linux_aarch64_python3.8.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN: 
