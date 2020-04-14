@@ -13,5 +13,8 @@ ECHO toolkits_tests = False >> setup.cfg
 ECHO [test] >> setup.cfg
 ECHO local_freetype = True >> setup.cfg
 
+rem matplotlib will link to png statically if it exists. Delete to make sure a shared version is picked up
+del %LIBRARY_LIB%\libpng16_static.lib
+
 %PYTHON% -m pip install . --no-deps -vv
 if errorlevel 1 exit 1
