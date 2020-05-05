@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '8'
+- '7'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -9,9 +9,9 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '8'
+- '7'
 docker_image:
-- condaforge/linux-anvil-ppc64le
+- condaforge/linux-anvil-comp7
 freetype:
 - 2.9.1
 icu:
@@ -19,7 +19,7 @@ icu:
 libpng:
 - '1.6'
 numpy:
-- '1.16'
+- '1.14'
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -30,5 +30,12 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
+  tk:
+    max_pin: x.x
 python:
-- 3.7.* *_cpython
+- 3.8.* *_cpython
+tk:
+- '8.6'
+zip_keys:
+- - numpy
+  - python
