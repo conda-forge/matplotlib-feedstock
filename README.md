@@ -5,7 +5,7 @@ Home: http://matplotlib.org/
 
 Package license: PSF-based
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Publication quality figures in Python
 
