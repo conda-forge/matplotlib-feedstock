@@ -72,7 +72,7 @@ outputs:
     build:
     requirements:
       run:
-        - pyqt  # [not osx and not aarch64 and not ppc64le]
+        - pyqt  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x.x") }}
     test:
       imports:
@@ -82,6 +82,7 @@ outputs:
     script: install-data.sh  # [not win]
     script: install-data.bat  # [win]
     build:
+      skip: True   # [python_impl == "pypy"]
       noarch: python
     requirements:
       host:
@@ -98,7 +99,7 @@ outputs:
 
 about:
   home: http://matplotlib.org/
-  license: PSF-based
+  license: LicenseRef-PSF-based
   license_url: http://matplotlib.sourceforge.net/users/license.html
   license_family: PSF
   license_file: LICENSE/LICENSE

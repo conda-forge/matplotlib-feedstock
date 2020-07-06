@@ -1,29 +1,29 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '9'
+- '8'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
+- gxx
 cxx_compiler_version:
-- '9'
+- '8'
+docker_image:
+- condaforge/linux-anvil-ppc64le
 freetype:
 - 2.9.1
+icu:
+- '64.2'
 libpng:
 - '1.6'
-macos_machine:
-- x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 numpy:
-- '1.14'
+- '1.16'
 pin_run_as_build:
   freetype:
+    max_pin: x
+  icu:
     max_pin: x
   libpng:
     max_pin: x.x
@@ -32,3 +32,9 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.8.* *_cpython
+python_impl:
+- cpython
+zip_keys:
+- - numpy
+  - python
+  - python_impl

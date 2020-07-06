@@ -24,5 +24,11 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.6.* *_cpython
+python_impl:
+- cpython
+zip_keys:
+- - numpy
+  - python
+  - python_impl
 zlib:
 - '1.2'

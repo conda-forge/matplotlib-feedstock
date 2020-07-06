@@ -8,14 +8,17 @@ jobs:
     vmImage: macOS-10.14
   strategy:
     matrix:
-      osx_python3.6.____cpython:
-        CONFIG: osx_python3.6.____cpython
+      osx_numpy1.14python3.6.____cpython:
+        CONFIG: osx_numpy1.14python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_python3.7.____cpython:
-        CONFIG: osx_python3.7.____cpython
+      osx_numpy1.14python3.7.____cpython:
+        CONFIG: osx_numpy1.14python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_python3.8.____cpython:
-        CONFIG: osx_python3.8.____cpython
+      osx_numpy1.14python3.8.____cpython:
+        CONFIG: osx_numpy1.14python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_numpy1.18python3.6.____73_pypy:
+        CONFIG: osx_numpy1.18python3.6.____73_pypy
         UPLOAD_PACKAGES: 'True'
     maxParallel: 8
   timeoutInMinutes: 360
@@ -26,6 +29,7 @@ jobs:
       export CI=azure
       export OSX_FORCE_SDK_DOWNLOAD="1"
       export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+      export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
       ./.scripts/run_osx_build.sh
     displayName: Run OSX build
     env:
