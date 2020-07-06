@@ -82,6 +82,7 @@ outputs:
     script: install-data.sh  # [not win]
     script: install-data.bat  # [win]
     build:
+      skip: True   # [python_impl == "cpython"]
       noarch: python
     requirements:
       host:
