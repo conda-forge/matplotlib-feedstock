@@ -3,7 +3,7 @@ About matplotlib-base
 
 Home: http://matplotlib.org/
 
-Package license: PSF-based
+Package license: LicenseRef-PSF-based
 
 Feedstock license: BSD-3-Clause
 
