@@ -14,7 +14,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<35]
+  skip: true  # [py<36]
 
 outputs:
   - name: matplotlib-base
@@ -28,14 +28,12 @@ outputs:
       host:
         - python
         - pip
-        - numpy
+        - numpy >=1.15
         - cycler >=0.10
         - python-dateutil
         - freetype
         - nose
         - pyparsing
-        - libpng
-        - zlib  # [win]
         - tk  # [linux]
         - icu  # [linux]
       run:
@@ -44,9 +42,9 @@ outputs:
         - {{ pin_compatible('numpy') }}
         - cycler >=0.10
         - python-dateutil
+        - pillow >=6.2.0
         - freetype
         - pyparsing
-        - libpng
         - tk  # [linux]
         - icu  # [linux]
         - tornado
