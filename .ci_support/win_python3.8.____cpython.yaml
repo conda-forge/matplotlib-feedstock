@@ -8,6 +8,8 @@ cxx_compiler:
 - vs2017
 freetype:
 - 2.9.1
+numpy:
+- '1.14'
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -19,5 +21,6 @@ python:
 python_impl:
 - cpython
 zip_keys:
-- - python
+- - numpy
+  - python
   - python_impl
