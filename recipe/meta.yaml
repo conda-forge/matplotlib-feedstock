@@ -28,7 +28,7 @@ outputs:
       host:
         - python
         - pip
-        - numpy 1.15.*
+        - numpy >=1.15
         - cycler >=0.10
         - python-dateutil
         - freetype
