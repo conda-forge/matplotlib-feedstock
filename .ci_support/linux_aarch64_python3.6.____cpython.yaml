@@ -22,8 +22,6 @@ freetype:
 - 2.9.1
 icu:
 - '64.2'
-numpy:
-- '1.18'
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -35,12 +33,11 @@ pin_run_as_build:
   tk:
     max_pin: x.x
 python:
-- 3.6.* *_73_pypy
+- 3.6.* *_cpython
 python_impl:
-- pypy
+- cpython
 tk:
 - '8.6'
 zip_keys:
-- - numpy
-  - python
+- - python
   - python_impl

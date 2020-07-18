@@ -18,8 +18,6 @@ macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
 - '10.9'
-numpy:
-- '1.14'
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -27,10 +25,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.7.* *_cpython
 python_impl:
 - cpython
 zip_keys:
-- - numpy
-  - python
+- - python
   - python_impl
