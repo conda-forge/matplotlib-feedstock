@@ -9,6 +9,9 @@ tests = False
 toolkit_tests = False
 sample_data = False
 
+[libs]
+system_freetype = True
+
 EOF
 
 cat setup.cfg
