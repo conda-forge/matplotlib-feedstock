@@ -10,6 +10,8 @@ package:
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
   sha256: ee72a23bd5310a69a96c8527901d4ce71820bcbee260c04d1ef2069201c9b98a
+  patches:
+    - fix-pypy-build.patch
 
 
 build:
