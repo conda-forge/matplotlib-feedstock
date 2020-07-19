@@ -28,7 +28,8 @@ outputs:
       host:
         - python
         - pip
-        - numpy >=1.15
+        - numpy 1.15  # [x86_64 and python_impl=="cpython"]
+        - numpy       # [not (x86_64 and python_impl=="cpython")]
         - cycler >=0.10
         - python-dateutil
         - freetype
