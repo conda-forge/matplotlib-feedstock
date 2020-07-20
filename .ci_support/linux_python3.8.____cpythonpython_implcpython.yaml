@@ -15,9 +15,7 @@ docker_image:
 freetype:
 - 2.9.1
 icu:
-- '67'
-libpng:
-- '1.6'
+- '64.2'
 numpy:
 - '1.14'
 pin_run_as_build:
@@ -25,15 +23,13 @@ pin_run_as_build:
     max_pin: x
   icu:
     max_pin: x
-  libpng:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
   tk:
     max_pin: x.x
 python:
-- 3.6.* *_cpython
+- 3.8.* *_cpython
 python_impl:
 - cpython
 tk:

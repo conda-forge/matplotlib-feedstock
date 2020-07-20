@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.2.2" %}
+{% set version = "3.3.0" %}
 
 package:
   name: matplotlib-base
@@ -9,12 +9,14 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: dd4ff3e19f507a5a07612fa642e6e66fadbaf303483a43dc3acb04067f7ac522
+  sha256: ee72a23bd5310a69a96c8527901d4ce71820bcbee260c04d1ef2069201c9b98a
+  patches:
+    - fix-pypy-build.patch
 
 
 build:
-  number: 1
-  skip: true  # [py<35]
+  number: 0
+  skip: true  # [py<36]
 
 outputs:
   - name: matplotlib-base
@@ -28,14 +30,14 @@ outputs:
       host:
         - python
         - pip
-        - numpy
+        - numpy 1.15  # [x86_64 and python_impl=="cpython" and py<38]
+        - numpy 1.16  # [x86_64 and python_impl=="cpython" and py==38]
+        - numpy       # [not (x86_64 and python_impl=="cpython")]
         - cycler >=0.10
         - python-dateutil
         - freetype
         - nose
         - pyparsing
-        - libpng
-        - zlib  # [win]
         - tk  # [linux]
         - icu  # [linux]
       run:
@@ -44,13 +46,15 @@ outputs:
         - {{ pin_compatible('numpy') }}
         - cycler >=0.10
         - python-dateutil
+        - pillow >=6.2.0
         - freetype
         - pyparsing
-        - libpng
         - tk  # [linux]
         - icu  # [linux]
         - tornado
         - kiwisolver
+      run_constrained:
+        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
     test:
       requires:
         - pytest
@@ -82,7 +86,7 @@ outputs:
     script: install-data.sh  # [not win]
     script: install-data.bat  # [win]
     build:
-      skip: True   # [python_impl == "pypy"]
+      skip: true  # [python_impl == "pypy"]
       noarch: python
     requirements:
       host:
