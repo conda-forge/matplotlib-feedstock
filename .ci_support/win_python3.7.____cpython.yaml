@@ -6,19 +6,14 @@ channel_targets:
 - conda-forge testing
 cxx_compiler:
 - vs2017
-libpng:
-- '1.6'
-numpy:
-- '1.14'
 pin_run_as_build:
-  libpng:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
-  zlib:
-    max_pin: x.x
 python:
 - 3.7.* *_cpython
-zlib:
-- '1.2'
+python_impl:
+- cpython
+zip_keys:
+- - python
+  - python_impl

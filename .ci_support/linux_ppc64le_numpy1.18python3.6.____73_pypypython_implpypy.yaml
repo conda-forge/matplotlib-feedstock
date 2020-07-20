@@ -14,17 +14,19 @@ docker_image:
 - condaforge/linux-anvil-ppc64le
 icu:
 - '64.2'
-libpng:
-- '1.6'
 numpy:
-- '1.16'
+- '1.18'
 pin_run_as_build:
   icu:
     max_pin: x
-  libpng:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.6.* *_cpython
+- 3.6.* *_73_pypy
+python_impl:
+- pypy
+zip_keys:
+- - numpy
+  - python
+  - python_impl
