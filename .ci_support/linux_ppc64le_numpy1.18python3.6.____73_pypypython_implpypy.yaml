@@ -14,14 +14,10 @@ docker_image:
 - condaforge/linux-anvil-ppc64le
 freetype:
 - 2.9.1
-icu:
-- '64.2'
 numpy:
 - '1.18'
 pin_run_as_build:
   freetype:
-    max_pin: x
-  icu:
     max_pin: x
   python:
     min_pin: x.x
