@@ -21,7 +21,7 @@ docker_image:
 freetype:
 - 2.9.1
 icu:
-- '64.2'
+- '67'
 numpy:
 - '1.16'
 pin_run_as_build:
