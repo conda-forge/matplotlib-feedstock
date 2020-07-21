@@ -15,7 +15,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<36]
 
 outputs:
@@ -39,7 +39,6 @@ outputs:
         - nose
         - pyparsing
         - tk  # [linux]
-        - icu  # [linux]
       run:
         - python
         - setuptools
@@ -50,7 +49,6 @@ outputs:
         - freetype
         - pyparsing
         - tk  # [linux]
-        - icu  # [linux]
         - tornado
         - kiwisolver
       run_constrained:
