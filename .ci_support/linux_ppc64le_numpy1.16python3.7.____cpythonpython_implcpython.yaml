@@ -12,13 +12,9 @@ cxx_compiler_version:
 - '8'
 docker_image:
 - condaforge/linux-anvil-ppc64le
-icu:
-- '64.2'
 numpy:
 - '1.16'
 pin_run_as_build:
-  icu:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x

@@ -39,7 +39,6 @@ outputs:
         - nose
         - pyparsing
         - tk  # [linux]
-        - icu  # [linux]
       run:
         - python
         - setuptools
@@ -49,7 +48,6 @@ outputs:
         - pillow >=6.2.0
         - pyparsing
         - tk  # [linux]
-        - icu  # [linux]
         - tornado
         - kiwisolver
       run_constrained:
