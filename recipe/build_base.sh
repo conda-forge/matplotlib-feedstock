@@ -18,7 +18,7 @@ cat setup.cfg
 sed -i.bak "s|/usr/local|${PREFIX}|" setupext.py
 
 if [[ "$target_platform" == linux* ]]; then
-  export GCC_AR=$AR
+  export AR=$GCC_AR
 fi
 
 $PYTHON -m pip install . --no-deps -vv
