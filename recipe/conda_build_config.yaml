@@ -1,5 +1,4 @@
-# Can uncomment once the current compiler rebuild is complete. Right now
-# there's no way to make this work with the external pinning config due
-# to the use of zip_keys
 channel_targets:
   - conda-forge testing
+MACOSX_DEPLOYMENT_TARGET:  # [osx]
+  - 10.11                  # [osx]

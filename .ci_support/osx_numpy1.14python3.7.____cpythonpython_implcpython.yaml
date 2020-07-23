@@ -1,9 +1,9 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
+- '10.11'
 c_compiler:
 - clang
 c_compiler_version:
-- '9'
+- '10'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,9 +11,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '9'
-libpng:
-- '1.6'
+- '10'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
@@ -21,10 +19,14 @@ macos_min_version:
 numpy:
 - '1.14'
 pin_run_as_build:
-  libpng:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.6.* *_cpython
+- 3.7.* *_cpython
+python_impl:
+- cpython
+zip_keys:
+- - numpy
+  - python
+  - python_impl

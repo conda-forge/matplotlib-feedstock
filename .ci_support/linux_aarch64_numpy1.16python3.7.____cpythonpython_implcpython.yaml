@@ -18,17 +18,9 @@ cxx_compiler_version:
 - '7'
 docker_image:
 - condaforge/linux-anvil-aarch64
-icu:
-- '64.2'
-libpng:
-- '1.6'
 numpy:
 - '1.16'
 pin_run_as_build:
-  icu:
-    max_pin: x
-  libpng:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
@@ -36,5 +28,11 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.7.* *_cpython
+python_impl:
+- cpython
 tk:
 - '8.6'
+zip_keys:
+- - numpy
+  - python
+  - python_impl

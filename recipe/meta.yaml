@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.2.1" %}
+{% set version = "3.3.0" %}
 
 package:
   name: matplotlib-base
@@ -9,7 +9,9 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 5462728ed3be60af21bd8a6b33f5f1632dabdb3c1b3cc279cffb05926a48255c
+  sha256: ee72a23bd5310a69a96c8527901d4ce71820bcbee260c04d1ef2069201c9b98a
+  patches:
+    - fix-pypy-build.patch
 
 
 build:
@@ -29,27 +31,27 @@ outputs:
       host:
         - python
         - pip
-        - numpy
+        - numpy 1.15  # [x86_64 and python_impl=="cpython" and py<38]
+        - numpy 1.16  # [x86_64 and python_impl=="cpython" and py==38]
+        - numpy       # [not (x86_64 and python_impl=="cpython")]
         - cycler >=0.10
         - python-dateutil
         - nose
         - pyparsing
-        - libpng
-        - zlib  # [win]
         - tk  # [linux]
-        - icu  # [linux]
       run:
         - python
         - setuptools
         - {{ pin_compatible('numpy') }}
         - cycler >=0.10
         - python-dateutil
+        - pillow >=6.2.0
         - pyparsing
-        - libpng
         - tk  # [linux]
-        - icu  # [linux]
         - tornado
         - kiwisolver
+      run_constrained:
+        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
     test:
       requires:
         - pytest
@@ -71,7 +73,7 @@ outputs:
     build:
     requirements:
       run:
-        - pyqt  # [not osx and not aarch64 and not ppc64le]
+        - pyqt  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x.x") }}
     test:
       imports:
@@ -81,6 +83,7 @@ outputs:
     script: install-data.sh  # [not win]
     script: install-data.bat  # [win]
     build:
+      skip: true  # [python_impl == "pypy"]
       noarch: python
     requirements:
       host:
@@ -97,7 +100,7 @@ outputs:
 
 about:
   home: http://matplotlib.org/
-  license: PSF-based
+  license: LicenseRef-PSF-based
   license_url: http://matplotlib.sourceforge.net/users/license.html
   license_family: PSF
   license_file: LICENSE/LICENSE

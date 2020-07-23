@@ -1,11 +1,23 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.11'
 c_compiler:
-- vs2017
+- clang
+c_compiler_version:
+- '10'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge testing
 cxx_compiler:
-- vs2017
+- clangxx
+cxx_compiler_version:
+- '10'
+macos_machine:
+- x86_64-apple-darwin13.4.0
+macos_min_version:
+- '10.9'
+numpy:
+- '1.14'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -15,5 +27,6 @@ python:
 python_impl:
 - cpython
 zip_keys:
-- - python
+- - numpy
+  - python
   - python_impl
