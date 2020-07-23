@@ -22,4 +22,6 @@ if [[ "$target_platform" == linux* ]]; then
   export RANLIB=$GCC_RANLIB
 fi
 
+$PYTHON -c "import os,tarfile;os.makedirs('build', exist_ok=True);tgz = tarfile.open(os.environ['RECIPE_DIR'] + '/freetype-2.6.1.tar.bz2', mode='r:bz2');tgz.extractall('build')"
+
 $PYTHON -m pip install . --no-deps -vv
