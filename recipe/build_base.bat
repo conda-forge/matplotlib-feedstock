@@ -13,5 +13,8 @@ ECHO toolkits_tests = False >> setup.cfg
 ECHO [libs] >> setup.cfg
 ECHO system_freetype = False >> setup.cfg
 
+rem Unpack cached copy of freetype 2.6.1 source
+%PYTHON% -c "import os,tarfile;os.makedirs('build', exist_ok=True);tgz = tarfile.open(os.environ['RECIPE_DIR'] + '/freetype-2.6.1.tar.bz2', mode='r:bz2');tgz.extractall('build')"
+
 %PYTHON% -m pip install . --no-deps -vv
 if errorlevel 1 exit 1
