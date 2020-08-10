@@ -34,6 +34,8 @@ python:
 - 3.6.* *_cpython
 python_impl:
 - cpython
+target_platform:
+- linux-aarch64
 tk:
 - '8.6'
 zip_keys:
