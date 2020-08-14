@@ -13,7 +13,7 @@ cxx_compiler_version:
 docker_image:
 - condaforge/linux-anvil-comp7
 numpy:
-- '1.14'
+- '1.18'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -21,9 +21,11 @@ pin_run_as_build:
   tk:
     max_pin: x.x
 python:
-- 3.7.* *_cpython
+- 3.6.* *_73_pypy
 python_impl:
-- cpython
+- pypy
+target_platform:
+- linux-64
 tk:
 - '8.6'
 zip_keys:

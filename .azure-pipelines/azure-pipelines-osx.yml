@@ -5,20 +5,20 @@
 jobs:
 - job: osx
   pool:
-    vmImage: macOS-10.14
+    vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_numpy1.14python3.6.____cpythonpython_implcpython:
-        CONFIG: osx_numpy1.14python3.6.____cpythonpython_implcpython
+      osx_64_python3.6.____73_pypypython_implpypy:
+        CONFIG: osx_64_python3.6.____73_pypypython_implpypy
         UPLOAD_PACKAGES: 'True'
-      osx_numpy1.14python3.7.____cpythonpython_implcpython:
-        CONFIG: osx_numpy1.14python3.7.____cpythonpython_implcpython
+      osx_64_python3.6.____cpythonpython_implcpython:
+        CONFIG: osx_64_python3.6.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_numpy1.14python3.8.____cpythonpython_implcpython:
-        CONFIG: osx_numpy1.14python3.8.____cpythonpython_implcpython
+      osx_64_python3.7.____cpythonpython_implcpython:
+        CONFIG: osx_64_python3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_numpy1.18python3.6.____73_pypypython_implpypy:
-        CONFIG: osx_numpy1.18python3.6.____73_pypypython_implpypy
+      osx_64_python3.8.____cpythonpython_implcpython:
+        CONFIG: osx_64_python3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
     maxParallel: 8
   timeoutInMinutes: 360
