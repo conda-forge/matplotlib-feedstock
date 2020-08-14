@@ -22,6 +22,8 @@ python:
 - 3.6.* *_73_pypy
 python_impl:
 - pypy
+target_platform:
+- linux-ppc64le
 zip_keys:
 - - numpy
   - python
