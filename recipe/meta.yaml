@@ -28,7 +28,8 @@ outputs:
       host:
         - python
         - pip
-        - numpy 1.16  # [x86_64 and python_impl=="cpython"]
+        - numpy 1.15  # [x86_64 and python_impl=="cpython" and py<38]
+        - numpy 1.16  # [x86_64 and python_impl=="cpython" and py==38]
         - numpy       # [not (x86_64 and python_impl=="cpython")]
         - cycler >=0.10
         - python-dateutil
@@ -42,10 +43,10 @@ outputs:
         - {{ pin_compatible('numpy') }}
         - certifi >=2020.06.20
         - cycler >=0.10
-        - python-dateutil >=2.7
+        - python-dateutil >=2.1
         - pillow >=6.2.0
         - freetype
-        - pyparsing >=2.2.1
+        - pyparsing >=2.0.3,!=2.0.4,!=2.1.2,!=2.1.6
         - tk  # [linux]
         - tornado
         - kiwisolver >=1.0.1
