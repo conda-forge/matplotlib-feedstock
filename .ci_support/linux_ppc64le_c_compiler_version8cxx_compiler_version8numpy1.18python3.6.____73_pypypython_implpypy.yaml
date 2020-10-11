@@ -1,44 +1,36 @@
-BUILD:
-- aarch64-conda_cos7-linux-gnu
 c_compiler:
 - gcc
 c_compiler_version:
-- '7.5'
-cdt_arch:
-- aarch64
-cdt_name:
-- cos7
+- '8'
 channel_sources:
-- conda-forge
+- conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '7.5'
+- '8'
 docker_image:
-- condaforge/linux-anvil-aarch64
+- condaforge/linux-anvil-ppc64le
 freetype:
 - 2.9.1
 numpy:
-- '1.16'
+- '1.18'
 pin_run_as_build:
   freetype:
     max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
-  tk:
-    max_pin: x.x
 python:
-- 3.7.* *_cpython
+- 3.6.* *_73_pypy
 python_impl:
-- cpython
+- pypy
 target_platform:
-- linux-aarch64
-tk:
-- '8.6'
+- linux-ppc64le
 zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 - - numpy
   - python
   - python_impl
