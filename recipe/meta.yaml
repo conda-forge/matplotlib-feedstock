@@ -69,6 +69,8 @@ outputs:
   - name: matplotlib
     build:
     requirements:
+      host:
+        - python
       run:
         - python
         - pyqt  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
