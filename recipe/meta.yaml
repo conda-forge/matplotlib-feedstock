@@ -58,7 +58,6 @@ outputs:
         - matplotlib.pyplot
         - matplotlib._image
         - matplotlib._path
-        - matplotlib._png
         - matplotlib._tri
         - matplotlib.backends._backend_agg
         - matplotlib.ft2font
