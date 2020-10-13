@@ -4,7 +4,7 @@
 {% set version = "3.3.2" %}
 
 package:
-  name: matplotlib-base
+  name: matplotlib-suite
   version: {{ version }}
 
 source:
@@ -13,7 +13,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<36]
 
 outputs:
@@ -28,9 +28,7 @@ outputs:
       host:
         - python
         - pip
-        - numpy 1.15  # [x86_64 and python_impl=="cpython" and py<38]
-        - numpy 1.16  # [x86_64 and python_impl=="cpython" and py==38]
-        - numpy       # [not (x86_64 and python_impl=="cpython")]
+        - numpy
         - cycler >=0.10
         - python-dateutil
         - freetype
@@ -60,7 +58,6 @@ outputs:
         - matplotlib.pyplot
         - matplotlib._image
         - matplotlib._path
-        - matplotlib._png
         - matplotlib._tri
         - matplotlib.backends._backend_agg
         - matplotlib.ft2font
@@ -72,7 +69,10 @@ outputs:
   - name: matplotlib
     build:
     requirements:
+      host:
+        - python
       run:
+        - python
         - pyqt  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x.x") }}
     test:

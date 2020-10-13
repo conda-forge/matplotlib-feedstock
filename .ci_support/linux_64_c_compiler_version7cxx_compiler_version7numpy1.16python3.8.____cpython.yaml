@@ -1,25 +1,40 @@
 c_compiler:
-- vs2017
+- gcc
+c_compiler_version:
+- '7'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- gxx
+cxx_compiler_version:
+- '7'
+docker_image:
+- condaforge/linux-anvil-comp7
 freetype:
 - 2.9.1
+numpy:
+- '1.16'
 pin_run_as_build:
   freetype:
     max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
+  tk:
+    max_pin: x.x
 python:
-- 3.6.* *_cpython
+- 3.8.* *_cpython
 python_impl:
 - cpython
 target_platform:
-- win-64
+- linux-64
+tk:
+- '8.6'
 zip_keys:
-- - python
+- - c_compiler_version
+  - cxx_compiler_version
+- - numpy
+  - python
   - python_impl

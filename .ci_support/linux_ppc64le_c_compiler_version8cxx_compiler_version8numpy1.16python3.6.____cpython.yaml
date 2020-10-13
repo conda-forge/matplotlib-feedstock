@@ -23,12 +23,14 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.7.* *_cpython
+- 3.6.* *_cpython
 python_impl:
 - cpython
 target_platform:
 - linux-ppc64le
 zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 - - numpy
   - python
   - python_impl
