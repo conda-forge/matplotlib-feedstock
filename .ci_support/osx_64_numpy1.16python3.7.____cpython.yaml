@@ -1,17 +1,25 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
 c_compiler:
-- vs2015
+- clang
+c_compiler_version:
+- '10'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2015
+- clangxx
+cxx_compiler_version:
+- '10'
 freetype:
 - 2.9.1
 libpng:
 - '1.6'
+macos_machine:
+- x86_64-apple-darwin13.4.0
 numpy:
-- '1.14'
+- '1.16'
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -20,13 +28,12 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
-  zlib:
-    max_pin: x.x
 python:
-- '3.6'
+- 3.7.* *_cpython
+target_platform:
+- osx-64
 zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 - - python
-  - c_compiler
-  - cxx_compiler
-zlib:
-- '1.2'
+  - numpy
