@@ -19,9 +19,9 @@ cxx_compiler_version:
 docker_image:
 - condaforge/linux-anvil-aarch64
 freetype:
-- 2.9.1
+- '2'
 numpy:
-- '1.19'
+- '1.18'
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -31,9 +31,9 @@ pin_run_as_build:
   tk:
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.6.* *_73_pypy
 python_impl:
-- cpython
+- pypy
 target_platform:
 - linux-aarch64
 tk:
@@ -41,6 +41,6 @@ tk:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - numpy
-  - python
+- - python
+  - numpy
   - python_impl
