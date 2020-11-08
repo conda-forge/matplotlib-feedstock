@@ -22,6 +22,9 @@ outputs:
     script: build_base.sh  # [not win]
     requirements:
       build:
+        - python                                 # [build_platform != target_platform]
+        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+        - numpy                                  # [build_platform != target_platform]
         - pkg-config  # [not win]
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
