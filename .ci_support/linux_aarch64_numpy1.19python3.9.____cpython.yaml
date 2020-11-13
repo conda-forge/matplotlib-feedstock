@@ -11,20 +11,16 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge testing
 cxx_compiler:
 - gxx
 cxx_compiler_version:
 - '7'
 docker_image:
 - quay.io/condaforge/linux-anvil-aarch64
-freetype:
-- '2'
 numpy:
 - '1.19'
 pin_run_as_build:
-  freetype:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
