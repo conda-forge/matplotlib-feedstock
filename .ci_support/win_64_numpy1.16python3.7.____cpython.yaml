@@ -6,16 +6,19 @@ channel_targets:
 - conda-forge testing
 cxx_compiler:
 - vs2017
+numpy:
+- '1.16'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.6.* *_cpython
+- 3.7.* *_cpython
 python_impl:
 - cpython
 target_platform:
 - win-64
 zip_keys:
 - - python
+  - numpy
   - python_impl
