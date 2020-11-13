@@ -1,4 +1,4 @@
 channel_targets:
   - conda-forge testing
-MACOSX_DEPLOYMENT_TARGET:  # [osx]
-  - 10.11                  # [osx]
+MACOSX_DEPLOYMENT_TARGET:  # [osx and x86_64]
+  - 10.11                  # [osx and x86_64]

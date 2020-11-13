@@ -1,22 +1,26 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.11'
+- '11.0'
 c_compiler:
 - clang
 c_compiler_version:
-- '10'
+- '11'
 channel_sources:
-- conda-forge,defaults
+- conda-forge/label/rust_dev,conda-forge,https://conda-web.anaconda.org/conda-forge
 channel_targets:
-- conda-forge testing
+- conda-forge main
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '10'
+- '11'
+freetype:
+- '2'
 macos_machine:
-- x86_64-apple-darwin13.4.0
+- arm64-apple-darwin20.0.0
 numpy:
-- '1.16'
+- '1.19'
 pin_run_as_build:
+  freetype:
+    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
@@ -25,8 +29,10 @@ python:
 python_impl:
 - cpython
 target_platform:
-- osx-64
+- osx-arm64
 zip_keys:
-- - numpy
-  - python
+- - c_compiler_version
+  - cxx_compiler_version
+- - python
+  - numpy
   - python_impl

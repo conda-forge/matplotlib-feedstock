@@ -3,7 +3,7 @@ BUILD:
 c_compiler:
 - gcc
 c_compiler_version:
-- '7.5'
+- '7'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -11,30 +11,36 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge testing
+- conda-forge main
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '7.5'
+- '7'
 docker_image:
-- condaforge/linux-anvil-aarch64
+- quay.io/condaforge/linux-anvil-aarch64
+freetype:
+- '2'
 numpy:
-- '1.18'
+- '1.19'
 pin_run_as_build:
+  freetype:
+    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
   tk:
     max_pin: x.x
 python:
-- 3.6.* *_73_pypy
+- 3.9.* *_cpython
 python_impl:
-- pypy
+- cpython
 target_platform:
 - linux-aarch64
 tk:
 - '8.6'
 zip_keys:
-- - numpy
-  - python
+- - c_compiler_version
+  - cxx_compiler_version
+- - python
+  - numpy
   - python_impl
