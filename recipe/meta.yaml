@@ -19,7 +19,7 @@ source:
     - patches/osx-frame.patch  # [osx]
 
 build:
-  number: 2
+  number: 3
 
 outputs:
   - name: matplotlib-base
