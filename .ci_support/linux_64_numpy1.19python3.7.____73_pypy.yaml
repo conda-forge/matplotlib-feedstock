@@ -21,7 +21,7 @@ icu:
 libpng:
 - '1.6'
 numpy:
-- '1.16'
+- '1.19'
 pin_run_as_build:
   freetype:
     max_pin: x
@@ -33,7 +33,7 @@ pin_run_as_build:
   tk:
     max_pin: x.x
 python:
-- 3.7.* *_cpython
+- 3.7.* *_73_pypy
 target_platform:
 - linux-64
 tk:
