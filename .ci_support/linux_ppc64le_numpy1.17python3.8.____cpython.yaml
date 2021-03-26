@@ -17,7 +17,7 @@ docker_image:
 freetype:
 - '2'
 numpy:
-- '1.16'
+- '1.17'
 pin_run_as_build:
   freetype:
     max_pin: x
