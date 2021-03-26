@@ -14,7 +14,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<36]
+  skip: true  # [py<37]
 
 outputs:
   - name: matplotlib-base
@@ -33,10 +33,10 @@ outputs:
         - pip
         - numpy
         - cycler >=0.10
-        - python-dateutil
+        - python-dateutil >=2.7
         - freetype
         - nose
-        - pyparsing
+        - pyparsing >=2.2.1
         - tk  # [linux]
       run:
         - python
@@ -47,7 +47,7 @@ outputs:
         - python-dateutil >=2.1
         - pillow >=6.2.0
         - freetype
-        - pyparsing >=2.0.3,!=2.0.4,!=2.1.2,!=2.1.6
+        - pyparsing >=2.2.1
         - tk  # [linux]
         - tornado
         - kiwisolver >=1.0.1
