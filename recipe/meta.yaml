@@ -14,12 +14,13 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<37]
 
 outputs:
   - name: matplotlib-base
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
+    build:
+      skip: true  # [py<37]
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
@@ -71,6 +72,7 @@ outputs:
 
   - name: matplotlib
     build:
+      skip: true  # [py<37]
     requirements:
       host:
         - python
@@ -87,6 +89,7 @@ outputs:
     script: install-data.bat  # [win]
     build:
       skip: true  # [python_impl == "pypy"]
+      skip: true  # [py<37]
       noarch: python
     requirements:
       host:
