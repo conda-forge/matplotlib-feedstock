@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.4.0" %}
+{% set version = "3.4.1" %}
 
 package:
   name: matplotlib-suite
@@ -9,17 +9,20 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: a145cd4ec257fd659c4950a4485a860836f1ad615add756a4dcb203fad80c4cb
+  sha256: e662bdde3f493b0f14f658095d91c36521d0f2d96c0a4b9fad55fca6d6300a87
+  patches: 
+    - pypi.patch  # [python_impl == "pypy"]
 
 
 build:
   number: 0
-  skip: true  # [py<37]
 
 outputs:
   - name: matplotlib-base
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
+    build:
+      skip: true  # [py<37]
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
@@ -71,6 +74,7 @@ outputs:
 
   - name: matplotlib
     build:
+      skip: true  # [py<37]
     requirements:
       host:
         - python
@@ -87,6 +91,7 @@ outputs:
     script: install-data.bat  # [win]
     build:
       skip: true  # [python_impl == "pypy"]
+      skip: true  # [py<37]
       noarch: python
     requirements:
       host:

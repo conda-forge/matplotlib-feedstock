@@ -1,0 +1,25 @@
+From 968f1fc002b9970f75aa30ab2834003ea7a0ccac Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Wed, 31 Mar 2021 11:55:40 +0200
+Subject: [PATCH] Update _path.h
+
+---
+ src/_path.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/_path.h b/src/_path.h
+index 784a6457807c..e3f812fd5654 100644
+--- a/src/_path.h
++++ b/src/_path.h
+@@ -21,6 +21,11 @@
+ #include "_backend_agg_basic_types.h"
+ #include "numpy_cpp.h"
+ 
++// pypy patch
++#ifndef Py_DTSF_ADD_DOT_0
++#define Py_DTSF_ADD_DOT_0 0x02
++#endif
++
+ struct XY
+ {
+     double x;
