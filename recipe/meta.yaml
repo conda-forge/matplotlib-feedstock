@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.3.3" %}
+{% set version = "3.4.1" %}
 
 package:
   name: matplotlib-suite
@@ -9,17 +9,21 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 12c8a48373b7e46d4c9b84629a8964341357d9a56ac2ac1f2475669bf3102f94
+  sha256: e662bdde3f493b0f14f658095d91c36521d0f2d96c0a4b9fad55fca6d6300a87
+  patches: 
+    - pypi.patch  # [python_impl == "pypy"]
 
 
 build:
-  number: 201
+  number: 200
   skip: true  # [py<36 or (osx and not x86_64)]
 
 outputs:
   - name: matplotlib-base
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
+    build:
+      skip: true  # [py<37]
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
@@ -34,9 +38,9 @@ outputs:
         - pip
         - numpy
         - cycler >=0.10
-        - python-dateutil
+        - python-dateutil >=2.7
         - nose
-        - pyparsing
+        - pyparsing >=2.2.1
         - tk  # [linux]
       run:
         - python
@@ -46,7 +50,7 @@ outputs:
         - cycler >=0.10
         - python-dateutil >=2.1
         - pillow >=6.2.0
-        - pyparsing >=2.0.3,!=2.0.4,!=2.1.2,!=2.1.6
+        - pyparsing >=2.2.1
         - tk  # [linux]
         - tornado
         - kiwisolver >=1.0.1
@@ -70,6 +74,7 @@ outputs:
 
   - name: matplotlib
     build:
+      skip: true  # [py<37]
     requirements:
       host:
         - python
@@ -86,6 +91,7 @@ outputs:
     script: install-data.bat  # [win]
     build:
       skip: true  # [python_impl == "pypy"]
+      skip: true  # [py<37]
       noarch: python
     requirements:
       host:
