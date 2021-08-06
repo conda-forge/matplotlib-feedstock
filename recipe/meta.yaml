@@ -12,6 +12,7 @@ source:
   sha256: e5960bcb964ee77d37752f7a1db4568d85e99d8857fbf20289dda2edfa711675
   patches:
     - pypi.patch  # [python_impl == "pypy"]
+    - pre-7.3.6-0001.patch  # [python_impl == "pypy" and win]
 
 
 build:
