@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: linux_aarch64_numpy1.17python3.6.___hbd74f1bd2d
+name: linux_aarch64_numpy1.18python3.6.___h0f6feb4597
 
 platform:
   os: linux
@@ -10,7 +10,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_numpy1.17python3.6.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_numpy1.18python3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -31,7 +31,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_numpy1.17python3.7.___hcdfa3c3ca8
+name: linux_aarch64_numpy1.18python3.7.___h1cadc65bfe
 
 platform:
   os: linux
@@ -41,7 +41,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_numpy1.17python3.7.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_numpy1.18python3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -62,7 +62,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_numpy1.17python3.8.___hbbdfb36bbd
+name: linux_aarch64_numpy1.18python3.8.___ha3ae6cc14c
 
 platform:
   os: linux
@@ -72,38 +72,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_numpy1.17python3.8.____cpythonpython_implcpython
-    UPLOAD_PACKAGES: True
-    PLATFORM: linux-aarch64
-    BINSTAR_TOKEN:
-      from_secret: BINSTAR_TOKEN
-    FEEDSTOCK_TOKEN:
-      from_secret: FEEDSTOCK_TOKEN
-    STAGING_BINSTAR_TOKEN:
-      from_secret: STAGING_BINSTAR_TOKEN
-  commands:
-    - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
-    - export RECIPE_ROOT="$FEEDSTOCK_ROOT/recipe"
-    - export CI=drone
-    - export GIT_BRANCH="$DRONE_BRANCH"
-    - export FEEDSTOCK_NAME=$(basename ${DRONE_REPO_NAME})
-    - sed -i '$ichown -R conda:conda "$FEEDSTOCK_ROOT"' /opt/docker/bin/entrypoint
-    - /opt/docker/bin/entrypoint $FEEDSTOCK_ROOT/.scripts/build_steps.sh
-    - echo "Done building"
-
----
-kind: pipeline
-name: linux_aarch64_numpy1.18python3.6.___hfb0eb6ab4e
-
-platform:
-  os: linux
-  arch: arm64
-
-steps:
-- name: Install and build
-  image: quay.io/condaforge/linux-anvil-aarch64
-  environment:
-    CONFIG: linux_aarch64_numpy1.18python3.6.____73_pypypython_implpypy
+    CONFIG: linux_aarch64_numpy1.18python3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:

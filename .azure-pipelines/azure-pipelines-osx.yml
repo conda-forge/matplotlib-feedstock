@@ -8,17 +8,14 @@ jobs:
     vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_64_numpy1.17python3.6.____cpythonpython_implcpython:
-        CONFIG: osx_64_numpy1.17python3.6.____cpythonpython_implcpython
+      osx_64_numpy1.18python3.6.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.18python3.6.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.17python3.7.____cpythonpython_implcpython:
-        CONFIG: osx_64_numpy1.17python3.7.____cpythonpython_implcpython
+      osx_64_numpy1.18python3.7.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.18python3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.17python3.8.____cpythonpython_implcpython:
-        CONFIG: osx_64_numpy1.17python3.8.____cpythonpython_implcpython
-        UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.18python3.6.____73_pypypython_implpypy:
-        CONFIG: osx_64_numpy1.18python3.6.____73_pypypython_implpypy
+      osx_64_numpy1.18python3.8.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.18python3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
       osx_64_numpy1.19python3.7.____73_pypypython_implpypy:
         CONFIG: osx_64_numpy1.19python3.7.____73_pypypython_implpypy
