@@ -3,19 +3,23 @@ c_compiler:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge testing
+- conda-forge main
 cxx_compiler:
 - vs2017
+freetype:
+- '2'
 numpy:
-- '1.17'
+- '1.19'
 pin_run_as_build:
+  freetype:
+    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.6.* *_cpython
+- 3.7.* *_73_pypy
 python_impl:
-- cpython
+- pypy
 target_platform:
 - win-64
 zip_keys:
