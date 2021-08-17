@@ -27,9 +27,9 @@ pin_run_as_build:
   tk:
     max_pin: x.x
 python:
-- 3.6.* *_73_pypy
+- 3.7.* *_cpython
 python_impl:
-- pypy
+- cpython
 target_platform:
 - linux-aarch64
 tk:

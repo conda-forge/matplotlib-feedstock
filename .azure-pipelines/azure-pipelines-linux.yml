@@ -5,23 +5,19 @@
 jobs:
 - job: linux
   pool:
-    vmImage: ubuntu-16.04
+    vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_numpy1.17python3.6.____cpythonpython_implcpython:
-        CONFIG: linux_64_numpy1.17python3.6.____cpythonpython_implcpython
+      linux_64_numpy1.18python3.6.____cpythonpython_implcpython:
+        CONFIG: linux_64_numpy1.18python3.6.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
-      linux_64_numpy1.17python3.7.____cpythonpython_implcpython:
-        CONFIG: linux_64_numpy1.17python3.7.____cpythonpython_implcpython
+      linux_64_numpy1.18python3.7.____cpythonpython_implcpython:
+        CONFIG: linux_64_numpy1.18python3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
-      linux_64_numpy1.17python3.8.____cpythonpython_implcpython:
-        CONFIG: linux_64_numpy1.17python3.8.____cpythonpython_implcpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
-      linux_64_numpy1.18python3.6.____73_pypypython_implpypy:
-        CONFIG: linux_64_numpy1.18python3.6.____73_pypypython_implpypy
+      linux_64_numpy1.18python3.8.____cpythonpython_implcpython:
+        CONFIG: linux_64_numpy1.18python3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
       linux_64_numpy1.19python3.7.____73_pypypython_implpypy:
