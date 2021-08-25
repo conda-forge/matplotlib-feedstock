@@ -18,8 +18,6 @@ cxx_compiler_version:
 - '9'
 docker_image:
 - quay.io/condaforge/linux-anvil-aarch64
-numpy:
-- '1.19'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -27,9 +25,9 @@ pin_run_as_build:
   tk:
     max_pin: x.x
 python:
-- 3.7.* *_73_pypy
+- 3.6.* *_cpython
 python_impl:
-- pypy
+- cpython
 target_platform:
 - linux-aarch64
 tk:
@@ -38,5 +36,4 @@ zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
 - - python
-  - numpy
   - python_impl

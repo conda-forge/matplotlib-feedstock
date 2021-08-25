@@ -14,8 +14,6 @@ cxx_compiler_version:
 - '9'
 docker_image:
 - quay.io/condaforge/linux-anvil-ppc64le
-numpy:
-- '1.18'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -30,5 +28,4 @@ zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
 - - python
-  - numpy
   - python_impl
