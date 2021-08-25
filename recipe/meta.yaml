@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 0bd2b4518acf4ea1bcd5675625d5a2dbae9163a39bbcdf8f23635a0795f8800a
+  sha256: 982c2744535a687c5f0da4e268d905ce090ee09bc2005cbd5a0ec76f4ed2aa3b
 
 build:
   number: 0
