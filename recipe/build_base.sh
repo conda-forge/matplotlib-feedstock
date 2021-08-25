@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat <<EOF > setup.cfg
+cat <<EOF > conda_mpl_config.cfg
 [directories]
 basedirlist = $PREFIX
 
@@ -14,7 +14,9 @@ system_freetype = True
 
 EOF
 
-cat setup.cfg
+cat conda_mpl_config.cfg
 sed -i.bak "s|/usr/local|${PREFIX}|" setupext.py
+
+export MPLSETUPCFG=conda_mpl_config.cfg
 
 $PYTHON -m pip install . --no-deps -vv
