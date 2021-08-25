@@ -7,7 +7,7 @@ c_compiler_version:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge testing
+- conda-forge mpl_dev
 cxx_compiler:
 - clangxx
 cxx_compiler_version:

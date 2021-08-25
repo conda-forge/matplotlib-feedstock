@@ -3,7 +3,7 @@ c_compiler:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge testing
+- conda-forge mpl_dev
 cxx_compiler:
 - vs2017
 numpy:

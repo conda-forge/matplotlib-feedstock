@@ -7,7 +7,7 @@ cdt_name:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge testing
+- conda-forge mpl_dev
 cxx_compiler:
 - gxx
 cxx_compiler_version:
