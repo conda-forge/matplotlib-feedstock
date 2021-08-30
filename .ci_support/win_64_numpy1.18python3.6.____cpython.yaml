@@ -11,7 +11,7 @@ freetype:
 libpng:
 - '1.6'
 numpy:
-- '1.16'
+- '1.18'
 pin_run_as_build:
   freetype:
     max_pin: x
