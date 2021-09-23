@@ -16,7 +16,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: matplotlib-base
@@ -55,8 +55,6 @@ outputs:
         - tk  # [linux]
         - tornado
         - kiwisolver >=1.0.1
-      run_constrained:
-        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
     test:
       requires:
         - pytest
