@@ -1,78 +1,79 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.2.0rc2" %}
+{% set version = "3.5.0rc1" %}
 
 package:
-  name: matplotlib-base
+  name: matplotlib-suite
   version: {{ version }}
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: a7f5edaeae7bfbbf315e754f532db24209abcf9ce498a96e69ee4d2a13d69361
+  sha256: 8ea8b40872349acd47ffa118b16ed3a1bde438961ac339808cd5a1741136e69d
 
 build:
   number: 0
-  skip: true  # [py<35]
-
-requirements:
-  build:
-    - pkg-config  # [not win]
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - python
-    - pip
-    - numpy
-    - cycler >=0.10
-    - python-dateutil
-    - freetype
-    - msinttypes  # [win]
-    - nose
-    - pyparsing
-    - libpng
-    - zlib  # [win]
-    - tk  # [linux]
-    - icu  # [linux]
-  run:
-    - python
-    - setuptools
-    - {{ pin_compatible('numpy') }}
-    - cycler >=0.10
-    - python-dateutil
-    - freetype
-    - pyparsing
-    - libpng
-    - tk  # [linux]
-    - icu  # [linux]
-    - tornado
-    - kiwisolver
-
-test:
-  imports:
-    - matplotlib
-    - matplotlib.pyplot
-    - matplotlib._image
-    - matplotlib._path
-    - matplotlib._png
-    - matplotlib._tri
-    - matplotlib.backends._backend_agg
-    - matplotlib.ft2font
-    - matplotlib.ttconv
-    - mpl_toolkits
-    - pylab
 
 outputs:
   - name: matplotlib-base
+    script: build_base.bat  # [win]
+    script: build_base.sh  # [not win]
+    build:
+      skip: true  # [py<37]
+    requirements:
+      build:
+        - python                                 # [build_platform != target_platform]
+        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+        - numpy                                  # [build_platform != target_platform]
+        - pkg-config  # [not win]
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+      host:
+        - python
+        - pip
+        - numpy
+        - freetype
+        - tk  # [linux]
+      run:
+        - python
+        - {{ pin_compatible('numpy') }}
+        - numpy >=1.17
+        - certifi >=2020.06.20
+        - cycler >=0.10
+        - python-dateutil >=2.7
+        - pillow >=6.2.0
+        - fonttools >=4.22.0
+        - freetype
+        - packaging >=20.0
+        - pyparsing >=2.2.1
+        - tk  # [linux]
+        - kiwisolver >=1.0.1
+    test:
+      imports:
+        - matplotlib
+        - matplotlib.pyplot
+        - matplotlib._contour
+        - matplotlib._image
+        - matplotlib._path
+        - matplotlib._qhull
+        - matplotlib._tri
+        - matplotlib._ttconv
+        - matplotlib.backends._backend_agg
+        - matplotlib.ft2font
+        - matplotlib.backends._tkagg  # [not win]
+        - mpl_toolkits
+        - pylab
 
   - name: matplotlib
+    build:
+      skip: true  # [py<37]
     requirements:
       host:
         - python
       run:
         - python
-        - pyqt  # [not osx and not aarch64 and not ppc64le]
-        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+        - pyqt  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
+        - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
       imports:
         - matplotlib
@@ -80,12 +81,17 @@ outputs:
   - name: mpl_sample_data
     script: install-data.sh  # [not win]
     script: install-data.bat  # [win]
+    build:
+      skip: true  # [python_impl == "pypy"]
+      skip: true  # [py<37]
+      noarch: python
     requirements:
       host:
         - python
       run:
         - python
-        - {{ pin_subpackage('matplotlib-base', exact=True) }}
+        # match major/minor version, but allow noarch
+        - {{ pin_subpackage('matplotlib-base', max_pin="x.x") }}
     test:
       imports:
         - matplotlib.cbook
@@ -94,7 +100,7 @@ outputs:
 
 about:
   home: http://matplotlib.org/
-  license: PSF-based
+  license: LicenseRef-PSF-based
   license_url: http://matplotlib.sourceforge.net/users/license.html
   license_family: PSF
   license_file: LICENSE/LICENSE

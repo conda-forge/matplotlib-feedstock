@@ -3,25 +3,35 @@
 
 language: generic
 
-env:
-  global:
-    # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
-    - secure: "redV8EPEfpaRtRE8u8jAXiR/Zoxu9TCN6D8ufhSFrkNSZ8hNJRtHzN/RJsY3b/tNr7xCegaP3xk+kfaN3c8C0lW/Y+7ayCI38VVibLNsIvzY8ev2UPHb6oLNkp9mpuXk+5c1CA7aGsvYD6EvNMe1nCdUnopSgDNi5qYWjPFQte2gavgVMJqU4FGiQ1upcW9LGyBepbGauqUAYPkJev4BTMWigSvAYanJdT9rZMdO/z3gjBEcmFQI71JgBC7qyiKLVtIpdhUKlHNZxyIWQItgpm6DJOUS0WJniWZxtmaRfYTzFCdR7lRqBMG6deQiSJxM/dubf3uFVDNPOh7+YA3NQcFMoKm/hVdVEQZBNErqUVlkN2evlGizZZiJAkWTX0u+kaAAxe+fKRvdugL2FWuS6Mt/P/l6vBJLRMBiTSidOplqYwIgufNl9Zuwcl9/9Jq37ec3of7Ul0Sm6BBOrbnhEnsZc8v6raJ7xejd1futEKKvOSIJX/TPfTu5fUDwlcZDM9W2MRLqVR2uOfSIDY8izMvpWXRn8T+F59ZVPsH232evd+zlVNSVvwzKrTGyCSEqz+zXYGtRIjSReSiHXnlFfDtTXDiV6D+4tCKZhaaa3HW27iLwqpBRK7pldXyLWPYmdBybZksKj2wgL8fm3S0dEG/b68bVzUxW54RHaYLoR8A="
+
 
 matrix:
   include:
-    - env: CONFIG=linux_ppc64le_python3.6 UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
-      os: linux-ppc64le
+    - env: CONFIG=linux_ppc64le_numpy1.18python3.7.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+      dist: focal
 
-    - env: CONFIG=linux_ppc64le_python3.7 UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
-      os: linux-ppc64le
+    - env: CONFIG=linux_ppc64le_numpy1.18python3.8.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+      dist: focal
 
-    - env: CONFIG=linux_ppc64le_python3.8 UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
-      os: linux-ppc64le
+    - env: CONFIG=linux_ppc64le_numpy1.19python3.7.____73_pypypython_implpypy UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+      dist: focal
+
+    - env: CONFIG=linux_ppc64le_numpy1.19python3.9.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+      dist: focal
 
 script:
   - export CI=travis
   - export GIT_BRANCH="$TRAVIS_BRANCH"
+  - export FEEDSTOCK_NAME=$(basename ${TRAVIS_REPO_SLUG})
+  - if [[ "${TRAVIS_PULL_REQUEST:-}" == "false" ]]; then export IS_PR_BUILD="False"; else export IS_PR_BUILD="True"; fi
 
 
-  - if [[ ${PLATFORM} =~ .*linux.* ]]; then ./.scripts/run_docker_build.sh; fi
+  - if [[ ${PLATFORM} =~ .*linux.* ]]; then CONDA_FORGE_DOCKER_RUN_ARGS=--network=host ./.scripts/run_docker_build.sh; fi
