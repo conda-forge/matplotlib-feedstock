@@ -52,12 +52,14 @@ outputs:
       imports:
         - matplotlib
         - matplotlib.pyplot
+        - matplotlib._contour
         - matplotlib._image
         - matplotlib._path
+        - matplotlib._qhull
         - matplotlib._tri
+        - matplotlib._ttconv
         - matplotlib.backends._backend_agg
         - matplotlib.ft2font
-        - matplotlib.ttconv
         - matplotlib.backends._tkagg  # [not win]
         - mpl_toolkits
         - pylab
