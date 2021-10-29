@@ -1,32 +1,28 @@
 c_compiler:
-- vs2015
+- vs2017
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge matplotlib_rc
+- conda-forge main
 cxx_compiler:
-- vs2015
+- vs2017
 freetype:
-- 2.9.1
-libpng:
-- '1.6'
+- '2'
 numpy:
-- '1.14'
+- '1.19'
 pin_run_as_build:
   freetype:
     max_pin: x
-  libpng:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
-  zlib:
-    max_pin: x.x
 python:
-- '3.7'
+- 3.7.* *_73_pypy
+python_impl:
+- pypy
+target_platform:
+- win-64
 zip_keys:
 - - python
-  - c_compiler
-  - cxx_compiler
-zlib:
-- '1.2'
+  - numpy
+  - python_impl
