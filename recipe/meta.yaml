@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.4.3" %}
+{% set version = "3.5.0rc1" %}
 
 package:
   name: matplotlib-suite
@@ -9,13 +9,13 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 474c4c5555476eb35f44cfd00a4c9b7b24fff9cef685ec80e52260cc33558b0c
+  sha256: 8ea8b40872349acd47ffa118b16ed3a1bde438961ac339808cd5a1741136e69d
   patches:
     - pypi.patch  # [python_impl == "pypy"]
     - pre-7.3.6-0001.patch  # [python_impl == "pypy" and win]
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   - name: matplotlib-base
@@ -35,28 +35,23 @@ outputs:
         - python
         - pip
         - numpy
-        - cycler >=0.10
-        - python-dateutil >=2.7
         - freetype
-        - nose
-        - pyparsing >=2.2.1
         - tk  # [linux]
       run:
         - python
-        - setuptools
         - {{ pin_compatible('numpy') }}
+        - numpy >=1.17
         - certifi >=2020.06.20
         - cycler >=0.10
-        - python-dateutil >=2.1
+        - python-dateutil >=2.7
         - pillow >=6.2.0
+        - fonttools >=4.22.0
         - freetype
+        - packaging >=20.0
         - pyparsing >=2.2.1
         - tk  # [linux]
-        - tornado
         - kiwisolver >=1.0.1
     test:
-      requires:
-        - pytest
       imports:
         - matplotlib
         - matplotlib.pyplot
