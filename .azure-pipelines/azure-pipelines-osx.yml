@@ -8,9 +8,6 @@ jobs:
     vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_64_numpy1.18python3.6.____cpythonpython_implcpython:
-        CONFIG: osx_64_numpy1.18python3.6.____cpythonpython_implcpython
-        UPLOAD_PACKAGES: 'True'
       osx_64_numpy1.18python3.7.____cpythonpython_implcpython:
         CONFIG: osx_64_numpy1.18python3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
@@ -38,6 +35,11 @@ jobs:
       export OSX_FORCE_SDK_DOWNLOAD="1"
       export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
       export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
+      if [[ "${BUILD_REASON:-}" == "PullRequest" ]]; then
+        export IS_PR_BUILD="True"
+      else
+        export IS_PR_BUILD="False"
+      fi
       ./.scripts/run_osx_build.sh
     displayName: Run OSX build
     env:
