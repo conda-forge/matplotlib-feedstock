@@ -5,7 +5,7 @@ c_compiler_version:
 cdt_name:
 - cos7
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -21,7 +21,7 @@ icu:
 libpng:
 - '1.6'
 numpy:
-- '1.17'
+- '1.18'
 pin_run_as_build:
   freetype:
     max_pin: x
