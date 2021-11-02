@@ -6,4 +6,3 @@ test_on_native_only: true
 bot:
   abi_migration_branches:
    - testing
-   - v2.2.x
