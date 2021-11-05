@@ -38,7 +38,7 @@ outputs:
         - numpy
         - cycler >=0.10
         - python-dateutil >=2.7
-        - freetype
+        - freetype !=2.11.0
         - nose
         - pyparsing >=2.2.1
         - tk  # [linux]
@@ -50,7 +50,7 @@ outputs:
         - cycler >=0.10
         - python-dateutil >=2.1
         - pillow >=6.2.0
-        - freetype
+        - freetype !=2.11.0
         - pyparsing >=2.2.1
         - tk  # [linux]
         - tornado
