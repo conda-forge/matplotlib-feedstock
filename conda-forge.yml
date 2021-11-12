@@ -1,8 +1,15 @@
-build_platform: {osx_arm64: osx_64}
-conda_forge_output_validation: true
-provider: {linux: azure, linux_aarch64: default, linux_ppc64le: default, osx: azure,
-  win: azure}
-test_on_native_only: true
 bot:
   abi_migration_branches:
-   - testing
+  - testing
+build_platform:
+  linux_aarch64: linux_64
+  linux_ppc64le: linux_64
+  osx_arm64: osx_64
+conda_forge_output_validation: true
+provider:
+  linux: azure
+  linux_aarch64: default
+  linux_ppc64le: default
+  osx: azure
+  win: azure
+test_on_native_only: true
