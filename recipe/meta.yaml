@@ -10,10 +10,6 @@ package:
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
   sha256: fc46f0eb54d9d51ddf0637e383afce2fdb6e352d894a81993b25d8df41eddaaf
-  patches:
-    - pypi.patch  # [python_impl == "pypy"]
-    - pre-7.3.6-0001.patch  # [python_impl == "pypy" and win]
-
 
 build:
   number: 0
@@ -36,37 +32,34 @@ outputs:
         - python
         - pip
         - numpy
-        - cycler >=0.10
-        - python-dateutil >=2.7
         - freetype
-        - nose
-        - pyparsing >=2.2.1
         - tk  # [linux]
       run:
         - python
-        - setuptools
         - {{ pin_compatible('numpy') }}
+        - numpy >=1.17
         - certifi >=2020.06.20
         - cycler >=0.10
-        - python-dateutil >=2.1
+        - python-dateutil >=2.7
         - pillow >=6.2.0
+        - fonttools >=4.22.0
         - freetype
+        - packaging >=20.0
         - pyparsing >=2.2.1
         - tk  # [linux]
-        - tornado
         - kiwisolver >=1.0.1
     test:
-      requires:
-        - pytest
       imports:
         - matplotlib
         - matplotlib.pyplot
+        - matplotlib._contour
         - matplotlib._image
         - matplotlib._path
+        - matplotlib._qhull
         - matplotlib._tri
+        - matplotlib._ttconv
         - matplotlib.backends._backend_agg
         - matplotlib.ft2font
-        - matplotlib.ttconv
         - matplotlib.backends._tkagg  # [not win]
         - mpl_toolkits
         - pylab
@@ -80,7 +73,7 @@ outputs:
       run:
         - python
         - pyqt  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
-        - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x.x") }}
+        - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
       imports:
         - matplotlib
