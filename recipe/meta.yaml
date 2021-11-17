@@ -84,6 +84,7 @@ outputs:
     build:
       skip: true  # [python_impl == "pypy"]
       skip: true  # [py<37]
+      skip: true  # [aarch64 or ppc64le]
       noarch: python
     requirements:
       host:
