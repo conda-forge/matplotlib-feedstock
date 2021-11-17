@@ -78,27 +78,6 @@ outputs:
       imports:
         - matplotlib
 
-  - name: mpl_sample_data
-    script: install-data.sh  # [not win]
-    script: install-data.bat  # [win]
-    build:
-      skip: true  # [python_impl == "pypy"]
-      skip: true  # [py<37]
-      skip: true  # [aarch64 or ppc64le]
-      noarch: python
-    requirements:
-      host:
-        - python
-      run:
-        - python
-        # match major/minor version, but allow noarch
-        - {{ pin_subpackage('matplotlib-base', max_pin="x.x") }}
-    test:
-      imports:
-        - matplotlib.cbook
-      commands:
-        - python -c "import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)"
-
 about:
   home: http://matplotlib.org/
   license: LicenseRef-PSF-based
