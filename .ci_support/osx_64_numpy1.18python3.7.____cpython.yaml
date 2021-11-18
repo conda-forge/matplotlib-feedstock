@@ -1,4 +1,6 @@
 MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
+MACOSX_SDK_VERSION:
 - '10.11'
 c_compiler:
 - clang
@@ -15,13 +17,13 @@ cxx_compiler_version:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 numpy:
-- '1.21'
+- '1.18'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.7.* *_cpython
 python_impl:
 - cpython
 target_platform:
