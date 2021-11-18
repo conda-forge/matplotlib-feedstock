@@ -40,7 +40,7 @@ source run_conda_forge_build_setup
 # "recipe/yum_requirements.txt" file. After updating that file,
 # run "conda smithy rerender" and this line will be updated
 # automatically.
-/usr/bin/sudo -n yum install -y mesa-libGL
+/usr/bin/sudo -n yum install -y libX11 libXau libxcb mesa-libGL
 
 
 # make the build number clobber
