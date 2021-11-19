@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.4.3" %}
+{% set version = "3.5.0" %}
 
 package:
   name: matplotlib-suite
@@ -9,14 +9,12 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 474c4c5555476eb35f44cfd00a4c9b7b24fff9cef685ec80e52260cc33558b0c
+  sha256: fc46f0eb54d9d51ddf0637e383afce2fdb6e352d894a81993b25d8df41eddaaf
   patches:
-    - pypi.patch  # [python_impl == "pypy"]
-    - pre-7.3.6-0001.patch  # [python_impl == "pypy" and win]
-
+    - revert-matplotlib-21277.patch  # [linux and (py==310 or python_impl == "pypy")]
 
 build:
-  number: 201
+  number: 200
   skip: true  # [py<36 or (osx and not x86_64)]
 
 outputs:
@@ -38,37 +36,32 @@ outputs:
         - python
         - pip
         - numpy
-        - cycler >=0.10
-        - python-dateutil >=2.7
-        - nose
-        - pyparsing >=2.2.1
         - tk  # [linux]
       run:
         - python
-        - setuptools
         - {{ pin_compatible('numpy') }}
+        - numpy >=1.17
         - certifi >=2020.06.20
         - cycler >=0.10
-        - python-dateutil >=2.1
+        - python-dateutil >=2.7
         - pillow >=6.2.0
+        - fonttools >=4.22.0
+        - packaging >=20.0
         - pyparsing >=2.2.1
         - tk  # [linux]
-        - tornado
         - kiwisolver >=1.0.1
-      run_constrained:
-        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
     test:
-      requires:
-        - pytest
       imports:
         - matplotlib
         - matplotlib.pyplot
+        - matplotlib._contour
         - matplotlib._image
         - matplotlib._path
+        - matplotlib._qhull
         - matplotlib._tri
+        - matplotlib._ttconv
         - matplotlib.backends._backend_agg
         - matplotlib.ft2font
-        - matplotlib.ttconv
         - matplotlib.backends._tkagg  # [not win]
         - mpl_toolkits
         - pylab
@@ -82,30 +75,11 @@ outputs:
       run:
         - python
         - pyqt  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
-        - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x.x") }}
+        - tornado
+        - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
       imports:
         - matplotlib
-
-  - name: mpl_sample_data
-    script: install-data.sh  # [not win]
-    script: install-data.bat  # [win]
-    build:
-      skip: true  # [python_impl == "pypy"]
-      skip: true  # [py<37]
-      noarch: python
-    requirements:
-      host:
-        - python
-      run:
-        - python
-        # match major/minor version, but allow noarch
-        - {{ pin_subpackage('matplotlib-base', max_pin="x.x") }}
-    test:
-      imports:
-        - matplotlib.cbook
-      commands:
-        - python -c "import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)"
 
 about:
   home: http://matplotlib.org/
