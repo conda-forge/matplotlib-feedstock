@@ -1,0 +1,30 @@
+commit 57b749f6dee2f85da7ea538b34a9fd1e87c969a4
+Author: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date:   Mon Nov 22 18:08:01 2021 -0500
+
+    Fix compiler configuration priority for FreeType build
+    
+    The CC/CFLAGS/etc flags from the Python config should be our default,
+    but we should always listen to an existing CC set in the environment.
+    
+    Fixes https://github.com/conda-forge/matplotlib-feedstock/pull/312#issuecomment-973902767
+
+diff --git a/setupext.py b/setupext.py
+index 2582676f20..d89181c698 100644
+--- a/setupext.py
++++ b/setupext.py
+@@ -609,13 +609,13 @@ class FreeType(SetupPackage):
+         print(f"Building freetype in {src_path}")
+         if sys.platform != 'win32':  # compilation on non-windows
+             env = {
+-                **env,
+                 **{
+                     var: value
+                     for var, value in sysconfig.get_config_vars().items()
+                     if var in {"CC", "CFLAGS", "CXX", "CXXFLAGS", "LD",
+                                "LDFLAGS"}
+                 },
++                **env,
+             }
+             env["CFLAGS"] = env.get("CFLAGS", "") + " -fPIC"
+             configure = [
