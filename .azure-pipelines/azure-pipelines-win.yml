@@ -8,14 +8,14 @@ jobs:
     vmImage: windows-2019
   strategy:
     matrix:
-      win_64_numpy1.18python3.7.____cpython:
-        CONFIG: win_64_numpy1.18python3.7.____cpython
-        UPLOAD_PACKAGES: 'True'
-      win_64_numpy1.18python3.8.____cpython:
-        CONFIG: win_64_numpy1.18python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
       win_64_numpy1.19python3.7.____73_pypy:
         CONFIG: win_64_numpy1.19python3.7.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+      win_64_numpy1.19python3.7.____cpython:
+        CONFIG: win_64_numpy1.19python3.7.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_numpy1.19python3.8.____cpython:
+        CONFIG: win_64_numpy1.19python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
       win_64_numpy1.19python3.9.____cpython:
         CONFIG: win_64_numpy1.19python3.9.____cpython
@@ -61,10 +61,9 @@ jobs:
 
       condition: contains(variables['CONFIG'], 'vs2008')
       displayName: Patch vs2008 (if needed)
-
     - task: CondaEnvironment@1
       inputs:
-        packageSpecs: 'python=3.9 conda-build conda "conda-forge-ci-setup=3" pip boa' # Optional
+        packageSpecs: 'python=3.9 conda-build conda pip boa conda-forge-ci-setup=3' # Optional
         installOptions: "-c conda-forge"
         updateConda: true
       displayName: Install conda-build and activate environment
