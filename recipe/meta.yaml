@@ -32,13 +32,12 @@ outputs:
         - python
         - pip
         - certifi>=2020.06.20
-        - freetype
+        - freetype <2.11
         - numpy
         - setuptools<64
         - setuptools_scm>=4,<7
         - setuptools_scm_git_archive
         - tk  # [linux]
-        - conda-build<3.22.0
       run:
         - python
         - {{ pin_compatible('numpy') }}
