@@ -38,6 +38,7 @@ outputs:
         - setuptools_scm>=4,<7
         - setuptools_scm_git_archive
         - tk  # [linux]
+        - conda-build<3.22.0
       run:
         - python
         - {{ pin_compatible('numpy') }}
