@@ -12,7 +12,7 @@ source:
   sha256: 9d6ee7190fde3cb0c6285d462a0258c9735a72c7b532321a3983e05076aa41dc
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: matplotlib-base
