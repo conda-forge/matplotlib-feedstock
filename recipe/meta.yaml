@@ -34,7 +34,7 @@ outputs:
         - certifi>=2020.06.20
         - freetype
         - numpy
-        - setuptools_scm>=4
+        - setuptools_scm>=4,<7
         - setuptools_scm_git_archive
         - tk  # [linux]
       run:
