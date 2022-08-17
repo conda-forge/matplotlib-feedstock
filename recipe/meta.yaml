@@ -12,7 +12,7 @@ source:
   sha256: 9d6ee7190fde3cb0c6285d462a0258c9735a72c7b532321a3983e05076aa41dc
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: matplotlib-base
@@ -20,6 +20,8 @@ outputs:
     script: build_base.sh  # [not win]
     build:
       skip: true  # [py<37]
+      ignore_run_exports_from:
+        - zlib
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
@@ -33,6 +35,8 @@ outputs:
         - pip
         - certifi>=2020.06.20
         - freetype
+        # freetype.pc requires zlib.pc
+        - zlib
         - numpy
         - setuptools_scm>=4
         - setuptools_scm_git_archive
