@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '13'
+- '14'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '13'
+- '14'
 freetype:
 - '2'
 macos_machine:
@@ -25,6 +25,8 @@ pin_run_as_build:
     max_pin: x
   python:
     min_pin: x.x
+    max_pin: x.x
+  zlib:
     max_pin: x.x
 python:
 - 3.8.* *_73_pypy
@@ -38,3 +40,5 @@ zip_keys:
 - - python
   - numpy
   - python_impl
+zlib:
+- '1.2'
