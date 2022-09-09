@@ -10,6 +10,8 @@ package:
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
   sha256: 9d6ee7190fde3cb0c6285d462a0258c9735a72c7b532321a3983e05076aa41dc
+  patches:
+    - fix-cross-compile.patch
 
 build:
   number: 201
