@@ -13,7 +13,7 @@ source:
 
 build:
   number: 201
-  skip: true  # [py<36 or (osx and not x86_64)]
+  skip: true  # [py<36]
 
 outputs:
   - name: matplotlib-base
