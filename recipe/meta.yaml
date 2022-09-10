@@ -10,10 +10,12 @@ package:
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
   sha256: 9d6ee7190fde3cb0c6285d462a0258c9735a72c7b532321a3983e05076aa41dc
+  patches:
+    - fix-cross-compile.patch
 
 build:
   number: 201
-  skip: true  # [py<36 or (osx and not x86_64)]
+  skip: true  # [py<36]
 
 outputs:
   - name: matplotlib-base
@@ -30,6 +32,7 @@ outputs:
         - make  # [not win]
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - libtool  # [unix]
       host:
         - python
         - pip

@@ -25,4 +25,7 @@ fi
 
 $PYTHON -c "import os,tarfile;os.makedirs('build', exist_ok=True);tgz = tarfile.open(os.environ['RECIPE_DIR'] + '/freetype-2.6.1.tar.bz2', mode='r:bz2');tgz.extractall('build')"
 
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/libtool/build-aux/config.* build/freetype-2.6.1/builds/unix
+
 $PYTHON -m pip install . --no-deps -vv
