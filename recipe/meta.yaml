@@ -43,6 +43,7 @@ outputs:
         - tk  # [linux]
       run:
         - python
+        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
         - {{ pin_compatible('numpy') }}
         - numpy >=1.19
         - certifi >=2020.06.20
