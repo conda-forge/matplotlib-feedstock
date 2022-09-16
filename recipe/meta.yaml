@@ -88,7 +88,7 @@ outputs:
 
 about:
   home: http://matplotlib.org/
-  license: LicenseRef-PSF-2.0 & CC0-1.0
+  license: LicenseRef-PSF-2.0 and CC0-1.0
   license_url: http://matplotlib.sourceforge.net/users/license.html
   license_family: PSF
   license_file: LICENSE/LICENSE
