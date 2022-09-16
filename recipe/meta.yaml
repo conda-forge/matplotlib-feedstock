@@ -19,7 +19,7 @@ outputs:
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
     build:
-      skip: true  # [py<=37]
+      skip: true  # [py<=38]
       ignore_run_exports_from:
         - zlib
     requirements:
@@ -73,7 +73,7 @@ outputs:
 
   - name: matplotlib
     build:
-      skip: true  # [py<=37]
+      skip: true  # [py<=38]
     requirements:
       host:
         - python
