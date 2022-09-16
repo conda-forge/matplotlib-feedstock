@@ -46,6 +46,7 @@ outputs:
         - {{ pin_compatible('numpy') }}
         - numpy >=1.17
         - certifi >=2020.06.20
+        - contourpy
         - cycler >=0.10
         - python-dateutil >=2.7
         - pillow >=6.2.0
