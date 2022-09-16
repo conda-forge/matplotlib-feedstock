@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.5.3" %}
+{% set version = "3.6.0" %}
 
 package:
   name: matplotlib-suite
@@ -9,10 +9,10 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 9d6ee7190fde3cb0c6285d462a0258c9735a72c7b532321a3983e05076aa41dc
+  sha256: 8ff39ddbf1da8e83b4483dbe40a82cf5b3d6c8e2c426396e26dc19aa45278a56
 
 build:
-  number: 2
+  number: 0
 
 outputs:
   - name: matplotlib-base
