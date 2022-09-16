@@ -1,38 +1,40 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.12'
+MACOSX_SDK_VERSION:
+- '10.12'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '10'
-cdt_name:
-- cos6
+- '14'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge testing
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '10'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- '14'
+macos_machine:
+- x86_64-apple-darwin13.4.0
 numpy:
-- '1.19'
+- '1.20'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
-  tk:
+  zlib:
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.7.* *_cpython
 python_impl:
 - cpython
 target_platform:
-- linux-64
-tk:
-- '8.6'
+- osx-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
 - - python
   - numpy
   - python_impl
+zlib:
+- '1.2'
