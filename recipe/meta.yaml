@@ -38,15 +38,15 @@ outputs:
         # freetype.pc requires zlib.pc
         - zlib
         - numpy
-        - setuptools_scm>=4
+        - setuptools_scm >=7
         - setuptools_scm_git_archive
         - tk  # [linux]
       run:
         - python
         - {{ pin_compatible('numpy') }}
-        - numpy >=1.17
+        - numpy >=1.19
         - certifi >=2020.06.20
-        - contourpy
+        - contourpy >=1.0.1
         - cycler >=0.10
         - python-dateutil >=2.7
         - pillow >=6.2.0
@@ -60,7 +60,6 @@ outputs:
       imports:
         - matplotlib
         - matplotlib.pyplot
-        - matplotlib._contour
         - matplotlib._image
         - matplotlib._path
         - matplotlib._qhull
@@ -89,7 +88,7 @@ outputs:
 
 about:
   home: http://matplotlib.org/
-  license: LicenseRef-PSF-based
+  license: LicenseRef-PSF-2.0 & CC0-1.0
   license_url: http://matplotlib.sourceforge.net/users/license.html
   license_family: PSF
   license_file: LICENSE/LICENSE
