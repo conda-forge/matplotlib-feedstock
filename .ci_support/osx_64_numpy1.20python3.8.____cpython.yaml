@@ -21,12 +21,8 @@ macos_machine:
 numpy:
 - '1.20'
 pin_run_as_build:
-  freetype:
-    max_pin: x
   python:
     min_pin: x.x
-    max_pin: x.x
-  zlib:
     max_pin: x.x
 python:
 - 3.8.* *_cpython
