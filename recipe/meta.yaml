@@ -30,6 +30,7 @@ outputs:
         - pkg-config  # [not win]
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - libtool  # [unix]
       host:
         - python
         - pip
