@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.6.1" %}
+{% set version = "3.6.2" %}
 
 package:
   name: matplotlib-suite
@@ -9,10 +9,10 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 02163f7c2063c615b7fcb36c9b81b4293e567bdf7b6678ff80df914f16cf03a0
+  sha256: 5ac5ca25e6ecd1e7711e1f859b4b6f74f290ef517387d1502bf8012bf2b1647e
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   - name: matplotlib-base
@@ -45,19 +45,19 @@ outputs:
       run:
         - python
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
-        - {{ pin_compatible('numpy') }}
-        - numpy >=1.19
         - certifi >=2020.06.20
         - contourpy >=1.0.1
         - cycler >=0.10
-        - python-dateutil >=2.7
-        - pillow >=6.2.0
         - fonttools >=4.22.0
-        - freetype
-        - packaging >=20.0
-        - pyparsing >=2.2.1
-        - tk  # [linux]
         - kiwisolver >=1.0.1
+        - numpy >=1.19
+        - {{ pin_compatible('numpy') }}
+        - packaging >=20.0
+        - pillow >=6.2.0
+        - pyparsing >=2.3.1
+        - python-dateutil >=2.7
+        - freetype
+        - tk  # [linux]
     test:
       imports:
         - matplotlib
@@ -81,8 +81,8 @@ outputs:
         - python
       run:
         - python
-        - pyqt  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
-        - tornado
+        - pyqt >=5  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
+        - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
       imports:
