@@ -81,8 +81,8 @@ outputs:
         - python
       run:
         - python
-        - pyqt  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
-        - tornado
+        - pyqt >=5  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
+        - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
       imports:
