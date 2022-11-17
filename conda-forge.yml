@@ -5,5 +5,7 @@ provider: {linux: azure, linux_aarch64: default, linux_ppc64le: default, osx: az
 test_on_native_only: true
 bot:
   abi_migration_branches:
-   - testing
-   - v2.2.x
+  - testing
+  - v2.2.x
+conda_build:
+  pkg_format: '2'
