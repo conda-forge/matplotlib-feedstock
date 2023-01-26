@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.5.0rc1" %}
+{% set version = "3.7.0rc1" %}
 
 package:
   name: matplotlib-suite
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 8ea8b40872349acd47ffa118b16ed3a1bde438961ac339808cd5a1741136e69d
+  sha256: 67a3b23ee019d29743387c6d656c506d71484a6024dd6c0003229a90cce392e3
 
 build:
   number: 0
@@ -19,40 +19,52 @@ outputs:
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
     build:
-      skip: true  # [py<37]
+      skip: true  # [py<38]
+      ignore_run_exports_from:
+        - zlib
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - numpy                                  # [build_platform != target_platform]
+        - pybind11 >=2.6                         # [build_platform != target_platform]
         - pkg-config  # [not win]
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - libtool  # [unix]
       host:
         - python
         - pip
-        - numpy
+        - certifi>=2020.06.20
+        - pybind11 >=2.6
         - freetype
+        # freetype.pc requires zlib.pc
+        - zlib
+        - numpy
+        - setuptools_scm >=7
+        - setuptools_scm_git_archive
         - tk  # [linux]
       run:
         - python
-        - {{ pin_compatible('numpy') }}
-        - numpy >=1.17
+        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
         - certifi >=2020.06.20
+        - contourpy >=1.0.1
         - cycler >=0.10
-        - python-dateutil >=2.7
-        - pillow >=6.2.0
         - fonttools >=4.22.0
-        - freetype
-        - packaging >=20.0
-        - pyparsing >=2.2.1
-        - tk  # [linux]
         - kiwisolver >=1.0.1
+        - numpy >=1.20
+        - {{ pin_compatible('numpy') }}
+        - packaging >=20.0
+        - pillow >=6.2.0
+        - pyparsing >=2.3.1
+        - python-dateutil >=2.7
+        - freetype
+        - tk  # [linux]
+        - importlib-resources>=3.2.0  # [py<310]
     test:
       imports:
         - matplotlib
         - matplotlib.pyplot
-        - matplotlib._contour
         - matplotlib._image
         - matplotlib._path
         - matplotlib._qhull
@@ -66,41 +78,22 @@ outputs:
 
   - name: matplotlib
     build:
-      skip: true  # [py<37]
+      skip: true  # [py<38]
     requirements:
       host:
         - python
       run:
         - python
-        - pyqt  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
+        - pyqt >=5.10  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
+        - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
       imports:
         - matplotlib
 
-  - name: mpl_sample_data
-    script: install-data.sh  # [not win]
-    script: install-data.bat  # [win]
-    build:
-      skip: true  # [python_impl == "pypy"]
-      skip: true  # [py<37]
-      noarch: python
-    requirements:
-      host:
-        - python
-      run:
-        - python
-        # match major/minor version, but allow noarch
-        - {{ pin_subpackage('matplotlib-base', max_pin="x.x") }}
-    test:
-      imports:
-        - matplotlib.cbook
-      commands:
-        - python -c "import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)"
-
 about:
   home: http://matplotlib.org/
-  license: LicenseRef-PSF-based
+  license: LicenseRef-PSF-2.0 and CC0-1.0
   license_url: http://matplotlib.sourceforge.net/users/license.html
   license_family: PSF
   license_file: LICENSE/LICENSE

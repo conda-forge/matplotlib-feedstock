@@ -19,4 +19,4 @@ sed -i.bak "s|/usr/local|${PREFIX}|" setupext.py
 
 export MPLSETUPCFG=conda_mpl_config.cfg
 
-$PYTHON -m pip install . --no-deps -vv
+$PYTHON -m pip install --no-deps --no-build-isolation -vv .

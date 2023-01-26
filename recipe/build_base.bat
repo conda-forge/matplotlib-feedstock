@@ -13,5 +13,5 @@ ECHO system_freetype = True >> mplsetup.cfg
 
 set MPLSETUPCFG=mplsetup.cfg
 
-%PYTHON% -m pip install . --no-deps -vv
+%PYTHON% -m pip install --no-deps --no-build-isolation -vv .
 if errorlevel 1 exit 1
