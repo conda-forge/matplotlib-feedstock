@@ -27,6 +27,7 @@ outputs:
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - numpy                                  # [build_platform != target_platform]
+        - pybind11 >=2.6                         # [build_platform != target_platform]
         - pkg-config  # [not win]
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
@@ -35,6 +36,7 @@ outputs:
         - python
         - pip
         - certifi>=2020.06.20
+        - pybind11 >=2.6
         - freetype
         # freetype.pc requires zlib.pc
         - zlib
