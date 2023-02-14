@@ -28,4 +28,4 @@ $PYTHON -c "import os,tarfile;os.makedirs('build', exist_ok=True);tgz = tarfile.
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/libtool/build-aux/config.* build/freetype-2.6.1/builds/unix
 
-$PYTHON -m pip install . --no-deps -vv
+$PYTHON -m pip install --no-deps --no-build-isolation -vv .
