@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.6.3" %}
+{% set version = "3.7.0" %}
 
 package:
   name: matplotlib-suite
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: d39f9a93881b443bae6fbe73bf9c71dc2eb5b1921d9dcf1c97807f37728d459b
+  sha256: e3a799e17fbee6949b4c3ca99d8bb05d847f39212a6f25e141de7389c96c99ca
 
 build:
   number: 0
@@ -27,6 +27,7 @@ outputs:
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - numpy                                  # [build_platform != target_platform]
+        - pybind11 >=2.6                         # [build_platform != target_platform]
         - pkg-config  # [not win]
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
@@ -35,6 +36,7 @@ outputs:
         - python
         - pip
         - certifi>=2020.06.20
+        - pybind11 >=2.6
         - freetype
         # freetype.pc requires zlib.pc
         - zlib
@@ -50,7 +52,7 @@ outputs:
         - cycler >=0.10
         - fonttools >=4.22.0
         - kiwisolver >=1.0.1
-        - numpy >=1.19
+        - numpy >=1.20
         - {{ pin_compatible('numpy') }}
         - packaging >=20.0
         - pillow >=6.2.0
@@ -58,6 +60,7 @@ outputs:
         - python-dateutil >=2.7
         - freetype
         - tk  # [linux]
+        - importlib-resources>=3.2.0  # [py<310]
     test:
       imports:
         - matplotlib
@@ -81,7 +84,7 @@ outputs:
         - python
       run:
         - python
-        - pyqt >=5  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
+        - pyqt >=5.10  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
         - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
