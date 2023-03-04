@@ -1,11 +1,11 @@
-About matplotlib-suite
-======================
+About matplotlib-suite-feedstock
+================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/matplotlib-feedstock/blob/main/LICENSE.txt)
 
 Home: http://matplotlib.org/
 
 Package license: [LicenseRef-PSF-2.0 and CC0-1.0](http://matplotlib.sourceforge.net/users/license.html)
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/matplotlib-feedstock/blob/main/LICENSE.txt)
 
 Summary: Publication quality figures in Python
 
