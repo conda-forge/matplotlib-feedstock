@@ -7,13 +7,13 @@ channel_targets:
 cxx_compiler:
 - vs2019
 numpy:
-- '1.20'
+- '1.21'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_73_pypy
+- 3.8.* *_73_pypy
 python_impl:
 - pypy
 target_platform:
