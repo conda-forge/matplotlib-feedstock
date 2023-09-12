@@ -19,15 +19,15 @@ freetype:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 numpy:
-- '1.21'
+- '1.22'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_73_pypy
+- 3.8.* *_cpython
 python_impl:
-- pypy
+- cpython
 target_platform:
 - osx-64
 zip_keys:
