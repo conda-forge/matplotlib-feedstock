@@ -15,13 +15,13 @@ cxx_compiler_version:
 macos_machine:
 - arm64-apple-darwin20.0.0
 numpy:
-- '1.21'
+- '1.22'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.9.* *_cpython
 python_impl:
 - cpython
 target_platform:
