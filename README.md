@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/matplotlib-feed
 
 Home: http://matplotlib.org/
 
-Package license: [LicenseRef-PSF-2.0 and CC0-1.0](http://matplotlib.sourceforge.net/users/license.html)
+Package license: [PSF-2.0](http://matplotlib.sourceforge.net/users/license.html)
 
 Summary: Publication quality figures in Python
 
