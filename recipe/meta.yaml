@@ -12,7 +12,7 @@ source:
   sha256: 83e97200421dc8b0022eba92f03174d9bf80c966df25a6f03f44608bfe36a7ac
 
 build:
-  number: 200
+  number: 201
 
 outputs:
   - name: matplotlib-base
@@ -92,7 +92,7 @@ outputs:
 
 about:
   home: http://matplotlib.org/
-  license: LicenseRef-PSF-2.0 and CC0-1.0
+  license: PSF-2.0
   license_url: http://matplotlib.sourceforge.net/users/license.html
   license_family: PSF
   license_file: LICENSE/LICENSE
