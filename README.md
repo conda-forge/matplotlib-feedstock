@@ -217,14 +217,14 @@ Current release info
 Installing matplotlib-suite
 ===========================
 
-Installing `matplotlib-suite` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `matplotlib-suite` from the `conda-forge/label/testing` channel can be achieved by adding `conda-forge/label/testing` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/testing
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `matplotlib, matplotlib-base` can be installed with `conda`:
+Once the `conda-forge/label/testing` channel has been enabled, `matplotlib, matplotlib-base` can be installed with `conda`:
 
 ```
 conda install matplotlib matplotlib-base
@@ -239,26 +239,26 @@ mamba install matplotlib matplotlib-base
 It is possible to list all of the versions of `matplotlib` available on your platform with `conda`:
 
 ```
-conda search matplotlib --channel conda-forge
+conda search matplotlib --channel conda-forge/label/testing
 ```
 
 or with `mamba`:
 
 ```
-mamba search matplotlib --channel conda-forge
+mamba search matplotlib --channel conda-forge/label/testing
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search matplotlib --channel conda-forge
+mamba repoquery search matplotlib --channel conda-forge/label/testing
 
 # List packages depending on `matplotlib`:
-mamba repoquery whoneeds matplotlib --channel conda-forge
+mamba repoquery whoneeds matplotlib --channel conda-forge/label/testing
 
 # List dependencies of `matplotlib`:
-mamba repoquery depends matplotlib --channel conda-forge
+mamba repoquery depends matplotlib --channel conda-forge/label/testing
 ```
 
 
