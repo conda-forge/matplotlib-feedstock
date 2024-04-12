@@ -3,15 +3,19 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '15'
+- '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '11.0'
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge matplotlib_rc
+- conda-forge main
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '15'
+- '16'
 freetype:
 - '2'
 macos_machine:

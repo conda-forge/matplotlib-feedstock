@@ -4,6 +4,10 @@ c_compiler:
 - gcc
 c_compiler_version:
 - '12'
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.17'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -11,7 +15,7 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge matplotlib_rc
+- conda-forge main
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -21,13 +25,13 @@ docker_image:
 freetype:
 - '2'
 numpy:
-- '1.21'
+- '1.26'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.12.* *_cpython
 python_impl:
 - cpython
 target_platform:
@@ -37,6 +41,8 @@ tk:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - c_stdlib_version
+  - cdt_name
 - - python
   - numpy
   - python_impl
