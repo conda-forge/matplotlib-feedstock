@@ -15,7 +15,6 @@ system_freetype = True
 EOF
 
 cat conda_mpl_config.cfg
-sed -i.bak "s|/usr/local|${PREFIX}|" setupext.py
 
 export MPLSETUPCFG=conda_mpl_config.cfg
 

@@ -27,6 +27,7 @@ outputs:
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - numpy                                  # [build_platform != target_platform]
+        - meson-python>=0.13.1                   # [build_platform != target_platform]
         - pybind11 >=2.6                         # [build_platform != target_platform]
         - pkg-config  # [not win]
         - {{ compiler('c') }}
@@ -35,6 +36,7 @@ outputs:
       host:
         - python
         - pip
+        - meson-python>=0.13.1
         - certifi>=2020.06.20
         - pybind11 >=2.6
         - freetype
