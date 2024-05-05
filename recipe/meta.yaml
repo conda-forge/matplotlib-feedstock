@@ -12,7 +12,7 @@ source:
   sha256: 7c4f370b7550eec8342c102f9dd80da3bec2895d7f514f5f6378764db4cb0e35
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: matplotlib-base
@@ -30,6 +30,7 @@ outputs:
         - pybind11 >=2.6                         # [build_platform != target_platform]
         - pkg-config  # [not win]
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - libtool  # [unix]
       host:
@@ -47,14 +48,12 @@ outputs:
         - tk  # [linux]
       run:
         - python
-        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
         - certifi >=2020.06.20
         - contourpy >=1.0.1
         - cycler >=0.10
         - fonttools >=4.22.0
         - kiwisolver >=1.3.1
         - numpy >=1.21,<2
-        - {{ pin_compatible('numpy') }}
         - packaging >=20.0
         - pillow >=8
         - pyparsing >=2.3.1
