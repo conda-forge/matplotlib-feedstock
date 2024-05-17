@@ -1,6 +1,2 @@
 channel_targets:
   - conda-forge testing
-c_stdlib_version:          # [osx and x86_64]
-  - "10.12"                # [osx and x86_64]
-MACOSX_SDK_VERSION:        # [osx and x86_64]
-  - 10.12                  # [osx and x86_64]
