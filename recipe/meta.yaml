@@ -28,11 +28,11 @@ outputs:
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - numpy                                  # [build_platform != target_platform]
         - pybind11 >=2.6                         # [build_platform != target_platform]
-        - cmake                                  # [win]
-        - pkg-config                             # [unix]
         - {{ stdlib('c') }}
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - cmake                                  # [win]
+        - pkg-config                             # [unix]
         - libtool                                # [unix]
       host:
         - python
