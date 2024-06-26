@@ -47,4 +47,4 @@ zip_keys:
   - numpy
   - python_impl
 zlib:
-- '1.2'
+- '1'
