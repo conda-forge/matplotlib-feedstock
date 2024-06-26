@@ -29,7 +29,7 @@ outputs:
         - numpy                                  # [build_platform != target_platform]
         - pybind11 >=2.6                         # [build_platform != target_platform]
         - cmake                                  # [win]
-        - pkg-config
+        - pkg-config                             # [unix]
         - {{ stdlib('c') }}
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
