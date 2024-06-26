@@ -41,6 +41,7 @@ outputs:
         - certifi >=2020.06.20
         - pybind11 >=2.6
         - freetype
+        - qhull
         # freetype.pc requires zlib.pc
         - zlib
         - numpy
