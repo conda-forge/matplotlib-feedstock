@@ -30,6 +30,7 @@ outputs:
         - meson-python>=0.13.1                   # [build_platform != target_platform]
         - pybind11 >=2.6                         # [build_platform != target_platform]
         - pkg-config  # [not win]
+        - {{ stdlib('c') }}
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - libtool  # [unix]
