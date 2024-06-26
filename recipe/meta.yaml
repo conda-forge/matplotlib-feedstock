@@ -37,8 +37,8 @@ outputs:
       host:
         - python
         - pip
-        - meson-python>=0.13.1
-        - certifi>=2020.06.20
+        - meson-python >=0.13.1
+        - certifi >=2020.06.20
         - pybind11 >=2.6
         - freetype
         # freetype.pc requires zlib.pc
@@ -63,7 +63,7 @@ outputs:
         - python-dateutil >=2.7
         - freetype
         - tk  # [linux]
-        - importlib-resources>=3.2.0  # [py<310]
+        - importlib-resources >=3.2.0  # [py<310]
     test:
       imports:
         - matplotlib
