@@ -1,3 +1,6 @@
+set LIB=%LIBRARY_LIB%;%LIB%
+set LIBPATH=%LIBRARY_LIB%;%LIBPATH%
+set INCLUDE=%LIBRARY_INC%;%INCLUDE%
 
 ECHO [directories] > mplsetup.cfg
 ECHO basedirlist = %LIBRARY_PREFIX% >> mplsetup.cfg
