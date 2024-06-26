@@ -11,5 +11,6 @@ ECHO toolkits_tests = False >> mplsetup.cfg
 
 set MPLSETUPCFG=mplsetup.cfg
 
-%PYTHON% -m pip install --no-deps --no-build-isolation -vv .  --config-settings=setup-args="-Dsystem-freetype=true"
+mkdir builddir
+%PYTHON% -m mesonbuild.mesonmain setup %MESON_ARGS% builddir
 if errorlevel 1 exit 1

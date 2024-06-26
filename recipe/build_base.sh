@@ -16,4 +16,5 @@ cat conda_mpl_config.cfg
 export MPLSETUPCFG=conda_mpl_config.cfg
 export AR=$GCC_AR
 
-$PYTHON -m pip install --no-deps --no-build-isolation -vv . --config-settings=setup-args="-Dsystem-freetype=true"
+mkdir builddir
+$PYTHON -m mesonbuild.mesonmain setup $MESON_ARGS builddir
