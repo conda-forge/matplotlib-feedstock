@@ -36,6 +36,7 @@ outputs:
         - libtool                                # [unix]
       host:
         - python
+        - python-build
         - pip
         - meson-python >=0.13.1
         - certifi >=2020.06.20
