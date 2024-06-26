@@ -33,7 +33,7 @@ outputs:
         - {{ stdlib('c') }}
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
-        - libtool  # [unix]
+        - libtool                                # [unix]
       host:
         - python
         - pip
