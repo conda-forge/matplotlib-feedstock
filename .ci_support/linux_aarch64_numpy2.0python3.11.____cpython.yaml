@@ -34,6 +34,8 @@ python:
 - 3.11.* *_cpython
 python_impl:
 - cpython
+qhull:
+- '2020.2'
 target_platform:
 - linux-aarch64
 tk:

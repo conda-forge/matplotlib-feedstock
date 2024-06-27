@@ -32,6 +32,8 @@ python:
 - 3.8.* *_cpython
 python_impl:
 - cpython
+qhull:
+- '2020.2'
 target_platform:
 - osx-arm64
 zip_keys:
