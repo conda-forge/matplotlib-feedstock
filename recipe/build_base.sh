@@ -8,5 +8,5 @@ export MESON_ARGS="${MESON_ARGS} --buildtype=release -Dsystem-freetype=true -Dsy
 
 mkdir builddir
 $PYTHON -m mesonbuild.mesonmain setup builddir $MESON_ARGS
-$PYTHON -m build --wheel --no-isolation --skip-dependency-check
+$PYTHON -m build --wheel --no-isolation --skip-dependency-check -Cbuilddir=builddir
 $PYTHON -m pip install dist/matplotlib*.whl
