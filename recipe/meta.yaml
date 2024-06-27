@@ -41,7 +41,7 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - cmake                                  # [win]
-        - pkg-config                             # [unix]
+        - pkg-config
         - libtool                                # [unix]
         - ninja
       host:
