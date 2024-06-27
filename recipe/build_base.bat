@@ -2,7 +2,7 @@
 
 mkdir builddir
 if errorlevel 1 exit 1
-%PYTHON% -m mesonbuild.mesonmain setup %MESON_ARGS% builddir
+%PYTHON% -m mesonbuild.mesonmain setup builddir %MESON_ARGS% --buildtype=release
 if errorlevel 1 exit 1
 %PYTHON% -m build --wheel --no-isolation --skip-dependency-check -Cbuilddir=builddir
 if errorlevel 1 exit 1
