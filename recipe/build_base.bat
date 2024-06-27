@@ -6,7 +6,7 @@ set "MESON_ARGS=%MESON_ARGS% --buildtype=release --prefix=%LIBRARY_PREFIX% --pkg
 
 if "%CI%" == "azure" (
     :: Hack to try removing problematic Python from Azure CI image
-    rmdir /s /q C:\hostedtoolcache\windows\Python
+    powershell -Command "Remove-Item -LiteralPath 'C:\hostedtoolcache\windows\Python' -Force -Recurse"
 )
 
 mkdir builddir
