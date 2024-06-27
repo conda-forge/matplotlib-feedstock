@@ -1,5 +1,9 @@
 @echo on
 
+set "LIB=%LIBRARY_LIB%;%LIB%"
+set "LIBPATH=%LIBRARY_LIB%;%LIBPATH%"
+set "INCLUDE=%LIBRARY_INC%;%INCLUDE%"
+
 set "MESON_ARGS=%MESON_ARGS% --buildtype=release --prefix=%LIBRARY_PREFIX% --pkg-config-path=%LIBRARY_LIB%\pkgconfig -Dlibdir=lib -Dsystem-freetype=true -Dsystem-qhull=true"
 
 mkdir builddir
