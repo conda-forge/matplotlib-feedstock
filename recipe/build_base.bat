@@ -12,6 +12,7 @@ if errorlevel 1 exit 1
          --no-isolation ^
          --skip-dependency-check ^
          -Cbuilddir=builddir ^
+         -Csetup-args="-Dsystem-freetype=true" ^
          -Csetup-args="-Dsystem-qhull=true" ^
 
 if errorlevel 1 exit 1

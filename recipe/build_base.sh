@@ -13,6 +13,7 @@ $PYTHON -m build \
         --no-isolation \
         --skip-dependency-check \
         -Cbuilddir=builddir \
+        -Csetup-args="-Dsystem-freetype=true" \
         -Csetup-args="-Dsystem-qhull=true" \
 
 $PYTHON -m pip install dist/matplotlib*.whl
