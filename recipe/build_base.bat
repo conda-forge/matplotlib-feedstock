@@ -12,7 +12,7 @@ if "%CI%" == "azure" (
 mkdir builddir
 if errorlevel 1 exit 1
 %PYTHON% -m mesonbuild.mesonmain setup builddir %MESON_ARGS%
-if %ERRORLEVEL% neq 0 (type builddir\meson-logs\meson-log.txt && exit 1)
+type builddir\meson-logs\meson-log.txt
 %PYTHON% -m build --wheel ^
          --no-isolation --skip-dependency-check -Cbuilddir=builddir -Ccompile-args=-v
 if errorlevel 1 exit 1
