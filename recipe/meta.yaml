@@ -16,6 +16,8 @@ build:
 
 outputs:
   - name: matplotlib-base
+    script: build_base.bat  # [win]
+    script: build_base.sh  # [not win]
     build:
       skip: true  # [py<39]
       ignore_run_exports_from:
@@ -29,24 +31,6 @@ outputs:
         - PIP_IGNORE_INSTALLED=True
         - PIP_CACHE_DIR=pip_cache
         - PIP_NO_INDEX=True
-      script:
-        - export AR="${GCC_AR}"  # [unix]
-        - mkdir builddir
-        {% if PYTHON is defined %}
-        - >-
-          {{ PYTHON }} -m mesonbuild.mesonmain setup builddir
-          --buildtype=release -Dsystem-freetype=true -Dsystem-qhull=true
-          --prefix=$PREFIX                           # [unix]
-          --prefix=%LIBRARY_PREFIX%                  # [win]
-          --libdir=lib                               # [unix]
-          --libdir=bin                               # [win]
-          --pkg-config-path=$PREFIX/lib/pkgconfig    # [unix]
-          --pkg-config-path=%LIBRARY_LIB%\pkgconfig  # [win]
-        - >-
-          {{ PYTHON }} -m build --wheel
-          --no-isolation --skip-dependency-check -Cbuilddir=builddir
-        - {{ PYTHON }} -m pip install --find-links dist matplotlib
-        {% endif %}
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
