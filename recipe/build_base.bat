@@ -1,6 +1,6 @@
 @echo on
 
-set "MESON_ARGS=%MESON_ARGS% --buildtype=release --prefix=%LIBRARY_PREFIX% -Dsystem-freetype=true -Dsystem-qhull=true"
+set "MESON_ARGS=%MESON_ARGS% --buildtype=release --prefix=%LIBRARY_PREFIX% -Dlibdir=bin -Dsystem-freetype=true -Dsystem-qhull=true"
 
 mkdir builddir
 if errorlevel 1 exit 1
