@@ -1,8 +1,6 @@
 @echo on
 
-set "PKG_CONFIG_PATH=%LIBRARY_LIB%\pkgconfig"
-
-set "MESON_ARGS=%MESON_ARGS% --buildtype=release --prefix=%LIBRARY_PREFIX% -Dlibdir=bin -Dsystem-freetype=true -Dsystem-qhull=true"
+set "MESON_ARGS=%MESON_ARGS% --buildtype=release --prefix=%LIBRARY_PREFIX% --pkg-config-path=%LIBRARY_LIB%\pkgconfig -Dlibdir=bin -Dsystem-freetype=true -Dsystem-qhull=true"
 
 mkdir builddir
 if errorlevel 1 exit 1
