@@ -4,7 +4,7 @@ set -ex
 
 export AR=$GCC_AR
 
-export MESON_ARGS="${MESON_ARGS} --buildtype=release -Dpython_target=${PYTHON}"
+export MESON_ARGS="${MESON_ARGS} --buildtype=release"
 
 mkdir builddir
 $PYTHON -m mesonbuild.mesonmain setup builddir $MESON_ARGS

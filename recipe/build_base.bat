@@ -1,6 +1,6 @@
 @echo on
 
-set "MESON_ARGS=%MESON_ARGS% --buildtype=release -Dpython_target=%PYTHON%"
+set "MESON_ARGS=%MESON_ARGS% --buildtype=release"
 
 mkdir builddir
 if errorlevel 1 exit 1
