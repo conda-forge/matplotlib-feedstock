@@ -34,6 +34,7 @@ outputs:
         - cmake                                  # [win]
         - pkg-config                             # [unix]
         - libtool                                # [unix]
+        - ninja
       host:
         - python
         - python-build
