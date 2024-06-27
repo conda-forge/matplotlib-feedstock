@@ -8,5 +8,5 @@ if errorlevel 1 exit 1
 if errorlevel 1 exit 1
 %PYTHON% -m build --wheel --no-isolation --skip-dependency-check -Cbuilddir=builddir
 if errorlevel 1 exit 1
-for %x in (dir *.whl) do (%PYTHON% -m pip install %x)
+%PYTHON% -m pip install --find-links dist matplotlib
 if errorlevel 1 exit 1
