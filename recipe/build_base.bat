@@ -1,6 +1,6 @@
 @echo on
 
-set "MESON_ARGS=%MESON_ARGS% --buildtype=release"
+set "MESON_ARGS=%MESON_ARGS% --buildtype=release -Dsystem-freetype=true -Dsystem-qhull=true"
 
 mkdir builddir
 if errorlevel 1 exit 1
