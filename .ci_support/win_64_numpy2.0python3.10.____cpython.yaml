@@ -1,0 +1,28 @@
+c_compiler:
+- vs2019
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge matplotlib_rc
+cxx_compiler:
+- vs2019
+freetype:
+- '2'
+numpy:
+- '2.0'
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.10.* *_cpython
+python_impl:
+- cpython
+target_platform:
+- win-64
+zip_keys:
+- - python
+  - numpy
+  - python_impl
+zlib:
+- '1'
