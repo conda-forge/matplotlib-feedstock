@@ -6,7 +6,7 @@ if "%CI%" == "azure" (
     :: Hack to try removing problematic Python from Azure CI image
     set "CLEANUP_DIRS=C:\hostedtoolcache\windows\Python;"
     mkdir C:\empty
-    for %%f in %CLEANUP_DIRS% do (
+    for %%f in (%CLEANUP_DIRS%) do (
         echo Removing %%f
         robocopy /mir /ns /nc /nfl /ndl /np /njh /njs %%f > nul 2>&1
         rmdir /q %%f
