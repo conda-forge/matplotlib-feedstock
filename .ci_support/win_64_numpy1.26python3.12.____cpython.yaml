@@ -9,15 +9,15 @@ cxx_compiler:
 freetype:
 - '2'
 numpy:
-- '1.21'
+- '1.26'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_73_pypy
+- 3.12.* *_cpython
 python_impl:
-- pypy
+- cpython
 target_platform:
 - win-64
 zip_keys:
@@ -25,4 +25,4 @@ zip_keys:
   - numpy
   - python_impl
 zlib:
-- '1.2'
+- '1'
