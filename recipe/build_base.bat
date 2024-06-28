@@ -4,8 +4,18 @@ set "MESON_ARGS=%MESON_ARGS% --buildtype=release --prefix=%LIBRARY_PREFIX% --pkg
 
 if "%CI%" == "azure" (
     :: Hack to try removing problematic Python from Azure CI image
+    set CLEANUP_DIRS=(C:\hostedtoolcache\windows\Python)
     mkdir C:\empty
-    robocopy /mir /ns /nc /nfl /ndl /np /njh /njs C:\empty C:\hostedtoolcache\windows\Python > nul 2>&1 && rmdir /q C:\hostedtoolcache\windows\Python
+    for %%f in %CLEANUP_DIRS% do (
+        echo Removing %%f
+        robocopy /mir /ns /nc /nfl /ndl /np /njh /njs %%f > nul 2>&1
+        rmdir /q %%f
+        if errorlevel 1 (
+            echo Failed to remove
+            rmdir /q C:\empty
+            exit /b 1
+        )
+    )
     rmdir /q C:\empty
 )
 
