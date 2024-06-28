@@ -1,7 +1,5 @@
 @echo on
 
-set
-
 set "MESON_ARGS=%MESON_ARGS% --buildtype=release --prefix=%LIBRARY_PREFIX% --pkg-config-path=%LIBRARY_LIB%\pkgconfig -Dlibdir=lib -Dsystem-freetype=true -Dsystem-qhull=true"
 
 if "%CI%" == "azure" (
