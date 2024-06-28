@@ -9,6 +9,7 @@ if "%CI%" == "azure" (
     mkdir C:\empty
     robocopy /mir /ns /nc /nfl /ndl /np C:\empty C:\hostedtoolcache\windows\Python
     rmdir /q C:\empty
+    rmdir /q C:\hostedtoolcache\windows\Python
 )
 
 mkdir builddir
