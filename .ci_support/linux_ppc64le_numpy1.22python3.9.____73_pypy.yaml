@@ -3,7 +3,7 @@ c_compiler:
 c_compiler_version:
 - '12'
 cdt_name:
-- cos6
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:
@@ -17,7 +17,7 @@ docker_image:
 freetype:
 - '2'
 numpy:
-- '1.21'
+- '1.22'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -27,9 +27,7 @@ python:
 python_impl:
 - pypy
 target_platform:
-- linux-64
-tk:
-- '8.6'
+- linux-ppc64le
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
@@ -37,4 +35,4 @@ zip_keys:
   - numpy
   - python_impl
 zlib:
-- '1.2'
+- '1'
