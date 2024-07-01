@@ -1,22 +1,14 @@
 #!/bin/bash
 
-cat <<EOF > conda_mpl_config.cfg
-[directories]
-basedirlist = $PREFIX
+set -ex
 
-[packages]
-tests = False
-toolkit_tests = False
-sample_data = False
+export AR=$GCC_AR
 
-[libs]
-system_freetype = True
+export MESON_ARGS="${MESON_ARGS} --buildtype=release --prefix=${PREFIX} -Dlibdir=lib --pkg-config-path=${PREFIX}/lib/pkgconfig -Dsystem-freetype=true -Dsystem-qhull=true"
 
-EOF
-
-cat conda_mpl_config.cfg
-sed -i.bak "s|/usr/local|${PREFIX}|" setupext.py
-
-export MPLSETUPCFG=conda_mpl_config.cfg
-
-$PYTHON -m pip install --no-deps --no-build-isolation -vv .
+mkdir builddir
+$PYTHON -m mesonbuild.mesonmain setup builddir $MESON_ARGS
+cat builddir/meson-logs/meson-log.txt
+$PYTHON -m build --wheel \
+        --no-isolation --skip-dependency-check -Cbuilddir=builddir
+$PYTHON -m pip install --find-links dist matplotlib

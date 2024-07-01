@@ -1,5 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.13'
+MACOSX_SDK_VERSION:
+- '10.13'
 c_compiler:
 - clang
 c_compiler_version:
@@ -30,6 +32,8 @@ python:
 - 3.9.* *_73_pypy
 python_impl:
 - pypy
+qhull:
+- '2020.2'
 target_platform:
 - osx-64
 zip_keys:
@@ -39,4 +43,4 @@ zip_keys:
   - numpy
   - python_impl
 zlib:
-- '1.2'
+- '1'

@@ -34,6 +34,8 @@ python:
 - 3.9.* *_cpython
 python_impl:
 - cpython
+qhull:
+- '2020.2'
 target_platform:
 - linux-aarch64
 tk:
@@ -47,4 +49,4 @@ zip_keys:
   - numpy
   - python_impl
 zlib:
-- '1.2'
+- '1'
