@@ -1,4 +1,4 @@
-migrator_ts: 1647123563
+migrator_ts: 1695046563
 __migrator:
   migration_number: 1
   operation: key_add
@@ -11,32 +11,28 @@ __migrator:
       - 3.9.* *_cpython
       - 3.10.* *_cpython
       - 3.11.* *_cpython
-      - 3.12.* *_cpython
+      - 3.12.* *_cpython  # new entry
       - 3.6.* *_73_pypy
       - 3.7.* *_73_pypy
       - 3.8.* *_73_pypy
       - 3.9.* *_73_pypy
-  paused: False
+  paused: false
   longterm: True
-  use_local: False
-  check_solvable: True
-  exclude_pinned_pkgs: False
   pr_limit: 5
-  bump_number: 1
-  commit_message: "Rebuild for PyPy3.9"
+  max_solver_attempts: 6  # this will make the bot retry "not solvable" stuff 6 times
   exclude:
     # this shouldn't attempt to modify the python feedstocks
     - python
     - pypy3.6
     - pypy-meta
-  ignored_deps_per_node:
-    matplotlib:
-      - pyqt
+    - cross-python
+    - python_abi
+  exclude_pinned_pkgs: false
 
 python:
-  - 3.9.* *_73_pypy    # [not (osx and arm64)]
+  - 3.12.* *_cpython
+# additional entries to add for zip_keys
 numpy:
-  # part of a zip_keys: python, python_impl, numpy
-  - 1.22               # [not (osx and arm64)]
+  - 1.26
 python_impl:
-  - pypy               # [not (osx and arm64)]
+  - cpython
