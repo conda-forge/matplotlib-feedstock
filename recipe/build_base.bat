@@ -1,17 +1,23 @@
-set LIB=%LIBRARY_LIB%;%LIB%
-set LIBPATH=%LIBRARY_LIB%;%LIBPATH%
-set INCLUDE=%LIBRARY_INC%;%INCLUDE%
+@echo on
 
-ECHO [directories] > mplsetup.cfg
-ECHO basedirlist = %LIBRARY_PREFIX% >> mplsetup.cfg
-ECHO [packages] >> mplsetup.cfg
-ECHO tests = False >> mplsetup.cfg
-ECHO sample_data = False >> mplsetup.cfg
-ECHO toolkits_tests = False >> mplsetup.cfg
-ECHO [libs] >> mplsetup.cfg
-ECHO system_freetype = True >> mplsetup.cfg
+set "MESON_ARGS=%MESON_ARGS% --buildtype=release --prefix=%LIBRARY_PREFIX% --pkg-config-path=%LIBRARY_LIB%\pkgconfig -Dlibdir=lib -Dsystem-freetype=true -Dsystem-qhull=true"
 
-set MPLSETUPCFG=mplsetup.cfg
+if "%CI%" == "azure" (
+    :: Hack to try removing problematic Python from Azure CI image
+    :: Replace with conda-smithy solution when available
+    :: xref: https://github.com/conda-forge/conda-smithy/pull/1966
+    mkdir C:\empty
+    robocopy /purge /r:0 /w:0 /mt /ns /nc /np /nfl /ndl /njh /njs C:\empty C:\hostedtoolcache\windows\Python > nul 2>&1
+    rmdir /q C:\hostedtoolcache\windows\Python
+    rmdir /q C:\empty
+)
 
-%PYTHON% -m pip install --no-deps --no-build-isolation -vv .
+mkdir builddir
+if errorlevel 1 exit 1
+%PYTHON% -m mesonbuild.mesonmain setup builddir %MESON_ARGS%
+type builddir\meson-logs\meson-log.txt
+%PYTHON% -m build --wheel ^
+         --no-isolation --skip-dependency-check -Cbuilddir=builddir -Ccompile-args=-v
+if errorlevel 1 exit 1
+%PYTHON% -m pip install --find-links dist matplotlib
 if errorlevel 1 exit 1
