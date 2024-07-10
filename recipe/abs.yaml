@@ -1,0 +1,3 @@
+# the conda-build parameters to use
+build_parameters:
+  - "--no-error-overlinking"  # [ppc64le]
