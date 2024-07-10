@@ -10,15 +10,22 @@ package:
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
   sha256: 4fdf46dc325fdf4cbc61f7fa66de7b48287df0a71b3442b63ff0784041cae2e7
+
 build:
   number: 0
+  skip: true  # [py<39]
+
+# to avoid creating redundant CI jobs, conda-smithy needs python
+# to be used in all outputs, including the implicit global one.
+requirements:
+  host:
+    - python
 
 outputs:
   - name: matplotlib-base
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
     build:
-      skip: true  # [py<39]
       ignore_run_exports_from:
         - zlib
       # work around https://github.com/conda/conda-build/issues/5403
@@ -41,7 +48,6 @@ outputs:
         - pybind11 >=2.6                         # [build_platform != target_platform]
         - {{ stdlib('c') }}
         - {{ compiler('c') }}
-        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - cmake                                  # [win]
         - pkg-config
@@ -94,8 +100,6 @@ outputs:
         - pylab
 
   - name: matplotlib
-    build:
-      skip: true  # [py<39]
     requirements:
       host:
         - python
