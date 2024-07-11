@@ -58,8 +58,6 @@ outputs:
         - python-build
         - pip
         - meson-python >=0.13.1
-        # work-around for https://github.com/mesonbuild/meson/issues/13403
-        - meson <1.5                             # [osx and arm64]
         - certifi >=2020.06.20
         - pybind11 >=2.6
         - freetype
