@@ -4,7 +4,9 @@ set -ex
 
 export AR=$GCC_AR
 
-export MESON_ARGS="${MESON_ARGS} --buildtype=release --prefix=${PREFIX} -Dlibdir=lib --pkg-config-path=${PREFIX}/lib/pkgconfig -Dsystem-freetype=true -Dsystem-qhull=true"
+# binary is called `pkg-config`, but package metadata is under `lib/pkgconfig`
+export MESON_ARGS="${MESON_ARGS} --pkg-config-path=${PREFIX}/lib/pkgconfig"
+export MESON_ARGS="${MESON_ARGS} -Dsystem-freetype=true -Dsystem-qhull=true"
 
 mkdir builddir
 $PYTHON -m mesonbuild.mesonmain setup builddir $MESON_ARGS
