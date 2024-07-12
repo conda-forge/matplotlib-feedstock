@@ -1,5 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 c_compiler:
 - clang
 c_compiler_version:
@@ -9,7 +11,7 @@ c_stdlib:
 c_stdlib_version:
 - '11.0'
 channel_sources:
-- conda-forge/label/numpy_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge testing
 cxx_compiler:
@@ -28,6 +30,8 @@ python:
 - 3.10.* *_cpython
 python_impl:
 - cpython
+qhull:
+- '2020.2'
 target_platform:
 - osx-arm64
 zip_keys:
@@ -37,4 +41,4 @@ zip_keys:
   - numpy
   - python_impl
 zlib:
-- '1.2'
+- '1'
