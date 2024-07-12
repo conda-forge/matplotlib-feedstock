@@ -3,7 +3,7 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge/label/numpy_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge testing
 cxx_compiler:
@@ -18,6 +18,8 @@ python:
 - 3.12.* *_cpython
 python_impl:
 - cpython
+qhull:
+- '2020.2'
 target_platform:
 - win-64
 zip_keys:
@@ -25,4 +27,4 @@ zip_keys:
   - numpy
   - python_impl
 zlib:
-- '1.2'
+- '1'
