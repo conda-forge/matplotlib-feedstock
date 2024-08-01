@@ -28,15 +28,6 @@ outputs:
     build:
       ignore_run_exports_from:
         - zlib
-      script_env:
-        # Workaround an upstream conda-build issue w/pip & `outputs` by setting env vars manually.
-        # Drop once conda-build 24.7.0 is released.
-        # xref: https://github.com/conda/conda-build/issues/3993
-        - PIP_NO_BUILD_ISOLATION=False
-        - PIP_NO_DEPENDENCIES=True
-        - PIP_IGNORE_INSTALLED=True
-        - PIP_CACHE_DIR=pip_cache
-        - PIP_NO_INDEX=True
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
