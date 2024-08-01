@@ -28,9 +28,6 @@ outputs:
     build:
       ignore_run_exports_from:
         - zlib
-      # work around https://github.com/conda/conda-build/issues/5403
-      missing_dso_whitelist:    # [ppc64le]
-        - $RPATH/ld64.so.2      # [ppc64le]
       script_env:
         # Workaround an upstream conda-build issue w/pip & `outputs` by setting env vars manually.
         # Drop once conda-build 24.7.0 is released.
