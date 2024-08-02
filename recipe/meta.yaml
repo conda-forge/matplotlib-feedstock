@@ -93,7 +93,7 @@ outputs:
         - python
       run:
         - python
-        - pyside6 >=6.7.2  # [python_impl == "cpython" and not ppc64le]
+        - pyside6 >=6.7.2  # [python_impl == "cpython" and not osx and not ppc64le]
         - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
