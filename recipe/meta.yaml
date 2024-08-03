@@ -96,7 +96,8 @@ outputs:
         # We avoid the PySide6 dependency on macOS since it uses the MacOSX backend by default
         - pyside6 >=6.7.2,!=6.7.2=*_0  # [python_impl == "cpython" and win]
         - pyside6 >=6.7.2,!=6.7.2=*_0  # [python_impl == "cpython" and linux64]
-        - pyside6 >=6.7.2,!=6.7.2=*_0  # [python_impl == "cpython" and aarch64]
+        # osx has its own backend; pyside6 not available on ppc
+        - pyside6 >=6.7.2  # [python_impl == "cpython" and not (osx or ppc64le)]
         - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
