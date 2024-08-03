@@ -97,8 +97,6 @@ outputs:
         - pyside6 >=6.7.2  # [python_impl == "cpython" and not (osx or ppc64le)]
         - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
-      run_constrained:
-        - pyside6 != 6.7.2=*_0
     test:
       imports:
         - matplotlib
