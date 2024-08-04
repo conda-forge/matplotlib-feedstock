@@ -12,7 +12,7 @@ source:
   sha256: 4fdf46dc325fdf4cbc61f7fa66de7b48287df0a71b3442b63ff0784041cae2e7
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<39]
 
 # to avoid creating redundant CI jobs, conda-smithy needs python
@@ -93,7 +93,8 @@ outputs:
         - python
       run:
         - python
-        - pyqt >=5.10  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
+        # osx has its own backend; pyside6 not available on ppc
+        - pyside6 >=6.7.2  # [python_impl == "cpython" and not (osx or ppc64le)]
         - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
