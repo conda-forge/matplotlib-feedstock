@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.9.1" %}
+{% set version = "3.9.2" %}
 
 package:
   name: matplotlib-suite
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 4fdf46dc325fdf4cbc61f7fa66de7b48287df0a71b3442b63ff0784041cae2e7
+  sha256: 9c49b6683a34469e6d20864c7d5b975c4f29d7c60de1ce857980bead48769c3f
 
 build:
   number: 200
@@ -28,18 +28,6 @@ outputs:
     build:
       ignore_run_exports_from:
         - zlib
-      # work around https://github.com/conda/conda-build/issues/5403
-      missing_dso_whitelist:    # [ppc64le]
-        - $RPATH/ld64.so.2      # [ppc64le]
-      script_env:
-        # Workaround an upstream conda-build issue w/pip & `outputs` by setting env vars manually.
-        # Drop once conda-build 24.7.0 is released.
-        # xref: https://github.com/conda/conda-build/issues/3993
-        - PIP_NO_BUILD_ISOLATION=False
-        - PIP_NO_DEPENDENCIES=True
-        - PIP_IGNORE_INSTALLED=True
-        - PIP_CACHE_DIR=pip_cache
-        - PIP_NO_INDEX=True
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
@@ -59,8 +47,6 @@ outputs:
         - python-build
         - pip
         - meson-python >=0.13.1
-        # work-around for https://github.com/mesonbuild/meson/issues/13403
-        - meson <1.5                             # [osx and arm64]
         - certifi >=2020.06.20
         - pybind11 >=2.6
         - qhull
@@ -106,7 +92,8 @@ outputs:
         - python
       run:
         - python
-        - pyqt >=5.10  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
+        # osx has its own backend; pyside6 not available on ppc
+        - pyside6 >=6.7.2  # [python_impl == "cpython" and not (osx or ppc64le)]
         - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
