@@ -8,12 +8,6 @@ jobs:
     vmImage: macOS-12
   strategy:
     matrix:
-      osx_64_numpy1.22python3.8.____cpython:
-        CONFIG: osx_64_numpy1.22python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.22python3.9.____73_pypy:
-        CONFIG: osx_64_numpy1.22python3.9.____73_pypy
-        UPLOAD_PACKAGES: 'True'
       osx_64_numpy2.0python3.10.____cpython:
         CONFIG: osx_64_numpy2.0python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -26,8 +20,8 @@ jobs:
       osx_64_numpy2.0python3.9.____cpython:
         CONFIG: osx_64_numpy2.0python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_numpy1.22python3.8.____cpython:
-        CONFIG: osx_arm64_numpy1.22python3.8.____cpython
+      osx_64_numpy2python3.13.____cp313:
+        CONFIG: osx_64_numpy2python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
       osx_arm64_numpy2.0python3.10.____cpython:
         CONFIG: osx_arm64_numpy2.0python3.10.____cpython
@@ -40,6 +34,9 @@ jobs:
         UPLOAD_PACKAGES: 'True'
       osx_arm64_numpy2.0python3.9.____cpython:
         CONFIG: osx_arm64_numpy2.0python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_numpy2python3.13.____cp313:
+        CONFIG: osx_arm64_numpy2python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables: {}

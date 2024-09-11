@@ -8,12 +8,6 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_numpy1.22python3.8.____cpython:
-        CONFIG: win_64_numpy1.22python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-      win_64_numpy1.22python3.9.____73_pypy:
-        CONFIG: win_64_numpy1.22python3.9.____73_pypy
-        UPLOAD_PACKAGES: 'True'
       win_64_numpy2.0python3.10.____cpython:
         CONFIG: win_64_numpy2.0python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -25,6 +19,9 @@ jobs:
         UPLOAD_PACKAGES: 'True'
       win_64_numpy2.0python3.9.____cpython:
         CONFIG: win_64_numpy2.0python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_numpy2python3.13.____cp313:
+        CONFIG: win_64_numpy2python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:
@@ -39,7 +36,7 @@ jobs:
         scriptSource: inline
         script: |
           import urllib.request
-          url = 'https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Windows-x86_64.exe'
+          url = 'https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe'
           path = r"$(Build.ArtifactStagingDirectory)/Miniforge.exe"
           urllib.request.urlretrieve(url, path)
 
