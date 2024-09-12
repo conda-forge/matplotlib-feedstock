@@ -8,10 +8,6 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_numpy1.22python3.9.____73_pypy:
-        CONFIG: linux_64_numpy1.22python3.9.____73_pypy
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
       linux_64_numpy2.0python3.10.____cpython:
         CONFIG: linux_64_numpy2.0python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -28,8 +24,8 @@ jobs:
         CONFIG: linux_64_numpy2.0python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-      linux_aarch64_numpy1.22python3.9.____73_pypy:
-        CONFIG: linux_aarch64_numpy1.22python3.9.____73_pypy
+      linux_64_numpy2python3.13.____cp313:
+        CONFIG: linux_64_numpy2python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
       linux_aarch64_numpy2.0python3.10.____cpython:
@@ -48,8 +44,8 @@ jobs:
         CONFIG: linux_aarch64_numpy2.0python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-      linux_ppc64le_numpy1.22python3.9.____73_pypy:
-        CONFIG: linux_ppc64le_numpy1.22python3.9.____73_pypy
+      linux_aarch64_numpy2python3.13.____cp313:
+        CONFIG: linux_aarch64_numpy2python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
       linux_ppc64le_numpy2.0python3.10.____cpython:
@@ -66,6 +62,10 @@ jobs:
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
       linux_ppc64le_numpy2.0python3.9.____cpython:
         CONFIG: linux_ppc64le_numpy2.0python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_ppc64le_numpy2python3.13.____cp313:
+        CONFIG: linux_ppc64le_numpy2python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
   timeoutInMinutes: 360
