@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.9.2" %}
+{% set version = "3.10.0rc1" %}
 
 package:
   name: matplotlib-suite
@@ -9,11 +9,11 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 9c49b6683a34469e6d20864c7d5b975c4f29d7c60de1ce857980bead48769c3f
+  sha256: 6a921cd5c92ead9aab9c9c845865e27e3342eee8681eb36669c09f717efbff31
 
 build:
-  number: 1
-  skip: true  # [py<39]
+  number: 0
+  skip: true  # [py<310]
 
 # to avoid creating redundant CI jobs, conda-smithy needs python
 # to be used in all outputs, including the implicit global one.
@@ -47,7 +47,7 @@ outputs:
         - pip
         - meson-python >=0.13.1
         - certifi >=2020.06.20
-        - pybind11 >=2.6
+        - pybind11 >=2.13.2,!=2.13.3
         - freetype
         - qhull
         # freetype.pc requires zlib.pc
@@ -59,7 +59,6 @@ outputs:
         - tk  # [linux]
       run:
         - python
-        - certifi >=2020.06.20
         - contourpy >=1.0.1
         - cycler >=0.10
         - fonttools >=4.22.0
@@ -71,7 +70,6 @@ outputs:
         - python-dateutil >=2.7
         - freetype
         - tk  # [linux]
-        - importlib-resources >=3.2.0  # [py<310]
     test:
       imports:
         - matplotlib
