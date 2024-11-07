@@ -44,6 +44,5 @@ zip_keys:
 - - python
   - numpy
   - python_impl
-  - channel_sources
 zlib:
 - '1'

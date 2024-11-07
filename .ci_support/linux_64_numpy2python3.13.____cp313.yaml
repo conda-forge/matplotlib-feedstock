@@ -9,7 +9,7 @@ c_stdlib_version:
 cdt_name:
 - cos7
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge matplotlib_rc
 cxx_compiler:
@@ -44,6 +44,5 @@ zip_keys:
 - - python
   - numpy
   - python_impl
-  - channel_sources
 zlib:
 - '1'
