@@ -11,15 +11,15 @@ cxx_compiler:
 freetype:
 - '2'
 numpy:
-- '1.22'
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_73_pypy
+- 3.13.* *_cp313
 python_impl:
-- pypy
+- cpython
 qhull:
 - '2020.2'
 target_platform:

@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.9.0" %}
+{% set version = "3.10.0rc1" %}
 
 package:
   name: matplotlib-suite
@@ -9,28 +9,25 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 89877b314fe950b7abc118c1e518b0cc82fa9bb6e1228d26560e82be96ac009a
+  sha256: 6a921cd5c92ead9aab9c9c845865e27e3342eee8681eb36669c09f717efbff31
 
 build:
   number: 0
+  skip: true  # [py<310]
+
+# to avoid creating redundant CI jobs, conda-smithy needs python
+# to be used in all outputs, including the implicit global one.
+requirements:
+  host:
+    - python
 
 outputs:
   - name: matplotlib-base
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
     build:
-      skip: true  # [py<39]
       ignore_run_exports_from:
         - zlib
-      script_env:
-        # Workaround an upstream conda-build issue w/pip & `outputs` by setting env vars manually.
-        # Drop once conda-build 24.7.0 is released.
-        # xref: https://github.com/conda/conda-build/issues/3993
-        - PIP_NO_BUILD_ISOLATION=False
-        - PIP_NO_DEPENDENCIES=True
-        - PIP_IGNORE_INSTALLED=True
-        - PIP_CACHE_DIR=pip_cache
-        - PIP_NO_INDEX=True
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
@@ -50,7 +47,7 @@ outputs:
         - pip
         - meson-python >=0.13.1
         - certifi >=2020.06.20
-        - pybind11 >=2.6
+        - pybind11 >=2.13.2,!=2.13.3
         - freetype
         - qhull
         # freetype.pc requires zlib.pc
@@ -62,7 +59,6 @@ outputs:
         - tk  # [linux]
       run:
         - python
-        - certifi >=2020.06.20
         - contourpy >=1.0.1
         - cycler >=0.10
         - fonttools >=4.22.0
@@ -74,16 +70,15 @@ outputs:
         - python-dateutil >=2.7
         - freetype
         - tk  # [linux]
-        - importlib-resources >=3.2.0  # [py<310]
     test:
       imports:
         - matplotlib
         - matplotlib.pyplot
+        - matplotlib._c_internal_utils
         - matplotlib._image
         - matplotlib._path
         - matplotlib._qhull
         - matplotlib._tri
-        - matplotlib._ttconv
         - matplotlib.backends._backend_agg
         - matplotlib.ft2font
         - matplotlib.backends._tkagg  # [not win]
@@ -91,14 +86,13 @@ outputs:
         - pylab
 
   - name: matplotlib
-    build:
-      skip: true  # [py<39]
     requirements:
       host:
         - python
       run:
         - python
-        - pyqt >=5.10  # [not osx and not aarch64 and not ppc64le and python_impl == "cpython"]
+        # osx has its own backend; pyside6 not available on ppc
+        - pyside6 >=6.7.2  # [python_impl == "cpython" and not (osx or ppc64le)]
         - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:

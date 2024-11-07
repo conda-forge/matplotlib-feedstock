@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '12'
+- '13'
 c_stdlib:
 - sysroot
 c_stdlib_version:
@@ -15,19 +15,19 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '12'
+- '13'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 freetype:
 - '2'
 numpy:
-- '2.0'
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.13.* *_cp313
 python_impl:
 - cpython
 qhull:
