@@ -12,7 +12,7 @@ source:
   sha256: 9c49b6683a34469e6d20864c7d5b975c4f29d7c60de1ce857980bead48769c3f
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<39]
 
 # to avoid creating redundant CI jobs, conda-smithy needs python
@@ -106,7 +106,18 @@ about:
   license: PSF-2.0
   license_url: http://matplotlib.sourceforge.net/users/license.html
   license_family: PSF
-  license_file: LICENSE/LICENSE
+  license_file:
+    - LICENSE/LICENSE
+    - LICENSE/LICENSE_AMSFONTS
+    - LICENSE/LICENSE_BAKOMA
+    - LICENSE/LICENSE_CARLOGO
+    - LICENSE/LICENSE_COLORBREWER
+    - LICENSE/LICENSE_COURIERTEN
+    - LICENSE/LICENSE_JSXTOOLS_RESIZE_OBSERVER
+    - LICENSE/LICENSE_QT4_EDITOR
+    - LICENSE/LICENSE_SOLARIZED
+    - LICENSE/LICENSE_STIX
+    - LICENSE/LICENSE_YORICK
   summary: Publication quality figures in Python
   description: |
     matplotlib is a python 2D plotting library which produces publication
