@@ -94,7 +94,7 @@ outputs:
       run:
         - python
         # osx has its own backend; pyside6 not available on ppc
-        - pyside6 >=6.7.2  # [python_impl == "cpython" and not (osx or ppc64le)]
+        - pyside6 >=6.7.2  # [python_impl == "cpython" and not (osx or ppc64le) and not is_freethreading]
         - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:

@@ -11,7 +11,7 @@ c_stdlib:
 c_stdlib_version:
 - '11.0'
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -20,6 +20,8 @@ cxx_compiler_version:
 - '17'
 freetype:
 - '2'
+is_freethreading:
+- 'false'
 macos_machine:
 - arm64-apple-darwin20.0.0
 numpy:
@@ -43,5 +45,6 @@ zip_keys:
   - numpy
   - python_impl
   - channel_sources
+  - is_freethreading
 zlib:
 - '1'

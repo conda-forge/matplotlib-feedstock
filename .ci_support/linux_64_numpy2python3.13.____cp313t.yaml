@@ -9,7 +9,7 @@ c_stdlib_version:
 cdt_name:
 - cos7
 channel_sources:
-- conda-forge
+- conda-forge/label/cython_dev,conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -21,21 +21,23 @@ docker_image:
 freetype:
 - '2'
 is_freethreading:
-- 'false'
+- 'true'
 numpy:
-- '2.0'
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.13.* *_cp313t
 python_impl:
 - cpython
 qhull:
 - '2020.2'
 target_platform:
-- linux-ppc64le
+- linux-64
+tk:
+- '8.6'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

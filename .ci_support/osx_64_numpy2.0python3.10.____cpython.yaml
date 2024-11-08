@@ -20,6 +20,8 @@ cxx_compiler_version:
 - '17'
 freetype:
 - '2'
+is_freethreading:
+- 'false'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 numpy:
@@ -43,5 +45,6 @@ zip_keys:
   - numpy
   - python_impl
   - channel_sources
+  - is_freethreading
 zlib:
 - '1'
