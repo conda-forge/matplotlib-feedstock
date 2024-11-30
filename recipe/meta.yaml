@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.9.2" %}
+{% set version = "3.9.3" %}
 
 package:
   name: matplotlib-suite
@@ -9,10 +9,10 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 9c49b6683a34469e6d20864c7d5b975c4f29d7c60de1ce857980bead48769c3f
+  sha256: 4929c085a0116fcd0f672d6dee97d9191385f5449d59385cd5c48c04b1565912
 
 build:
-  number: 2
+  number: 0
   skip: true  # [py<39]
 
 # to avoid creating redundant CI jobs, conda-smithy needs python
