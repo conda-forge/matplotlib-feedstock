@@ -10,6 +10,8 @@ package:
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
   sha256: 4929c085a0116fcd0f672d6dee97d9191385f5449d59385cd5c48c04b1565912
+  patches:
+    - fix-zconf-macos.patch
 
 build:
   number: 200
