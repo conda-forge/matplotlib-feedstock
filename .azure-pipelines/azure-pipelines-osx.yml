@@ -17,9 +17,6 @@ jobs:
       osx_64_numpy2.0python3.12.____cpython:
         CONFIG: osx_64_numpy2.0python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_numpy2.0python3.9.____cpython:
-        CONFIG: osx_64_numpy2.0python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
       osx_64_numpy2python3.13.____cp313:
         CONFIG: osx_64_numpy2python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
@@ -31,9 +28,6 @@ jobs:
         UPLOAD_PACKAGES: 'True'
       osx_arm64_numpy2.0python3.12.____cpython:
         CONFIG: osx_arm64_numpy2.0python3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_numpy2.0python3.9.____cpython:
-        CONFIG: osx_arm64_numpy2.0python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
       osx_arm64_numpy2python3.13.____cp313:
         CONFIG: osx_arm64_numpy2python3.13.____cp313
