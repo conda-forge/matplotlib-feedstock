@@ -1,5 +1,5 @@
 c_compiler:
-- vs2019
+- vs2022
 c_stdlib:
 - vs
 channel_sources:
@@ -7,7 +7,7 @@ channel_sources:
 channel_targets:
 - conda-forge testing
 cxx_compiler:
-- vs2019
+- vs2022
 numpy:
 - '2'
 pin_run_as_build:
@@ -22,9 +22,5 @@ qhull:
 - '2020.2'
 target_platform:
 - win-64
-zip_keys:
-- - python
-  - numpy
-  - python_impl
 zlib:
 - '1'
