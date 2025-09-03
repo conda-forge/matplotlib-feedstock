@@ -9,7 +9,7 @@ c_stdlib_version:
 cdt_name:
 - conda
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -27,15 +27,13 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.12.* *_cpython
+- 3.14.* *_cp314
 python_impl:
 - cpython
 qhull:
 - '2020.2'
 target_platform:
-- linux-aarch64
-tk:
-- '8.6'
+- linux-ppc64le
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
