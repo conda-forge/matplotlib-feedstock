@@ -3,7 +3,7 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge testing
 cxx_compiler:
@@ -15,7 +15,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.13.* *_cp313
+- 3.14.* *_cp314
 python_impl:
 - cpython
 qhull:
