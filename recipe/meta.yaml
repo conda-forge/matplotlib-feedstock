@@ -71,6 +71,8 @@ outputs:
         - freetype
         - tk  # [linux]
     test:
+      requires:
+        - xorg-libx11   # [not win]
       imports:
         - matplotlib
         - matplotlib.pyplot
