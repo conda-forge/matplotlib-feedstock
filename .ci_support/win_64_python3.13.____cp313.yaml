@@ -22,8 +22,5 @@ qhull:
 - '2020.2'
 target_platform:
 - win-64
-zip_keys:
-- - python
-  - channel_sources
 zlib:
 - '1'
