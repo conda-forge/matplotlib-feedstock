@@ -77,9 +77,6 @@ outputs:
           - zlib
     tests:
       - python:
-          requires:
-            - if: unix
-              then: xorg-libx11
           imports:
             - matplotlib
             - matplotlib.pyplot
@@ -90,8 +87,6 @@ outputs:
             - matplotlib._tri
             - matplotlib.backends._backend_agg
             - matplotlib.ft2font
-            - if: not win
-              then: matplotlib.backends._tkagg
             - mpl_toolkits
             - pylab
           pip_check: false
