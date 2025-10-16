@@ -24,19 +24,15 @@ outputs:
       name: matplotlib-base
     build:
       script:
-        - if: win
-          then: build_base.bat
-          else: build_base.sh
+        - file: build_base
     requirements:
       build:
         - if: build_platform != target_platform
-          then: python
-        - if: build_platform != target_platform
-          then: cross-python_${{ target_platform }}
-        - if: build_platform != target_platform
-          then: numpy
-        - if: build_platform != target_platform
-          then: pybind11 >=2.6
+          then:
+            - python
+            - cross-python_${{ target_platform }}
+            - numpy
+            - pybind11 >=2.6
         - ${{ stdlib('c') }}
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
