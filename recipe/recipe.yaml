@@ -38,9 +38,8 @@ outputs:
         - ${{ compiler('cxx') }}
         - if: win
           then: cmake
+          else: libtool
         - pkg-config
-        - if: unix
-          then: libtool
         - ninja
       host:
         - python
