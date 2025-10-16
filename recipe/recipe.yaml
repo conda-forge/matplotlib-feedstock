@@ -24,7 +24,7 @@ outputs:
       name: matplotlib-base
     build:
       script:
-        - file: build_base
+        file: build_base
     requirements:
       build:
         - if: build_platform != target_platform
