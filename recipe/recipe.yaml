@@ -99,12 +99,16 @@ outputs:
         # osx has its own backend; pyside6 not available on ppc
         - if: python_impl == "cpython" and not (osx or ppc64le)
           then: pyside6 >=6.7.2
+        # if no pyside, atleast try to make tk work
+        - if: python_impl == "cpython" and pc64le
+          then: xorg-libx11
         - tornado >=5
         - ${{ pin_subpackage('matplotlib-base', upper_bound="x.x.x") }}
     tests:
       - python:
           imports:
             - matplotlib
+            - matplotlib.backends._tkagg
           pip_check: false
 
 about:
