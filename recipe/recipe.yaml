@@ -17,7 +17,6 @@ source:
 
 build:
   number: 1
-  skip: match(python, "<3.10")
 
 outputs:
   - package:
