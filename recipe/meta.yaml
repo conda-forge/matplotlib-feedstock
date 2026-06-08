@@ -27,6 +27,7 @@ outputs:
     script: build_base.sh  # [not win]
     build:
       ignore_run_exports_from:
+        - glib
         - zlib
     requirements:
       build:
@@ -51,7 +52,8 @@ outputs:
         - freetype
         - libraqm
         - qhull
-        # freetype.pc requires zlib.pc
+        # freetype.pc requires zlib.pc, libraqm requires glib
+        - glib  # [win]
         - zlib
         - numpy
         - setuptools >=64
