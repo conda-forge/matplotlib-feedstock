@@ -20,6 +20,8 @@ cxx_compiler_version:
 - '19'
 freetype:
 - '2'
+glib:
+- '2'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 numpy:
