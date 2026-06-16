@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.10.9" %}
+{% set version = "3.11.0" %}
 
 package:
   name: matplotlib-suite
@@ -9,11 +9,11 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 55251fcbca725a3b7ed20aefaff07a67560ffb0a7d739ebab0c99eb14f4c2d94
+  sha256: 58723eaaa7d38b26fca940b537a26c5d14ebd87c60a5685e32299b55587fe561
 
 build:
   number: 0
-  skip: true  # [py<310]
+  skip: true  # [py<311]
 
 # to avoid creating redundant CI jobs, conda-smithy needs python
 # to be used in all outputs, including the implicit global one.
@@ -27,6 +27,7 @@ outputs:
     script: build_base.sh  # [not win]
     build:
       ignore_run_exports_from:
+        - glib
         - zlib
     requirements:
       build:
@@ -49,8 +50,10 @@ outputs:
         - certifi >=2020.06.20
         - pybind11 >=2.13.2,!=2.13.3
         - freetype
+        - libraqm
         - qhull
-        # freetype.pc requires zlib.pc
+        # freetype.pc requires zlib.pc, libraqm requires glib
+        - glib  # [win]
         - zlib
         - numpy
         - setuptools >=64
@@ -110,10 +113,9 @@ about:
     - LICENSE/LICENSE
     - LICENSE/LICENSE_AMSFONTS
     - LICENSE/LICENSE_BAKOMA
-    - LICENSE/LICENSE_CARLOGO
     - LICENSE/LICENSE_COLORBREWER
     - LICENSE/LICENSE_COURIERTEN
-    - LICENSE/LICENSE_JSXTOOLS_RESIZE_OBSERVER
+    - LICENSE/LICENSE_LAST_RESORT_FONT
     - LICENSE/LICENSE_QT4_EDITOR
     - LICENSE/LICENSE_SOLARIZED
     - LICENSE/LICENSE_STIX
