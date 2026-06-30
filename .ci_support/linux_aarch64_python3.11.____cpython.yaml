@@ -18,8 +18,6 @@ docker_image:
 - quay.io/condaforge/linux-anvil-aarch64:alma9
 freetype:
 - '2'
-glib:
-- '2'
 numpy:
 - '2'
 pin_run_as_build:
@@ -39,5 +37,3 @@ tk:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-zlib:
-- '1'
