@@ -10,8 +10,6 @@ cxx_compiler:
 - vs2022
 freetype:
 - '2'
-glib:
-- '2'
 numpy:
 - '2'
 pin_run_as_build:
@@ -26,5 +24,3 @@ qhull:
 - '2020.2'
 target_platform:
 - win-64
-zlib:
-- '1'
