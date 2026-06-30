@@ -12,7 +12,7 @@ source:
   sha256: 58723eaaa7d38b26fca940b537a26c5d14ebd87c60a5685e32299b55587fe561
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<311]
 
 # to avoid creating redundant CI jobs, conda-smithy needs python
@@ -25,10 +25,6 @@ outputs:
   - name: matplotlib-base
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
-    build:
-      ignore_run_exports_from:
-        - glib
-        - zlib
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
@@ -50,11 +46,8 @@ outputs:
         - certifi >=2020.06.20
         - pybind11 >=2.13.2,!=2.13.3
         - freetype
-        - libraqm
+        - libraqm-devel
         - qhull
-        # freetype.pc requires zlib.pc, libraqm requires glib
-        - glib  # [win]
-        - zlib
         - numpy
         - setuptools >=64
         - setuptools_scm >=7
