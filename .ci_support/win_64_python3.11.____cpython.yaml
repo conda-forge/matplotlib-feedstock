@@ -10,6 +10,8 @@ cxx_compiler:
 - vs2022
 freetype:
 - '2'
+libraqm_devel:
+- '0.11'
 numpy:
 - '2'
 pin_run_as_build:
