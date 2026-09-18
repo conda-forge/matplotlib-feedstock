@@ -1,23 +1,13 @@
 c_compiler:
-- gcc
-c_compiler_version:
-- '13'
+- vs2022
 c_stdlib:
-- sysroot
-c_stdlib_version:
-- '2.17'
-cdt_name:
-- cos7
+- vs
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge matplotlib_rc
 cxx_compiler:
-- gxx
-cxx_compiler_version:
-- '13'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- vs2022
 freetype:
 - '2'
 numpy:
@@ -33,16 +23,9 @@ python_impl:
 qhull:
 - '2020.2'
 target_platform:
-- linux-64
-tk:
-- '8.6'
+- win-64
 zip_keys:
-- - c_compiler_version
-  - cxx_compiler_version
-- - c_stdlib_version
-  - cdt_name
 - - python
-  - numpy
-  - python_impl
+  - channel_sources
 zlib:
 - '1'
