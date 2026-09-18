@@ -12,7 +12,7 @@ source:
   sha256: 58723eaaa7d38b26fca940b537a26c5d14ebd87c60a5685e32299b55587fe561
 
 build:
-  number: 200
+  number: 201
   skip: true  # [py<311]
 
 # to avoid creating redundant CI jobs, conda-smithy needs python
