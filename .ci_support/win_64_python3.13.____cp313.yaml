@@ -8,6 +8,8 @@ channel_targets:
 - conda-forge testing
 cxx_compiler:
 - vs2022
+libraqm_devel:
+- '0.11'
 numpy:
 - '2'
 pin_run_as_build:
