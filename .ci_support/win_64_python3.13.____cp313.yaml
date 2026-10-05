@@ -1,5 +1,5 @@
 c_compiler:
-- vs2019
+- vs2022
 c_stdlib:
 - vs
 channel_sources:
@@ -7,26 +7,22 @@ channel_sources:
 channel_targets:
 - conda-forge matplotlib_rc
 cxx_compiler:
-- vs2019
+- vs2022
 freetype:
 - '2'
 numpy:
-- '2.0'
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.13.* *_cp313
 python_impl:
 - cpython
 qhull:
 - '2020.2'
 target_platform:
 - win-64
-zip_keys:
-- - python
-  - numpy
-  - python_impl
 zlib:
 - '1'
