@@ -1,7 +1,7 @@
 # Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.
 # It has been subsequently adapted for automated building with conda-forge.
 
-{% set version = "3.11.0" %}
+{% set version = "3.11.2" %}
 
 package:
   name: matplotlib-suite
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
-  sha256: 58723eaaa7d38b26fca940b537a26c5d14ebd87c60a5685e32299b55587fe561
+  sha256: 14b555ae7477ff593d842fba9714b5cbc6ea1db9461d2ea9d6da3ec0dc420f1a
 
 build:
   number: 200
@@ -50,19 +50,19 @@ outputs:
         - qhull
         - numpy
         - setuptools >=64
-        - setuptools_scm >=7
+        - setuptools_scm >=7,<10
         - setuptools_scm_git_archive
         - tk  # [linux]
       run:
         - python
         - contourpy >=1.0.1
         - cycler >=0.10
-        - fonttools >=4.22.0
+        - fonttools >=4.28.2
         - kiwisolver >=1.3.1
-        - numpy >=1.23
+        - numpy >=1.25
         - packaging >=20.0
-        - pillow >=8
-        - pyparsing >=2.3.1
+        - pillow >=9
+        - pyparsing >=3
         - python-dateutil >=2.7
         - tk  # [linux]
     test:
@@ -78,7 +78,7 @@ outputs:
         - matplotlib._tri
         - matplotlib.backends._backend_agg
         - matplotlib.ft2font
-        - matplotlib.backends._tkagg  # [not win]
+        - matplotlib.backends._tkagg  # [not win and not ppc64le]
         - mpl_toolkits
         - pylab
 
@@ -88,8 +88,9 @@ outputs:
         - python
       run:
         - python
-        # osx has its own backend; pyside6 not available on ppc
-        - pyside6 >=6.7.2  # [python_impl == "cpython" and not (osx or ppc64le)]
+        # osx has its own backend; pyside6 not available on ppc;
+        # pyside6 supports only gil enabled cpython
+        - pyside6 >=6.7.2  # [python_impl == "cpython" and (not is_freethreading) and not (osx or ppc64le) and not is_freethreading]
         - tornado >=5
         - {{ pin_subpackage('matplotlib-base', max_pin="x.x.x") }}
     test:
