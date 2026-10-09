@@ -13,7 +13,7 @@ c_stdlib_version:
 channel_sources:
 - conda-forge,conda-forge/label/python_rc
 channel_targets:
-- conda-forge main
+- conda-forge testing
 cxx_compiler:
 - clangxx
 cxx_compiler_version:

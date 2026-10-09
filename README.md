@@ -214,7 +214,7 @@ mamba search matplotlib --channel conda-forge/label/testing
 <summary>With pixi</summary>
 
 ```
-pixi search matplotlib --channel conda-forge
+pixi search matplotlib --channel conda-forge/label/testing
 ```
 
 </details>
