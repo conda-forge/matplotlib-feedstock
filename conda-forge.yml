@@ -2,6 +2,7 @@ bot:
   abi_migration_branches:
   - rc
   - testing
+build_platform: {}
 conda_build:
   error_overlinking: true
   pkg_format: '2'
@@ -11,4 +12,5 @@ github:
   tooling_branch_name: main
 provider:
   osx_arm64: default
+  win_arm64: default
 test: native_and_emulated
